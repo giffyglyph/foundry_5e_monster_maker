@@ -70,7 +70,7 @@ const MonsterForge = (function() {
 				senses: _parseSenses(blueprint.data.senses),
 				skills: monsterSkills,
 				speeds: _parseSpeeds(blueprint.data.speeds, derivedAttributes.role),
-				spellbook: _parseSpellbook(monsterAbilityModifiers, monsterClasses, blueprint.data.spellbook),
+				spellbook: _parseSpellbook(monsterAbilityModifiers, monsterProficiency, monsterClasses, blueprint.data.spellbook),
 				traits: _parseTraits(derivedAttributes, blueprint.data.traits, ignoreItemRequirements),
 				tst_count: derivedAttributes.trainedSavingThrowCount,
 				xp: _parseXp(derivedAttributes, blueprint.data.xp)
@@ -567,10 +567,11 @@ const MonsterForge = (function() {
 		};
 	}
 
-	function _parseSpellbook(monsterAbilityModifiers, monsterClasses, spellbook) {
+	function _parseSpellbook(monsterAbilityModifiers, monsterProficiency, monsterClasses, spellbook) {
 		const dc = new DerivedAttribute();
 		dc.add(8, game.i18n.format('gmm.common.derived_source.base'));
 		dc.add(monsterAbilityModifiers[spellbook.spellcasting.ability]?.value, game.i18n.format('gmm.common.derived_source.ability_modifier'));
+		dc.add(monsterProficiency.value, game.i18n.format('gmm.common.derived_source.proficiency'));
 		dc.applyModifier(spellbook.spellcasting.dc.modifier.value, spellbook.spellcasting.dc.modifier.override);
 		dc.ceil();
 
