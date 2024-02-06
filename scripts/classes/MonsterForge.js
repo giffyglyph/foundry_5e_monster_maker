@@ -642,11 +642,22 @@ const MonsterForge = (function() {
 	function _getInventoryCapacity(monsterAbilityModifiers, data) {
 		const capacity = new DerivedAttribute();
 		capacity.add((monsterAbilityModifiers["str"].value * 2) + 10, game.i18n.format('gmm.common.derived_source.ability_score'));
-		if (data.display.units === "imperial") {
-			capacity.multiply(CONFIG.DND5E.encumbrance.strMultiplier.imperial, "config");
-		} else if (data.display.units === "metric") {
-			capacity.multiply(CONFIG.DND5E.encumbrance.strMultiplier.metric, "config");
+
+		//This keeps backwards compatability for previous versions
+		if (dnd5e.version.localeCompare(3, undefined, { numeric: true, sensitivity: 'base' }) >= 0) {
+			if (data.display.units === "imperial") {
+				capacity.multiply(CONFIG.DND5E.encumbrance.threshold.maximum.imperial, "config");
+			} else if (data.display.units === "metric") {
+				capacity.multiply(CONFIG.DND5E.encumbrance.threshold.maximum.metric, "config");
+			}
+		} else {
+			if (data.display.units === "imperial") {
+				capacity.multiply(CONFIG.DND5E.encumbrance.strMultiplier.imperial, "config");
+			} else if (data.display.units === "metric") {
+				capacity.multiply(CONFIG.DND5E.encumbrance.strMultiplier.metric, "config");
+			}
 		}
+
 		capacity.multiply(GMM_5E_SIZES.find((x) => x.name == data.description.size).inventory_capacity, "size");
 		capacity.applyModifier(data.inventory.encumbrance.capacity.modifier.value, data.inventory.encumbrance.capacity.modifier.override);
 
@@ -689,8 +700,16 @@ const MonsterForge = (function() {
 		});
 		
 		// Look up the number of slots per level from the progression table
-		const levels = Math.clamped(spellLevel ? spellLevel : progression.slot, 0, 20);
-		const pactLevel = Math.clamped(slotModifiers.pact.level ? slotModifiers.pact.level : progression.pact, 0, 20);
+		//TODO v14 - clamped becomes clamp, but this breaks v10
+		let levels, pactLevel;
+		if (game.version >= 12) {
+			levels = Math.clamp(spellLevel ? spellLevel : progression.slot, 0, 20);
+			pactLevel = Math.clamp(slotModifiers.pact.level ? slotModifiers.pact.level : progression.pact, 0, 20);
+		} else {
+			levels = Math.clamped(spellLevel ? spellLevel : progression.slot, 0, 20);
+			pactLevel = Math.clamped(slotModifiers.pact.level ? slotModifiers.pact.level : progression.pact, 0, 20);
+		}
+
 		const rawSlots = CONFIG.DND5E.SPELL_SLOT_TABLE[levels - 1] || [];
 
 		const slots = {};

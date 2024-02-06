@@ -10,6 +10,7 @@
 ## v1.0.0
 
 * v12 Foundry Deprecation Fixes
+* dnd5e 3.0 compatability
 * Fixes to swarm size
 
 ## v0.12.0.2 (latest)

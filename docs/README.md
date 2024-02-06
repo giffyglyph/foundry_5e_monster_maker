@@ -44,9 +44,9 @@ You can install this Foundry module by copying a manifest URL into your Foundry 
 
 * **v3 RC 0.12.x (Main Release):** https://raw.githubusercontent.com/Skyl3lazer/giffyglyph-monster-maker-continued/master/module.json	
   * This is probably what you want
-* **v3 Dev 0.13.x (May be unstable):** https://raw.githubusercontent.com/Skyl3lazer/giffyglyph-monster-maker-continued/dev/module.json
+* **v3 Dev 1.0.x (May be unstable):** https://raw.githubusercontent.com/Skyl3lazer/giffyglyph-monster-maker-continued/dev/module.json
   * For the Brave
-* **v3 Alpha 1.0.0 (ONLY FOR v12 FOUNDRY)** https://raw.githubusercontent.com/Skyl3lazer/giffyglyph-monster-maker-continued/v12/module.json 
+* **Foundry v12 Alpha (ONLY FOR v12 FOUNDRY)** https://raw.githubusercontent.com/Skyl3lazer/giffyglyph-monster-maker-continued/v12/module.json 
   * Only download this if you are using the Foundry V12 beta!
 
 * **MM v2 (Legacy, only for recovering monsters from old games):** https://raw.githubusercontent.com/Skyl3lazer/giffyglyph-monster-maker-continued/v2/module.json
