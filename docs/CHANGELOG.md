@@ -10,10 +10,11 @@
 ## v1.0.0
 
 * v12 Foundry Deprecation Fixes
+* Fixes to swarm size
 
 ## v0.12.0.2 (latest)
 
-* Shortcoder warning supression for roll commands.
+* Shortcoder warning supression for roll commands
 * Fixes for paragon defense modifications and display
 
 ## v0.11.0.3

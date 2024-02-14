@@ -283,7 +283,7 @@ const MonsterBlueprint = (function() {
 
 		if (hasProperty(blueprint.data, "description.type.swarm")) {
 			const size = GMM_5E_SIZES.find((x) => x.name == blueprint.data.description.type.swarm);
-			setProperty(actorData, "system.details.type.swarm", size ? size.foundry : null);
+			setProperty(actorData, "system.details.type.swarm", size ? size.foundry : "");
 		}
 
 		GMM_5E_SKILLS.forEach((x) => {
