@@ -226,7 +226,7 @@ export default class MonsterSheet extends ActorSheet {
 		const msg = await item.displayCard({ createMessage: false });
 		const DIV = document.createElement("DIV");
 		DIV.innerHTML = msg.content;
-		DIV.querySelector("div.card-buttons").remove();
+		DIV.querySelector("div.card-buttons")?.remove();
 		return await ChatMessage.create({ content: DIV.innerHTML });
 	}
 
