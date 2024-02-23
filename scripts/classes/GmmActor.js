@@ -82,6 +82,9 @@ const GmmActor = (function () {
 		actorData.attributes.ac.calc = "natural";
 		actorData.attributes.ac.flat = monsterData.armor_class.value;
 		actorData.attributes.ac.base = monsterData.armor_class.value;
+		if (!monsterData.hit_points.use_formula) {
+			actorData.attributes.hp.max = monsterData.hit_points.maximum.value;
+		}
 		
 	}
 	function _postProcessData(actor) {
@@ -161,9 +164,10 @@ const GmmActor = (function () {
 			//actorData.attributes.ac.value = monsterData.armor_class.value + actorData.attributes.ac.bonus;
 			monsterData.armor_class.display = actorData.attributes.ac.value;
 
-			if (!monsterData.hit_points.use_formula) {
-				actorData.attributes.hp.max = monsterData.hit_points.maximum.value;
-			}
+			
+
+			actorData.attributes.hp.effectiveMax = monsterData.hit_points.maximum.value;
+
 			actorData.attributes.init = {
 				prof: new Proficiency(0, 1),
 				ability: monsterData.initiative.ability,
