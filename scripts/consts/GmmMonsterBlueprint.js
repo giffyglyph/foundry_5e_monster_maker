@@ -194,7 +194,8 @@ export const GMM_MONSTER_BLUEPRINT = {
 					value: null,
 					override: false
 				}
-			}
+			},
+			rolled_max: 0
 		},
 		initiative: {
 			ability: "dex",
