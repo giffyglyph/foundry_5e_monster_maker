@@ -410,8 +410,8 @@ const GmmItem = (function () {
             if (ammoItemData) {
                 const ammoItemQuantity = ammoItemData.quantity;
                 const ammoCanBeConsumed = ammoItemQuantity && (ammoItemQuantity - (itemData.consume.amount ?? 0) >= 0);
-                const ammoItemAttackBonus = ammoItem.system.attackBonus;
-                const ammoIsTypeConsumable = (ammoItemData.type === "consumable") && (ammoItemData.consumableType === "ammo")
+                const ammoItemAttackBonus = ammoItemData.magicalBonus;
+                const ammoIsTypeConsumable = (ammoItemData.type.value === "ammo")
                 if (ammoCanBeConsumed && ammoItemAttackBonus && ammoIsTypeConsumable) {
                     parts.push("@ammo");
                     if (rollData) {
@@ -496,12 +496,14 @@ const GmmItem = (function () {
         };
 
         // Handle ammunition damage
-        const ammoData = item._ammo?.system;
-        if (item._ammo && (ammoData.type === "consumable") && (ammoData.consumableType === "ammo")) {
-            parts.push("@ammo");
-            rollData["ammo"] = ammoData.damage.parts.map(p => p[0]).join("+");
-            rollConfig.flavor += ` [${item._ammo.name}]`;
-            delete item._ammo;
+        const ammoItem = item.actor.items.get(itemData.consume.target);
+        const ammoItemData = ammoItem?.system;
+        if (ammoItemData && (ammoItemData.type.value === "ammo")) {
+            rollData["ammo"] = ammoItemData.damage.parts.map(p => p[0]).join("+") + (ammoItemData.magicalBonus ? `+${ammoItemData.magicalBonus}` : "");
+            if (rollData["ammo"] != "") {
+                parts.push("@ammo");
+                rollConfig.flavor += ` [${ammoItem.name}]`;
+            }
         }
 
         // Call the roll helper utility

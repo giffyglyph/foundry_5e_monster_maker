@@ -7,15 +7,18 @@
 [![BlueSky](https://img.shields.io/badge/%40Skyl3lazer_on_BlueSky-grey?logo=bluesky&logoColor=%230285FF&labelColor=grey)](https://bsky.app/profile/skyl3lazer.bsky.social)
 [![Discord](https://img.shields.io/badge/contact-me-blue?logo=discord&logoColor=white)](https://discord.com/channels/@skyl3lazer)
 
-## v1.0.0.4 (dev)
+## v1.0.0.6 (dev)
 
 * v12 Foundry Deprecation Fixes (v12 not supported currently on this branch)
-* dnd5e 3.0 compatability
-* Fixes to swarm size
-* Fixes for hit points, including max hp issues on 3.0, display of formula rolled hp
-* Added the [name] shortcode
+* #20 dnd5e 3.0 compatability
+* #18 Fixes to swarm size
+* #21 Fixes for hit points, including max hp issues on 3.0
+* #22 Added the [name] shortcode
+* #23 Fixed display of formula rolled hp
+* #24 Fixed using ammo items on scaling abilities, and cleaned up chat messages when you do so [mainly a legacy feature]
 * Fixed spell save DC calculations (for actual spells you give monsters)
 * Fixed components and VSM info for spells
+* Fixed loot item value showing on sheet, and added units
 
 
 ## v0.12.0.2 (latest)

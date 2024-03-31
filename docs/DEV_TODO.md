@@ -1,9 +1,16 @@
 # TODO
 
+## Major
+
+* Foundry v12 compatibility (as v12 becomes more stable)
+* dnd5e 3.*.* compatibility
+
 ## Visual
 
 * Should proficiency show still under Attributes?
-* Initiative doesn't display right if affected by a DAE
+* Several attributes don't display or function correctly when under the effects of a DAE
+	* Initiative
+	* Attack bonus
 * Some of the wording of targeting is incorrect now with the field changes. Specifically "enemies within 5 feet", that sort of thing.
 
 ## Module Ecosystem
