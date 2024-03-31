@@ -35,12 +35,12 @@
                     <input class="input--quantity" data-action="update-item" data-target="{{item.id}}" data-field="data.quantity" data-type="number"/>
                 </li>
                 <li class="item__weight">
-                    {{item.system.weight}}
+                    {{item.system.weight}}lb
                     <input class="input--weight" data-action="update-item" data-target="{{item.id}}" data-field="data.weight" data-type="number"/>
                 </li>
                 <li class="item__price">
-                    {{item.system.price}}
-                    <input class="input--price" data-action="update-item" data-target="{{item.id}}" data-field="data.price" data-type="number"/>
+                    {{item.system.price.value}}{{item.system.price.denomination}}
+                    <input class="input--price" data-action="update-item" data-target="{{item.id}}" data-field="data.price.value" data-type="number" />
                 </li>
             </ul>
             {{#if item.gmmLabels.description}}
