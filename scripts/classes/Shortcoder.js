@@ -32,9 +32,11 @@ const Shortcoder = (function () {
                 if (hasProperty(monsterData, x.data)) {
                     try {
                         let regex = new RegExp(`\\b${x.code}\\b`, 'gi');
-                        token = token.replace(regex, getProperty(monsterData, x.data));
-                        if (x.type && x.type === "string") {
-                            token = token.replace(/\[(.*?)\]/g, (token, t1) => t1);
+                        if (regex.test(token)) {
+                            token = token.replace(regex, getProperty(monsterData, x.data));
+                            if (x.type && x.type === "string") {
+                                token = token.replace(/\[(.*?)\]/g, (token, t1) => t1);
+                            }
                         }
                     } catch (e) {
                         console.error(e);
