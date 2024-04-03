@@ -36,14 +36,24 @@
 			"label": "GMM Monster Powers",
 			"path": "./packs/monster-powers.db",
 			"type": "Item",
-			"system": "dnd5e"
+			"system": "dnd5e",
+			"module": "giffyglyph-monster-maker-continued"
 		},
 		{
 			"name": "gmm-monster-attacks",
 			"label": "GMM Monster Attacks",
 			"path": "./packs/monster-attacks.db",
 			"type": "Item",
-			"system": "dnd5e"
+			"system": "dnd5e",
+			"module": "giffyglyph-monster-maker-continued"
+		},
+		{
+			"name": "gmm-monster-traits",
+			"label": "GMM Monster Traits",
+			"path": "/packs/monster-traits",
+			"type": "Item",
+			"system": "dnd5e",
+			"module": "giffyglyph-monster-maker-continued"
 		}
 	],
 	"languages": [
