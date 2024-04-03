@@ -231,6 +231,8 @@ const MonsterForge = (function() {
 		GMM_5E_ABILITIES.forEach((x) => {
 			let ranking = abilityModifiers.ranking.indexOf(x);
 			ams[x] = derivedAttributes.abilityModifiers[ranking];
+			if (ranking === 0)
+				ams["max"] = ams[x];
 		});
 
 		if (abilityModifiers.modifier.value) {

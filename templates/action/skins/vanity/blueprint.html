@@ -225,6 +225,7 @@
 									<select name="gmm.blueprint.attack.related_stat">
 										{{#select gmm.blueprint.attack.related_stat}}
 										<option value=""></option>
+										<option value="max">Highest Ability</option>
 										{{#each gmm.enums.abilities}}
 									<option value="{{.}}">{{localize (concat 'gmm.common.ability.' . '.name')}}</option>
 										{{/each}}

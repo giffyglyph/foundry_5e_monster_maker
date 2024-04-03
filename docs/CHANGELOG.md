@@ -19,6 +19,8 @@
 * Fixed spell save DC calculations (for actual spells you give monsters)
 * Fixed components and VSM info for spells
 * Fixed loot item value showing on sheet, and added units
+* #28 Added a "Highest Stat" option to the "Related Ability" dropdown in Attack Option, which lets a scalar ability always scale off of the Highest Stat
+* #27 Added a related shortcode [maxMod]
 
 
 ## v0.12.0.2 (latest)

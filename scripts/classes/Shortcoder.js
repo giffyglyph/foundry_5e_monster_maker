@@ -11,6 +11,7 @@ const Shortcoder = (function () {
         { code: "intMod", data: "ability_modifiers.int.value" },
         { code: "wisMod", data: "ability_modifiers.wis.value" },
         { code: "chaMod", data: "ability_modifiers.cha.value" },
+        { code: "maxMod", data: "ability_modifiers.max.value" },
         { code: "strSave", data: "saving_throws.str.value" },
         { code: "dexSave", data: "saving_throws.dex.value" },
         { code: "conSave", data: "saving_throws.con.value" },
