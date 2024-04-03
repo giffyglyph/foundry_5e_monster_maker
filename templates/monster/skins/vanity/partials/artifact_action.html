@@ -31,44 +31,46 @@
             </div>
         </div>
         <div class="item__details">
-            {{#if (or item.gmmLabels.attack item.gmmLabels.damage_hit item.gmmLabels.damage_versatile item.gmmLabels.damage_miss)}}
-                <div class="item__attackdmg">
-                    {{#if item.gmmLabels.attack}}
-                        <span class="item__attack">
-                            <span class="attack__title"><i>{{item.gmmLabels.attack}}:</i></span>
-                            {{#if item.gmmLabels.to_hit}}
-                                <span>{{item.gmmLabels.to_hit}}</span>
-                            {{/if}}
-                            {{#if item.gmmLabels.range}}
-                                <span>{{item.gmmLabels.range}}</span>
-                            {{/if}}
-                            {{#if item.gmmLabels.target}}
-                                <span>{{item.gmmLabels.target}}</span>
-                            {{/if}}
-                        </span>
+            {{#if (or item.gmmLabels.damage_hit item.gmmLabels.damage_versatile item.gmmLabels.damage_miss item.gmmLabels.to_hit item.gmmLabels.range item.gmmLabels.target)}}
+            <div class="item__attackdmg">
+                {{#if item.gmmLabels.attack}}
+                {{#if (or item.gmmLabels.to_hit item.gmmLabels.range item.gmmLabels.target)}}
+                <span class="item__attack">
+                    <span class="attack__title"><i>{{item.gmmLabels.attack}}:</i></span>
+                    {{#if item.gmmLabels.to_hit}}
+                    <span>{{item.gmmLabels.to_hit}}</span>
                     {{/if}}
-                    {{#if item.gmmLabels.damage_hit}}
-                        <span class="item__damage">
-                            <span class="attack__title"><i>{{#if item.gmmLabels.isHealing}}{{localize 'gmm.common.attack.heal'}}{{else}}{{localize 'gmm.common.attack.hit'}}{{/if}}:</i></span>
-                            <span>{{item.gmmLabels.damage_hit}}</span>
-                        </span>
+                    {{#if item.gmmLabels.range}}
+                    <span>{{item.gmmLabels.range}}</span>
                     {{/if}}
-                    {{#if item.gmmLabels.damage_versatile}}
-                        <span class="item__damage">
-                            <span class="attack__title"><i>{{localize 'gmm.common.attack.versatile'}}:</i></span>
-                            <span>{{item.gmmLabels.damage_versatile}}</span>
-                        </span>
+                    {{#if item.gmmLabels.target}}
+                    <span>{{item.gmmLabels.target}}</span>
                     {{/if}}
-                    {{#if item.gmmLabels.damage_miss}}
-                        <span class="item__damage">
-                            <span class="attack__title"><i>{{localize 'gmm.common.attack.miss'}}:</i></span>
-                            <span>{{item.gmmLabels.damage_miss}}</span>
-                        </span>
-                    {{/if}}
-                </div>
+                </span>
+                {{/if}}
+                {{/if}}
+                {{#if item.gmmLabels.damage_hit}}
+                <span class="item__damage">
+                    <span class="attack__title"><i>{{#if item.gmmLabels.isHealing}}{{localize 'gmm.common.attack.heal'}}{{else}}{{localize 'gmm.common.attack.hit'}}{{/if}}:</i></span>
+                    <span>{{item.gmmLabels.damage_hit}}</span>
+                </span>
+                {{/if}}
+                {{#if item.gmmLabels.damage_versatile}}
+                <span class="item__damage">
+                    <span class="attack__title"><i>{{localize 'gmm.common.attack.versatile'}}:</i></span>
+                    <span>{{item.gmmLabels.damage_versatile}}</span>
+                </span>
+                {{/if}}
+                {{#if item.gmmLabels.damage_miss}}
+                <span class="item__damage">
+                    <span class="attack__title"><i>{{localize 'gmm.common.attack.miss'}}:</i></span>
+                    <span>{{item.gmmLabels.damage_miss}}</span>
+                </span>
+                {{/if}}
+            </div>
             {{/if}}
             {{#if item.gmmLabels.description}}
-                <div class="item__description">{{{item.gmmLabels.description}}}</div>
+            <div class="item__description">{{{item.gmmLabels.description}}}</div>
             {{/if}}
         </div>
         <div class="item__actions">

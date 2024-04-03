@@ -143,11 +143,17 @@ const GmmItem = (function () {
             if (this.labels.toHit) {
                 labels.to_hit = game.i18n.format(`gmm.action.labels.attack.to_hit`, { bonus: this.labels.toHit.replace(/^\+ /, '+') });
             }
-        } else if (this.hasSave && itemData.save.ability) {
-            labels.attack = game.i18n.format(`gmm.action.labels.attack.${itemData.save.ability}`);
+        } else if (this.hasSave) {
+            if (itemData.save.ability) {
+                labels.attack = game.i18n.format(`gmm.action.labels.attack.${itemData.save.ability}`);
+            } else {
+                labels.attack = game.i18n.format(`gmm.common.attack_type.${itemData.actionType}`);
+            }
             if (this.system.save.dc) {
                 labels.to_hit = game.i18n.format(`gmm.action.labels.attack.dc`, { bonus: this.system.save.dc });
             }
+        } else if (itemData.actionType && itemData.actionType != "") {
+            labels.attack = game.i18n.format(`gmm.common.attack_type.${itemData.actionType}`);
         }
 
         if (this.hasDamage) {
