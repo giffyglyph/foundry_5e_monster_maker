@@ -1,0 +1,8 @@
+2024/04/04-11:01:10.480 3f48 Recovering log #18
+2024/04/04-11:01:10.484 3f48 Delete type=0 #18
+2024/04/04-11:01:10.484 3f48 Delete type=3 #16
+2024/04/04-13:33:55.055 f2ac Level-0 table #23: started
+2024/04/04-13:33:55.055 f2ac Level-0 table #23: 0 bytes OK
+2024/04/04-13:33:55.057 f2ac Delete type=0 #21
+2024/04/04-13:33:55.060 f2ac Manual compaction at level-0 from '!items!0RwQJtR1mGN2Ovrq' @ 72057594037927935 : 1 .. '!items!zpg1qsQs5YdWMA7O' @ 0 : 0; will stop at (end)
+2024/04/04-13:33:55.060 f2ac Manual compaction at level-1 from '!items!0RwQJtR1mGN2Ovrq' @ 72057594037927935 : 1 .. '!items!zpg1qsQs5YdWMA7O' @ 0 : 0; will stop at (end)
