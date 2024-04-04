@@ -7,7 +7,7 @@
 [![BlueSky](https://img.shields.io/badge/%40Skyl3lazer_on_BlueSky-grey?logo=bluesky&logoColor=%230285FF&labelColor=grey)](https://bsky.app/profile/skyl3lazer.bsky.social)
 [![Discord](https://img.shields.io/badge/contact-me-blue?logo=discord&logoColor=white)](https://discord.com/channels/@skyl3lazer)
 
-## v1.0.0.8 (dev)
+## v1.0.0.9 (dev)
 
 1.0 is here! In addition to a number of bugfixes and compatibility updates, 1.0 features a few big ticket items:
 
@@ -42,6 +42,7 @@ Full changelog:
 * #29 Added a GGMMv3 "Traits" compendium
 	* This is a first take on this compendium. If you find an issue, please report it.
 	* In the future I'd like to add DAE and others as optional dependencies and add DAE/automation to the compendiums!
+* Updated the "Powers" compendium to GGMMv3
 * #33 Added ability for Scalar Abilities to require Concentration
 	* This also sets me up to be able to support other "Properties" (magical, etc) on Scalars in the future.
 * Added description pills to show duration, concentration, and activation requirement (for now)
