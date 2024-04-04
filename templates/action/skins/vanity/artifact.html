@@ -13,7 +13,7 @@
 		<div class="gmm-panel">
 			<div class="panel__body">
 				<div class="item__title">
-					<div class="item__name" data-action="open-config" data-config="title"><i class="{{gmm.action.gmmLabels.icon}}"></i> {{gmm.action.name}}</div>
+					<div class="item__name" data-action="open-config" data-config="title"><i class="{{gmm.action.gmmLabels.icon}}"></i> {{gmm.action.name}}{{#if gmm.action.gmmLabels.isConcentration}}<span class="item__concentration"> (Requires Concentration)</span>{{/if}}</div>
 					{{#if gmm.action.gmmLabels.legendary_cost}}
 						<div class="item__cost" data-action="open-config" data-config="action-type">({{localize 'gmm.monster.artifact.legendary_actions.cost' cost=gmm.action.gmmLabels.legendary_cost}})</div>
 					{{/if}}

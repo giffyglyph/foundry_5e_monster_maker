@@ -52,6 +52,11 @@ export const GMM_ACTION_BLUEPRINT = {
 			maximum: "",
 			per: ""
 		},
+		properties: {
+			concentration: {
+				checked: false
+			}
+		},
 		resource_consumption: {
 			type: null,
 			target: null,

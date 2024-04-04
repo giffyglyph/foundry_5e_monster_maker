@@ -154,6 +154,11 @@
 				}
 			}
 
+			.item__concentration {
+				font-style: italic;
+				font-size: smaller;
+			}
+
 			.item__recharge {
 				display: inline;
 				font-weight: bold;
@@ -278,7 +283,7 @@
 					&:last-child::after {
 						content: '.';
 					}
-					
+
 					&:not(:last-child)::after {
 						content: ',';
 					}

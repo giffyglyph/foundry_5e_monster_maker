@@ -157,7 +157,7 @@
 				}
 			}
 
-			.hit-points, 
+			.hit-points,
 			.attack {
 				flex-grow: 1;
 				width: 100%;
@@ -771,6 +771,9 @@
 					}
 				}
 
+
+
+
 				.item__title {
 					display: block;
 					padding: 0.25rem 0.5rem;
@@ -808,6 +811,11 @@
 						font-size: inherit;
 						line-height: inherit;
 					}
+				}
+
+				.item__concentration {
+					font-style: italic;
+					font-size: smaller;
 				}
 
 				.item__cost {

@@ -418,6 +418,10 @@
   cursor: pointer;
   color: var(--color-secondary-base);
 }
+.gmm-artifact.artifact--action.artifact--action--vanity .action__body .item__concentration {
+  font-style: italic;
+  font-size: smaller;
+}
 .gmm-artifact.artifact--action.artifact--action--vanity .action__body .item__recharge {
   display: inline;
   font-weight: bold;
@@ -1200,6 +1204,10 @@
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+}
+.gmm-artifact.artifact--monster.artifact--monster--vanity .item-list .item .item__concentration {
+  font-style: italic;
+  font-size: smaller;
 }
 .gmm-artifact.artifact--monster.artifact--monster--vanity .item-list .item .item__cost {
   font-weight: bold;

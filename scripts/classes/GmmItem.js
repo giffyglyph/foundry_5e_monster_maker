@@ -179,6 +179,7 @@ const GmmItem = (function () {
         }
 
         labels.isHealing = this.isHealing;
+        labels.isConcentration = itemData.properties.has("concentration");
 
         if (this.isVersatile) {
             labels.damage_versatile = `${gmmMonster ? Shortcoder.replaceShortcodes(this.system.damage.versatile, gmmMonster) : this.system.damage.versatile} damage`;

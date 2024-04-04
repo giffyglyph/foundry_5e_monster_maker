@@ -9,6 +9,22 @@
 
 ## v1.0.0.7 (dev)
 
+1.0 is here! In addition to a number of bugfixes and compatibility updates, 1.0 features a few big ticket items:
+
+* GGMMv3 Compendium Updates! You can now (or soon) add Traits, Features, and Attacks directly from the v3 PDF!
+	* This means that the compendiums are now in the new format, rather than the old ".db" files that get converted and take time to load.
+	* These new compendiums have built in scalars, attacks, etc, that all work right out of the box and look great.
+	* The old items are still available in the !V2 folders within compendiums if you want to use them.
+
+* In service of the new compendiums, there are a number of new QOL features when building your own scalar abilities, such as
+	* Finally being able to see the range/etc on attacks that don't roll to-hit or have a save (utility, healing, other, etc)
+	* New shortcodes! [name] and [maxMod] can be used anywhere.
+	* You can select "Highest Ability" for the Related Ability dropdown in the Attack menu to make your scalar ability automatically use whatever highest stat your monsters have.
+	* Monster abilities can now require concentration.
+
+
+Full changelog:
+
 * v12 Foundry Deprecation Fixes (v12 not supported currently on this branch)
 * #20 dnd5e 3.0 compatability
 * #18 Fixes to swarm size
@@ -21,7 +37,13 @@
 * Fixed loot item value showing on sheet, and added units
 * #28 Added a "Highest Stat" option to the "Related Ability" dropdown in Attack Option, which lets a scalar ability always scale off of the Highest Stat
 * #27 Added a related shortcode [maxMod]
-
+* #32 Added hinter text to anything with an attack if it has a to-hit, range, area, or save DC. 
+	* I.E. You can now add a range+area to a utility attack and have it show.
+* #29 Added a GGMMv3 "Traits" compendium
+	* This is a first take on this compendium. If you find an issue, please report it.
+	* In the future I'd like to add DAE and others as optional dependencies and add DAE/automation to the compendiums!
+* #33 Added ability for Scalar Abilities to require Concentration
+	* This also sets me up to be able to support other "Properties" (magical, etc) on Scalars in the future.
 
 ## v0.12.0.2 (latest)
 

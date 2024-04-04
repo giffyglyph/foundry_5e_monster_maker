@@ -8,7 +8,7 @@
     <div class="item__body">
         <div class="item__title">
             <div class="item__title__body">
-                <div class="item__name"><i class="{{item.gmmLabels.icon}}"></i> {{item.name}}</div>
+                <div class="item__name"><i class="{{item.gmmLabels.icon}}"></i> {{item.name}}{{#if item.gmmLabels.isConcentration}}<span class="item__concentration"> (Requires Concentration)</span>{{/if}}</div>
                 {{#if item.gmmLabels.legendary_cost}}
                     <div class="item__cost">({{localize 'gmm.monster.artifact.legendary_actions.cost' cost=item.gmmLabels.legendary_cost}})</div>
                 {{/if}}

@@ -353,10 +353,10 @@
 								<div class="form-group__body">
 									<select name="gmm.blueprint.duration.units">
 										{{#select gmm.blueprint.duration.units}}
-											<option value=""></option>
-											{{#each gmm.enums.time_periods}}
-												<option value="{{.}}">{{localize (concat 'gmm.common.time_period.' .)}}</option>
-											{{/each}}
+										<option value=""></option>
+										{{#each gmm.enums.time_periods}}
+										<option value="{{.}}">{{localize (concat 'gmm.common.time_period.' .)}}</option>
+										{{/each}}
 										{{/select}}
 									</select>
 								</div>
@@ -366,8 +366,18 @@
 									<span class="form-group__title">{{localize 'gmm.action.blueprint.duration.quantity'}}</span>
 								</div>
 								<div class="form-group__body">
-									<input name="gmm.blueprint.duration.value" value="{{gmm.blueprint.duration.value}}" type="number"/>
+									<input name="gmm.blueprint.duration.value" value="{{gmm.blueprint.duration.value}}" type="number" />
 								</div>
+							</div>
+							<div class="form-group">
+								{{#each gmm.blueprint.properties}}
+								<div class="form-group__header">
+									<span class="form-group__title">{{localize 'gmm.action.blueprint.properties.concentration'}}</span>
+								</div>
+								<div class="form-group__body">
+									<input type="checkbox" name="gmm.blueprint.properties.{{@key}}.checked" {{checked checked}} />
+								</div>
+								{{/each}}
 							</div>
 						</div>
 					</div>
