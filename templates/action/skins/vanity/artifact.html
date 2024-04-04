@@ -75,11 +75,14 @@
                     <span class="item__description" data-action="open-config" data-config="description">{{{gmm.action.gmmLabels.description}}}</span>
                     {{/if}}
                 <div class="item__pills">
+                    {{#if gmm.action.gmmLabels.isConcentration}}
+                    <div class="item__pill-sm">Concentration</div>
+                    {{/if}}
                     {{#if gmm.action.gmmLabels.duration}}
                     <div class="item__pill-sm" data-action="open-config" data-config="duration">{{gmm.action.gmmLabels.duration}}</div>
                     {{/if}}
-                    {{#if gmm.action.gmmLabels.isConcentration}}
-                    <div class="item__pill-sm">Concentration</div>
+                    {{#if gmm.action.gmmLabels.condition}}
+                    <div class="item__pill-sm" data-action="open-config" data-config="action-type">{{gmm.action.gmmLabels.condition}}</div>
                     {{/if}}
                 </div>
                 </div>

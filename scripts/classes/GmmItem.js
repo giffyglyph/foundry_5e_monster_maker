@@ -177,6 +177,8 @@ const GmmItem = (function () {
             }
             labels.damage_hit = damages.join(" plus ");
         }
+
+        labels.condition = `${gmmMonster ? Shortcoder.replaceShortcodes(this.system.activation.condition, gmmMonster) : this.system.activation.condition}`;
         labels.duration = this.labels.duration;
         labels.isHealing = this.isHealing;
         labels.isConcentration = itemData.properties.has("concentration");
