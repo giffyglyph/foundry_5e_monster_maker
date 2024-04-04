@@ -44,6 +44,7 @@ Full changelog:
 	* In the future I'd like to add DAE and others as optional dependencies and add DAE/automation to the compendiums!
 * #33 Added ability for Scalar Abilities to require Concentration
 	* This also sets me up to be able to support other "Properties" (magical, etc) on Scalars in the future.
+* Added description pills to show duration and concentration (for now)
 
 ## v0.12.0.2 (latest)
 

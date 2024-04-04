@@ -177,7 +177,7 @@ const GmmItem = (function () {
             }
             labels.damage_hit = damages.join(" plus ");
         }
-
+        labels.duration = this.labels.duration;
         labels.isHealing = this.isHealing;
         labels.isConcentration = itemData.properties.has("concentration");
 

@@ -813,9 +813,16 @@
 					}
 				}
 
-				.item__concentration {
-					font-style: italic;
-					font-size: smaller;
+				.item__pill-sm {
+					border: 1px dotted var(--color-border-dark-5);
+					border-radius: 3px;
+					padding: 0.1875rem 0.375rem;
+				}
+
+				.item__pills {
+					display: flex;
+					gap: 0.25rem;
+					margin-top: 0.5rem;
 				}
 
 				.item__cost {
