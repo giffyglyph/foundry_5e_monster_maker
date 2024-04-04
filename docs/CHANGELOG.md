@@ -15,12 +15,25 @@
 	* This means that the compendiums are now in the new format, rather than the old ".db" files that get converted and take time to load.
 	* These new compendiums have built in scalars, attacks, etc, that all work right out of the box and look great.
 	* The old items are still available in the !V2 folders within compendiums if you want to use them.
+	* Hardlinks to compendium items will break! This is a one time unavoidable change, and had to happen either now or later (when you had links to new items).
 
 * In service of the new compendiums, there are a number of new QOL features when building your own scalar abilities, such as
 	* Finally being able to see the range/etc on attacks that don't roll to-hit or have a save (utility, healing, other, etc)
 	* New shortcodes! [name] and [maxMod] can be used anywhere.
 	* You can select "Highest Ability" for the Related Ability dropdown in the Attack menu to make your scalar ability automatically use whatever highest stat your monsters have.
 	* Monster abilities can now require concentration.
+
+* NOTE ON FOUNDRY V10 SUPPORT:
+ 	* **V10 SUPPORT WILL END NO LATER THAN V14. IT MAY END IN V13, DEPENDING ON CHANGES.**
+	* I have tried to maintain support for v10 in the 1.0 launch, and have been *mostly* successful. There are a few caveats
+	* Concentration will only work on spells.
+	* The new Traits compendium will not be available, and the Features/Attacks compendium won't be getting the updates.
+		* This is because the format of the compendiums has changed and is not backwards compatible, and creating new compendiums ONLY for V10 (and being unable to use folders) isn't feasable for me.
+		* If you want to create new v10 compendiums and pull request them I'm happy to look
+	* For now it looks like I can keep V10 support in V12.
+	* As support is still active for V10, please submit any bugs you find, even if they are V10 specific!
+	* Whenever V10 support does end, I'll create a V10 branch you can continue to use (similar to the current MMv2 branch).
+	* I highly recommend you upgrade to V11.
 
 
 Full changelog:
@@ -46,6 +59,9 @@ Full changelog:
 * #33 Added ability for Scalar Abilities to require Concentration
 	* This also sets me up to be able to support other "Properties" (magical, etc) on Scalars in the future.
 * Added description pills to show duration, concentration, and activation requirement (for now)
+* Added a few v10 compatibility tweaks
+* Renamed the folder/dbs for the compendiums to be consistent with their name. 
+	* This will break existing hardlinks to compendium items, but is necessary at some point in the future anyway.
 
 ## v0.12.0.2 (latest)
 

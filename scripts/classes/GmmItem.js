@@ -181,7 +181,12 @@ const GmmItem = (function () {
         labels.condition = `${gmmMonster ? Shortcoder.replaceShortcodes(this.system.activation.condition, gmmMonster) : this.system.activation.condition}`;
         labels.duration = this.labels.duration;
         labels.isHealing = this.isHealing;
-        labels.isConcentration = itemData.properties.has("concentration");
+        //TASK: v10 Backwards Compatibility
+        if (game.version >= 11) {
+            labels.isConcentration = itemData.properties.has("concentration");
+        } else {
+            labels.isConcentration = itemData.components?.concentration;
+        }
 
         if (this.isVersatile) {
             labels.damage_versatile = `${gmmMonster ? Shortcoder.replaceShortcodes(this.system.damage.versatile, gmmMonster) : this.system.damage.versatile} damage`;
