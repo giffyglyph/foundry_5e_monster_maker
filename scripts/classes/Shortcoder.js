@@ -28,6 +28,9 @@ const Shortcoder = (function () {
     ];
 
     function replaceShortcodes(text, monsterData) {
+        if (!monsterData)
+            return;
+
         return text.replace(/\[.*?\]/g, (token) => {
             SHORTCODES.forEach((x) => {
                 if (hasProperty(monsterData, x.data)) {
