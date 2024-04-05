@@ -7,7 +7,7 @@
 [![BlueSky](https://img.shields.io/badge/%40Skyl3lazer_on_BlueSky-grey?logo=bluesky&logoColor=%230285FF&labelColor=grey)](https://bsky.app/profile/skyl3lazer.bsky.social)
 [![Discord](https://img.shields.io/badge/contact-me-blue?logo=discord&logoColor=white)](https://discord.com/channels/@skyl3lazer)
 
-## v1.0.1.0 (dev)
+## v1.0.1.1 (dev)
 
 1.0 is here! In addition to a number of bugfixes and compatibility updates, 1.0 features a few big ticket items:
 
@@ -57,7 +57,10 @@ Full changelog:
 	* This is a first take on this compendium. If you find an issue, please report it.
 * #30 Updated the "Powers" compendium to GGMMv3
 	* This is a large update to this compendium. If you find an issue, please report it.
-* Updated the "Powers" compendium to GGMMv3
+* #31 Updated the "Attacks" compendium to GGMMv3
+	* Should now have the balance numbers from the V3 PDF, and naming scheme changed to match (even if many are functionally the same as V2)
+	* This is a large update to this compendium. If you find an issue, please report it.
+	* More examples will be added in the future.
 * #33 Added ability for Scalar Abilities to require Concentration
 	* This also sets me up to be able to support other "Properties" (magical, etc) on Scalars in the future.
 * Added description pills to show duration, concentration, and activation requirement (for now)
