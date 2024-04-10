@@ -528,6 +528,16 @@
   padding-top: 0.5rem;
   border-top: 1px solid var(--color-primary-tint-5);
 }
+.gmm-artifact.artifact--action.artifact--action--vanity .action__body .item__pill-sm {
+  border: 1px dotted var(--color-border-dark-5);
+  border-radius: 3px;
+  padding: 0.1875rem 0.375rem;
+}
+.gmm-artifact.artifact--action.artifact--action--vanity .action__body .item__pills {
+  display: flex;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+}
 .gmm-artifact.artifact--action.artifact--action--vanity .action__body .item__body {
   position: relative;
   width: 100%;
@@ -1200,6 +1210,16 @@
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+}
+.gmm-artifact.artifact--monster.artifact--monster--vanity .item-list .item .item__pill-sm {
+  border: 1px dotted var(--color-border-dark-5);
+  border-radius: 3px;
+  padding: 0.1875rem 0.375rem;
+}
+.gmm-artifact.artifact--monster.artifact--monster--vanity .item-list .item .item__pills {
+  display: flex;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
 }
 .gmm-artifact.artifact--monster.artifact--monster--vanity .item-list .item .item__cost {
   font-weight: bold;

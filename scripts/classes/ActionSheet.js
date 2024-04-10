@@ -128,9 +128,7 @@ export default class ActionSheet extends ItemSheet {
 		// Ammunition
 		if ( consume.type === "ammo" ) {
 			return actor.itemTypes.consumable.reduce((ammo, i) =>  {
-				if ( i.system.consumableType === "ammo" ) {
 					ammo[i.id] = `${i.name} (${i.system.quantity})`;
-				}
 				return ammo;
 			}, {[item.id]: `${item.name} (${item.system.quantity})`});
 		} else if ( consume.type === "attribute" ) {
@@ -195,6 +193,7 @@ export default class ActionSheet extends ItemSheet {
 			$.extend(true, formData, ActionBlueprint.getItemDataFromBlueprint(formData.flags.gmm.blueprint));
 		}
 
-		return this.document.update(formData);
+
+		  return this.document.update(formData);
 	}
 }

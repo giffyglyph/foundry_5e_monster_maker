@@ -194,6 +194,8 @@ export default class MonsterSheet extends ActorSheet {
 		this.actor.update({
 			[`system.attributes.hp.value`]: Math.max(1, roll.total),
 			[`system.attributes.hp.max`]: Math.max(1, roll.total),
+			[`system.attributes.hp.effectiveMax`]: Math.max(1, roll.total),
+			[`flags.gmm.blueprint.data.hit_points.rolled_max`]: Math.max(1, roll.total),
 		});
 	}
 
@@ -226,7 +228,7 @@ export default class MonsterSheet extends ActorSheet {
 		const msg = await item.displayCard({ createMessage: false });
 		const DIV = document.createElement("DIV");
 		DIV.innerHTML = msg.content;
-		DIV.querySelector("div.card-buttons").remove();
+		DIV.querySelector("div.card-buttons")?.remove();
 		return await ChatMessage.create({ content: DIV.innerHTML });
 	}
 

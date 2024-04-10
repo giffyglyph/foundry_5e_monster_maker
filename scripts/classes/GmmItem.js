@@ -143,11 +143,17 @@ const GmmItem = (function () {
             if (this.labels.toHit) {
                 labels.to_hit = game.i18n.format(`gmm.action.labels.attack.to_hit`, { bonus: this.labels.toHit.replace(/^\+ /, '+') });
             }
-        } else if (this.hasSave && itemData.save.ability) {
-            labels.attack = game.i18n.format(`gmm.action.labels.attack.${itemData.save.ability}`);
+        } else if (this.hasSave) {
+            if (itemData.save.ability) {
+                labels.attack = game.i18n.format(`gmm.action.labels.attack.${itemData.save.ability}`);
+            } else {
+                labels.attack = game.i18n.format(`gmm.common.attack_type.${itemData.actionType}`);
+            }
             if (this.system.save.dc) {
                 labels.to_hit = game.i18n.format(`gmm.action.labels.attack.dc`, { bonus: this.system.save.dc });
             }
+        } else if (itemData.actionType && itemData.actionType != "") {
+            labels.attack = game.i18n.format(`gmm.common.attack_type.${itemData.actionType}`);
         }
 
         if (this.hasDamage) {
@@ -172,7 +178,15 @@ const GmmItem = (function () {
             labels.damage_hit = damages.join(" plus ");
         }
 
+        labels.condition = `${gmmMonster ? Shortcoder.replaceShortcodes(this.system.activation.condition, gmmMonster) : this.system.activation.condition}`;
+        labels.duration = this.labels.duration;
         labels.isHealing = this.isHealing;
+        //TASK: v10 Backwards Compatibility
+        if (game.version >= 11) {
+            labels.isConcentration = itemData.properties.has("concentration");
+        } else {
+            labels.isConcentration = itemData.components?.concentration;
+        }
 
         if (this.isVersatile) {
             labels.damage_versatile = `${gmmMonster ? Shortcoder.replaceShortcodes(this.system.damage.versatile, gmmMonster) : this.system.damage.versatile} damage`;
@@ -410,8 +424,8 @@ const GmmItem = (function () {
             if (ammoItemData) {
                 const ammoItemQuantity = ammoItemData.quantity;
                 const ammoCanBeConsumed = ammoItemQuantity && (ammoItemQuantity - (itemData.consume.amount ?? 0) >= 0);
-                const ammoItemAttackBonus = ammoItem.system.attackBonus;
-                const ammoIsTypeConsumable = (ammoItemData.type === "consumable") && (ammoItemData.consumableType === "ammo")
+                const ammoItemAttackBonus = ammoItemData.magicalBonus;
+                const ammoIsTypeConsumable = (ammoItemData.type.value === "ammo")
                 if (ammoCanBeConsumed && ammoItemAttackBonus && ammoIsTypeConsumable) {
                     parts.push("@ammo");
                     if (rollData) {
@@ -496,12 +510,14 @@ const GmmItem = (function () {
         };
 
         // Handle ammunition damage
-        const ammoData = item._ammo?.system;
-        if (item._ammo && (ammoData.type === "consumable") && (ammoData.consumableType === "ammo")) {
-            parts.push("@ammo");
-            rollData["ammo"] = ammoData.damage.parts.map(p => p[0]).join("+");
-            rollConfig.flavor += ` [${item._ammo.name}]`;
-            delete item._ammo;
+        const ammoItem = item.actor.items.get(itemData.consume.target);
+        const ammoItemData = ammoItem?.system;
+        if (ammoItemData && (ammoItemData.type.value === "ammo")) {
+            rollData["ammo"] = ammoItemData.damage.parts.map(p => p[0]).join("+") + (ammoItemData.magicalBonus ? `+${ammoItemData.magicalBonus}` : "");
+            if (rollData["ammo"] != "") {
+                parts.push("@ammo");
+                rollConfig.flavor += ` [${ammoItem.name}]`;
+            }
         }
 
         // Call the roll helper utility

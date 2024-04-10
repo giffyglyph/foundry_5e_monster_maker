@@ -8,10 +8,10 @@
 [![Discord](https://img.shields.io/badge/contact-me-blue?logo=discord&logoColor=white)](https://discord.com/channels/@skyl3lazer)
 
 
-This is a continuation of the original module by Giffyglyph, updated to be compatable Foundry v10/11 and D&D 2.2.x.
+This is a continuation of the original module by Giffyglyph, updated to be compatable Foundry v10/11 and D&D 2.2.x/3.1.x.
 (Also check out my [v3 updated Webapp!](https://giffyglyphmonstermakerv3.azurewebsites.net/))
 
-**NOTE:** There are still signposting issues around! Not all tooltips, etc, have been updated. Many of the entries in the compendiums are built for v2 as well, so double check your monsters if you use compendium elements.
+**NOTE:** There are still signposting issues around! Not all tooltips, etc, have been updated. 
 
 If you find issues not already listed in [DEV_TODO](https://github.com/Skyl3lazer/giffyglyph-monster-maker-continued/blob/master/docs/DEV_TODO.md) please leave an Issue here or contact me @Skyl3lazer on Discord.
 
@@ -25,7 +25,8 @@ Want to build new monsters for your [Foundry VTT](https://foundryvtt.com/) D&D 5
 * 6 combat roles — controller, defender, lurker, skirmisher, striker, and supporter.
 * Change the level of any monster on-the-fly and watch their stats change.
 * A new scaling action sheet with fully-scaling attacks.
-* Easy-to-use shortcodes to make scaling features even easier.
+* Premade attacks, traits and powers to easily create unique, thematic, and interesting monsters.
+* Easy-to-use shortcodes to make custom scaling features even easier.
 * Convert existing monsters in seconds by simply changing the active sheet.
 * Includes full stats from the **[Giffyglyph's Monster Maker PDF](https://giffyglyph.com/#giffyglyphs-monster-maker)**.
 
@@ -42,11 +43,11 @@ Want to build new monsters for your [Foundry VTT](https://foundryvtt.com/) D&D 5
 You can install this Foundry module by copying a manifest URL into your Foundry setup:
 
 
-* **v3 RC 0.12.x (Main Release):** https://raw.githubusercontent.com/Skyl3lazer/giffyglyph-monster-maker-continued/master/module.json	
+* **v3 1.0.x (Main Release):** https://raw.githubusercontent.com/Skyl3lazer/giffyglyph-monster-maker-continued/master/module.json	
   * This is probably what you want
-* **v3 Dev 0.13.x (May be unstable):** https://raw.githubusercontent.com/Skyl3lazer/giffyglyph-monster-maker-continued/dev/module.json
+* **v3 Dev 1.1.x (May be unstable):** https://raw.githubusercontent.com/Skyl3lazer/giffyglyph-monster-maker-continued/dev/module.json
   * For the Brave
-* **v3 Alpha 1.0.0 (ONLY FOR v12 FOUNDRY)** https://raw.githubusercontent.com/Skyl3lazer/giffyglyph-monster-maker-continued/v12/module.json 
+* **Foundry v12 Alpha (ONLY FOR v12 FOUNDRY)** https://raw.githubusercontent.com/Skyl3lazer/giffyglyph-monster-maker-continued/v12/module.json 
   * Only download this if you are using the Foundry V12 beta!
 
 * **MM v2 (Legacy, only for recovering monsters from old games):** https://raw.githubusercontent.com/Skyl3lazer/giffyglyph-monster-maker-continued/v2/module.json

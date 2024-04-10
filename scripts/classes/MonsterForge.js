@@ -70,7 +70,7 @@ const MonsterForge = (function() {
 				senses: _parseSenses(blueprint.data.senses),
 				skills: monsterSkills,
 				speeds: _parseSpeeds(blueprint.data.speeds, derivedAttributes.role),
-				spellbook: _parseSpellbook(monsterAbilityModifiers, monsterClasses, blueprint.data.spellbook),
+				spellbook: _parseSpellbook(monsterAbilityModifiers, monsterProficiency, monsterClasses, blueprint.data.spellbook),
 				traits: _parseTraits(derivedAttributes, blueprint.data.traits, ignoreItemRequirements),
 				tst_count: derivedAttributes.trainedSavingThrowCount,
 				xp: _parseXp(derivedAttributes, blueprint.data.xp)
@@ -231,6 +231,8 @@ const MonsterForge = (function() {
 		GMM_5E_ABILITIES.forEach((x) => {
 			let ranking = abilityModifiers.ranking.indexOf(x);
 			ams[x] = derivedAttributes.abilityModifiers[ranking];
+			if (ranking === 0)
+				ams["max"] = ams[x];
 		});
 
 		if (abilityModifiers.modifier.value) {
@@ -567,10 +569,11 @@ const MonsterForge = (function() {
 		};
 	}
 
-	function _parseSpellbook(monsterAbilityModifiers, monsterClasses, spellbook) {
+	function _parseSpellbook(monsterAbilityModifiers, monsterProficiency, monsterClasses, spellbook) {
 		const dc = new DerivedAttribute();
 		dc.add(8, game.i18n.format('gmm.common.derived_source.base'));
 		dc.add(monsterAbilityModifiers[spellbook.spellcasting.ability]?.value, game.i18n.format('gmm.common.derived_source.ability_modifier'));
+		dc.add(monsterProficiency.value, game.i18n.format('gmm.common.derived_source.proficiency'));
 		dc.applyModifier(spellbook.spellcasting.dc.modifier.value, spellbook.spellcasting.dc.modifier.override);
 		dc.ceil();
 
@@ -641,11 +644,22 @@ const MonsterForge = (function() {
 	function _getInventoryCapacity(monsterAbilityModifiers, data) {
 		const capacity = new DerivedAttribute();
 		capacity.add((monsterAbilityModifiers["str"].value * 2) + 10, game.i18n.format('gmm.common.derived_source.ability_score'));
-		if (data.display.units === "imperial") {
-			capacity.multiply(CONFIG.DND5E.encumbrance.strMultiplier.imperial, "config");
-		} else if (data.display.units === "metric") {
-			capacity.multiply(CONFIG.DND5E.encumbrance.strMultiplier.metric, "config");
+
+		//This keeps backwards compatability for previous versions
+		if (dnd5e.version.localeCompare(3, undefined, { numeric: true, sensitivity: 'base' }) >= 0) {
+			if (data.display.units === "imperial") {
+				capacity.multiply(CONFIG.DND5E.encumbrance.threshold.maximum.imperial, "config");
+			} else if (data.display.units === "metric") {
+				capacity.multiply(CONFIG.DND5E.encumbrance.threshold.maximum.metric, "config");
+			}
+		} else {
+			if (data.display.units === "imperial") {
+				capacity.multiply(CONFIG.DND5E.encumbrance.strMultiplier.imperial, "config");
+			} else if (data.display.units === "metric") {
+				capacity.multiply(CONFIG.DND5E.encumbrance.strMultiplier.metric, "config");
+			}
 		}
+
 		capacity.multiply(GMM_5E_SIZES.find((x) => x.name == data.description.size).inventory_capacity, "size");
 		capacity.applyModifier(data.inventory.encumbrance.capacity.modifier.value, data.inventory.encumbrance.capacity.modifier.override);
 
@@ -688,8 +702,16 @@ const MonsterForge = (function() {
 		});
 		
 		// Look up the number of slots per level from the progression table
-		const levels = Math.clamped(spellLevel ? spellLevel : progression.slot, 0, 20);
-		const pactLevel = Math.clamped(slotModifiers.pact.level ? slotModifiers.pact.level : progression.pact, 0, 20);
+		//TODO v14 - clamped becomes clamp, but this breaks v10
+		let levels, pactLevel;
+		if (game.version >= 12) {
+			levels = Math.clamp(spellLevel ? spellLevel : progression.slot, 0, 20);
+			pactLevel = Math.clamp(slotModifiers.pact.level ? slotModifiers.pact.level : progression.pact, 0, 20);
+		} else {
+			levels = Math.clamped(spellLevel ? spellLevel : progression.slot, 0, 20);
+			pactLevel = Math.clamped(slotModifiers.pact.level ? slotModifiers.pact.level : progression.pact, 0, 20);
+		}
+
 		const rawSlots = CONFIG.DND5E.SPELL_SLOT_TABLE[levels - 1] || [];
 
 		const slots = {};

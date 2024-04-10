@@ -60,11 +60,20 @@ const ActionBlueprint = (function () {
                     setProperty(blueprintData, x.from, getProperty(item, x.to));
                 }
             });
+            //Properties
+            if (hasProperty(item.system, "properties") && gmmMonster) {
+                Object.keys(blueprintData.properties).forEach((key, index) => {
+                    if (item.system.properties.has(key))
+                        blueprintData.properties[key].checked = true;
+                    else
+                        blueprintData.properties[key].checked = false;
+                });
+            }
             //Versatile damage
             if (hasProperty(item.system, "damage.versatile")) {
                 setProperty(blueprintData, "attack.versatile.damage", (gmmMonster) ?
-                        Shortcoder.replaceShortcodes(item.system.damage?.versatile, gmmMonster)
-                        : item.system.damage?.versatile);
+                    Shortcoder.replaceShortcodes(item.system.damage?.versatile, gmmMonster)
+                    : item.system.damage?.versatile);
             } else {
                 setProperty(blueprintData, "attack.versatile.damage", "");
             }
@@ -84,7 +93,7 @@ const ActionBlueprint = (function () {
                         type: x[1]
                     };
                 }));
-                if(item.system.damage.parts[0]){
+                if (item.system.damage.parts[0]) {
                     setProperty(blueprintData, 'attack.damage.formula', (gmmMonster) ? Shortcoder.replaceShortcodes(item.system.damage?.parts[0][0], gmmMonster) : item.system.damage?.parts[0][0]);
                     setProperty(blueprintData, 'attack.damage.type', (gmmMonster) ? Shortcoder.replaceShortcodes(item.system.damage?.parts[0][1], gmmMonster) : item.system.damage?.parts[0][1]);
                 }
@@ -107,6 +116,19 @@ const ActionBlueprint = (function () {
                 setProperty(itemData, x.to, getProperty(blueprint.data, x.from));
             }
         });
+        //Properties
+        if (hasProperty(blueprint.data, "properties")) {
+            if (!itemData.system.properties)
+                itemData.system.properties = new Set();
+
+            Object.keys(blueprint.data.properties).forEach((key, index) => {
+                if (blueprint.data.properties[key].checked)
+                    itemData.system.properties.add(key);
+                else
+                    itemData.system.properties.delete(key);
+            });
+            itemData.system.properties = [...itemData.system.properties]; //Needs to be an array to update properly
+        }
         //Versatile damage
         if (hasProperty(blueprint.data, "attack.versatile.damage")) {
             setProperty(itemData, "system.damage.versatile", getProperty(blueprint.data, "attack.versatile.damage"));
