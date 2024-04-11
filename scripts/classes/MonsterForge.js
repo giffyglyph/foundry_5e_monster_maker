@@ -660,7 +660,9 @@ const MonsterForge = (function() {
 			}
 		}
 
-		capacity.multiply(GMM_5E_SIZES.find((x) => x.name == data.description.size).inventory_capacity, "size");
+		var sizeCategory = GMM_5E_SIZES.findIndex((x) => x.name == data.description.size);
+		sizeCategory = data.inventory.encumbrance.powerful_build ? (sizeCategory < 5 ? sizeCategory + 1 : sizeCategory) : sizeCategory;
+		capacity.multiply(GMM_5E_SIZES[sizeCategory].inventory_capacity, "size");
 		capacity.applyModifier(data.inventory.encumbrance.capacity.modifier.value, data.inventory.encumbrance.capacity.modifier.override);
 
 		return capacity;

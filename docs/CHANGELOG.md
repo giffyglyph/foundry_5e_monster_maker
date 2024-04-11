@@ -9,6 +9,10 @@
 
 ## v1.0.2.0 (dev)
 
+* Fixed non-save traits throwing console error
+* Fixed Activation Condition sometimes preventing a monster load
+* Fixed Powerful Build (inventory) not doing anything
+
 ## v1.0.1.2
 
 1.0 is here! In addition to a number of bugfixes and compatibility updates, 1.0 features a few big ticket items:
