@@ -12,6 +12,7 @@
 * Fixed non-save traits throwing console error
 * Fixed Activation Condition sometimes preventing a monster load
 * Fixed Powerful Build (inventory) not doing anything
+* #36 Fixed interactions between actions and encumbrance variants
 
 ## v1.0.1.2
 
