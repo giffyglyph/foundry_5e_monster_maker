@@ -178,7 +178,7 @@ const GmmItem = (function () {
             labels.damage_hit = damages.join(" plus ");
         }
 
-        labels.condition = `${gmmMonster ? Shortcoder.replaceShortcodes(this.system.activation.condition, gmmMonster) : this.system.activation.condition}`;
+        labels.condition = `${gmmMonster ? Shortcoder.replaceShortcodes(this.system.activation ? this.system.activation.condition : '', gmmMonster) : this.system.activation ? this.system.activation.condition : ''}`;
         labels.duration = this.labels.duration;
         labels.isHealing = this.isHealing;
         //TASK: v10 Backwards Compatibility
@@ -470,7 +470,7 @@ const GmmItem = (function () {
             item.labels.save = null;
         }
 
-        return item.system.save.dc;
+        return item.system.save ? item.system.save.dc : 0;
     }
 
     function _rollActionDamage({ item = null, critical = false, event = null, options = {} } = {}) {
