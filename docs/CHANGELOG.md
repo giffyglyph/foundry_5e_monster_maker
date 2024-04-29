@@ -13,6 +13,7 @@
 * Fixed Activation Condition sometimes preventing a monster load
 * Fixed Powerful Build (inventory) not doing anything
 * #36 Fixed interactions between actions and encumbrance variants
+* #44 Fixed checking for wrong updated thing (foundry rather than dnd5e) for a backwards compatibility issue
 
 ## v1.0.1.2
 
