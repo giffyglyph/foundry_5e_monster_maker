@@ -182,7 +182,7 @@ const GmmItem = (function () {
         labels.duration = this.labels.duration;
         labels.isHealing = this.isHealing;
         //TASK: v10 Backwards Compatibility
-        if (game.version >= 11) {
+        if (dnd5e.version.localeCompare(3, undefined, { numeric: true, sensitivity: 'base' }) >= 0) {
             labels.isConcentration = itemData.properties.has("concentration");
         } else {
             labels.isConcentration = itemData.components?.concentration;
