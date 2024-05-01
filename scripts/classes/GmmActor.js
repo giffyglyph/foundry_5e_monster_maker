@@ -180,7 +180,16 @@ const GmmActor = (function () {
 				value: monsterData.inventory.weight.value,
 				max: monsterData.inventory.capacity.value,
 				pct: monsterData.inventory.encumbrance,
-				encumbered: monsterData.inventory.encumbrance > (2/3)
+				encumbered: monsterData.inventory.encumbrance > (2 / 3),
+				thresholds: {
+					encumbered: monsterData.inventory.capacity.value * (1 / 3),
+					heavilyEncumbered: monsterData.inventory.capacity.value * (2 / 3),
+					maximum: monsterData.inventory.capacity.value
+				},
+				stops: {
+					encumbered: (1 / 3),
+					heavilyEncumbered: (2 / 3)
+				}
 			};
 			actorData.attributes.spellcasting = monsterData.spellbook.spellcasting.ability;
 			actorData.details.spellLevel = monsterData.spellbook.spellcasting.level;

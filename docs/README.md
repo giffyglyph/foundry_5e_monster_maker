@@ -42,10 +42,9 @@ Want to build new monsters for your [Foundry VTT](https://foundryvtt.com/) D&D 5
 
 You can install this Foundry module by copying a manifest URL into your Foundry setup:
 
-
-* **v3 1.0.x (Main Release):** https://raw.githubusercontent.com/Skyl3lazer/giffyglyph-monster-maker-continued/master/module.json	
+* **v3 1.0.2.x (Main Release):** https://raw.githubusercontent.com/Skyl3lazer/giffyglyph-monster-maker-continued/master/module.json	
   * This is probably what you want
-* **v3 Dev 1.1.x (May be unstable):** https://raw.githubusercontent.com/Skyl3lazer/giffyglyph-monster-maker-continued/dev/module.json
+* **v3 Dev 1.0.3.x (May be unstable):** https://raw.githubusercontent.com/Skyl3lazer/giffyglyph-monster-maker-continued/dev/module.json
   * For the Brave
 * **Foundry v12 Alpha (ONLY FOR v12 FOUNDRY)** https://raw.githubusercontent.com/Skyl3lazer/giffyglyph-monster-maker-continued/v12/module.json 
   * Only download this if you are using the Foundry V12 beta!
