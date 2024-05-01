@@ -3,7 +3,7 @@
 ## Major
 
 * Foundry v12 compatibility (as v12 becomes more stable)
-* dnd5e 3.*.* compatibility
+* dnd5e 3.*.* updates as needed
 
 ## Visual
 
@@ -23,7 +23,8 @@
 
 ## Compendiums
 
-* Many of the entries have not been migrated to v3 
+* Fixes for typos/misconfigurations/etc that likely exist.
+* More examples and elements will be added to the attacks compendium.
 
 ## Modal/Info Updates
 
@@ -39,4 +40,4 @@
 
 ## Testing Stuff
 
-
+* The new compendiums need testing!
