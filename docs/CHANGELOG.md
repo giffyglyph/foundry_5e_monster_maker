@@ -7,7 +7,7 @@
 [![BlueSky](https://img.shields.io/badge/%40Skyl3lazer_on_BlueSky-grey?logo=bluesky&logoColor=%230285FF&labelColor=grey)](https://bsky.app/profile/skyl3lazer.bsky.social)
 [![Discord](https://img.shields.io/badge/contact-me-blue?logo=discord&logoColor=white)](https://discord.com/channels/@skyl3lazer)
 
-## v1.0.2.0 (dev)
+## v1.0.2.1 (dev)
 
 * Fixed non-save traits throwing console error
 * Fixed Activation Condition sometimes preventing a monster load
