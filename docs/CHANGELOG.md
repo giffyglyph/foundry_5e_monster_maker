@@ -9,6 +9,8 @@
 
 ## v1.0.3.0 (dev)
 
+* Fixed an issue if you converted a monster with no creature type.
+
 ## v1.0.2.1 (latest)
 
 * Fixed non-save traits throwing console error

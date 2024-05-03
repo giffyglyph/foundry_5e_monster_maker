@@ -93,7 +93,7 @@ const MonsterForge = (function() {
 		// Render creature category
 		let category = "";
 		if (!description.type.category) {
-			if (description.type.custom.trim().length > 0) {
+			if (description.type.custom?.trim().length > 0) {
 				category = description.type.custom;
 			}
 		} else {
