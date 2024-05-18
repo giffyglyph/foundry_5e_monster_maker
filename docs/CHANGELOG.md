@@ -9,8 +9,9 @@
 
 ## v1.1.0.0 (dev)
 
-* Added support for ability rarity. This is selected under the "Action Type" accordian on the action editor. 
+* #34 Added support for ability rarity. This is selected under the "Action Type" accordian on the action editor. 
 	* Abilities will display color and border tags for their rarity, as well as listing it on the editor.
+	* Updated rarities for all items in the compendiums that have rarities.
 	* This change is mainly visual and for tracking abilities as a GM, it doesn't restrict anything about ability creation.
 
 ![Patch Note Image](./img/36_RarityExamples.png)
@@ -18,6 +19,7 @@
 ![Patch Note Image](./img/36_BlueprintExample.png)
 
 * Fixed an issue if you converted a monster with no creature type.
+* #47 Compendium fixes (typos, settings, etc)
 
 ## v1.0.2.1 (latest)
 
