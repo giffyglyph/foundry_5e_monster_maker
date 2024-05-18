@@ -255,6 +255,15 @@
   border-radius: 0.75rem;
   margin-bottom: 2px;
 }
+.gmm-artifact .artifact__header__rarity__common {
+  background: linear-gradient(to bottom left, #1c922c 1%, 2%, var(--color-primary-shade-2));
+}
+.gmm-artifact .artifact__header__rarity__uncommon {
+  background: linear-gradient(to bottom left, #b29403 1%, 2%, var(--color-primary-shade-2));
+}
+.gmm-artifact .artifact__header__rarity__rare {
+  background: linear-gradient(to bottom left, #941212 1%, 2%, var(--color-primary-shade-2));
+}
 .gmm-artifact .artifact__body {
   padding: 2px 1px 2px 0;
   margin: calc(0.25rem - 2px) -1px -2px 0;
@@ -1177,6 +1186,15 @@
   font-weight: 900;
   cursor: pointer;
 }
+.gmm-artifact.artifact--monster.artifact--monster--vanity .item-list .item .item__icon__border__common img {
+  border: 3px solid #1c922c;
+}
+.gmm-artifact.artifact--monster.artifact--monster--vanity .item-list .item .item__icon__border__uncommon img {
+  border: 3px solid #b29403;
+}
+.gmm-artifact.artifact--monster.artifact--monster--vanity .item-list .item .item__icon__border__rare img {
+  border: 3px solid #941212;
+}
 .gmm-artifact.artifact--monster.artifact--monster--vanity .item-list .item .item__title {
   display: block;
   padding: 0.25rem 0.5rem;
@@ -1210,6 +1228,17 @@
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+}
+.gmm-artifact.artifact--monster.artifact--monster--vanity .item-list .item .item__title__rarity__common {
+  background: linear-gradient(to right, #1c922c 1%, 10%, var(--color-primary-tone-1), var(--color-primary-tint-1));
+}
+.gmm-artifact.artifact--monster.artifact--monster--vanity .item-list .item .item__title__rarity__uncommon {
+  background: linear-gradient(to right, #b29403 1%, 10%, var(--color-primary-tone-1), var(--color-primary-tint-1));
+  border-top-style: double;
+}
+.gmm-artifact.artifact--monster.artifact--monster--vanity .item-list .item .item__title__rarity__rare {
+  background: linear-gradient(to right, #941212 1%, 10%, var(--color-primary-tone-1), var(--color-primary-tint-1));
+  border-top-style: inset;
 }
 .gmm-artifact.artifact--monster.artifact--monster--vanity .item-list .item .item__pill-sm {
   border: 1px dotted var(--color-border-dark-5);

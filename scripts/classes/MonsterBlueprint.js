@@ -205,7 +205,7 @@ const MonsterBlueprint = (function() {
 
 			if (actor.items) {
 				try {
-					actor.items.contents.sort((a, b) => (a.system.sort || 0) - (b.system.sort || 0)).forEach(x => {
+					actor.items.contents.sort((a, b) => (a.sort || 0) - (b.sort || 0)).forEach(x => {
 						let item = actor.items.get(x.id)
 						switch (item.getSortingCategory()) {
 							case "spell":
@@ -235,6 +235,14 @@ const MonsterBlueprint = (function() {
 								break;
 						}
 					});
+
+					blueprintData.actions.items.sort((a, b) => getSortValue(a, b));
+					blueprintData.inventory.items.sort((a, b) => getSortValue(a, b));
+					blueprintData.traits.items.sort((a, b) => getSortValue(a, b));
+					blueprintData.legendary_actions.items.sort((a, b) => getSortValue(a, b));
+					blueprintData.lair_actions.items.sort((a, b) => getSortValue(a, b));
+					blueprintData.reactions.items.sort((a, b) => getSortValue(a, b));
+					blueprintData.bonus_actions.items.sort((a, b) => getSortValue(a, b));
 				} catch (e) {
 					console.warn(e);
 				}
@@ -246,7 +254,41 @@ const MonsterBlueprint = (function() {
 			return blueprint;
 		}
 	}
-
+	function getSortValue(a, b) {
+		let aRarity = 0;
+		let bRarity = 0;
+		switch (a.rarity) {
+			case "common":
+				aRarity = 0;
+				break;
+			case "uncommon":
+				aRarity = 1;
+				break;
+			case "rare":
+				aRarity = 2;
+				break;
+			default:
+				aRarity = 3;
+				break;
+		}
+		switch (b.rarity) {
+			case "common":
+				bRarity = 0;
+				break;
+			case "uncommon":
+				bRarity = 1;
+				break;
+			case "rare":
+				bRarity = 2;
+				break;
+			default:
+				bRarity = 3;
+				break;
+		}
+		//Rarity descending, name ascending
+		let sortValue = bRarity - aRarity || a.name.localeCompare(b.name);
+		return sortValue;
+	}
 	function getActorDataFromBlueprint(blueprint) {
 		const actorData = {};
 
@@ -363,7 +405,8 @@ const MonsterBlueprint = (function() {
 				},
 				rank: item.flags.gmm?.blueprint?.data?.requirements?.rank,
 				role: item.flags.gmm?.blueprint?.data?.requirements?.role
-			}
+			},
+			rarity: item.flags.gmm?.blueprint?.data?.rarity ? item.flags.gmm?.blueprint?.data?.rarity : ""
 		};
 		return details;
 	}

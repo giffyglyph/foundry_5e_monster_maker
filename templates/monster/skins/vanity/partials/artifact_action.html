@@ -1,12 +1,12 @@
 <div class="item item--action" data-item-id="{{item.id}}" draggable="true">
-    <div class="item__icon" data-action="roll-item">
+    <div class="item__icon item__icon__border__{{item.gmmLabels.bpRarity}}" data-action="roll-item">
         {{#if item.img}}
         <img src="{{item.img}}" />
         {{/if}}
         <button data-action="roll-item"><i class="fas fa-dice-d20"></i></button>
     </div>
     <div class="item__body">
-        <div class="item__title">
+        <div class="item__title item__title__rarity__{{item.gmmLabels.bpRarity}}">
             <div class="item__title__body">
                 <div class="item__name"><i class="{{item.gmmLabels.icon}}"></i> {{item.name}}</div>
                 {{#if item.gmmLabels.legendary_cost}}

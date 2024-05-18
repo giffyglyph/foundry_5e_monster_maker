@@ -7,7 +7,15 @@
 [![BlueSky](https://img.shields.io/badge/%40Skyl3lazer_on_BlueSky-grey?logo=bluesky&logoColor=%230285FF&labelColor=grey)](https://bsky.app/profile/skyl3lazer.bsky.social)
 [![Discord](https://img.shields.io/badge/contact-me-blue?logo=discord&logoColor=white)](https://discord.com/channels/@skyl3lazer)
 
-## v1.0.3.0 (dev)
+## v1.1.0.0 (dev)
+
+* Added support for ability rarity. This is selected under the "Action Type" accordian on the action editor. 
+	* Abilities will display color and border tags for their rarity, as well as listing it on the editor.
+	* This change is mainly visual and for tracking abilities as a GM, it doesn't restrict anything about ability creation.
+
+![Patch Note Image](./img/36_RarityExamples.png)
+
+![Patch Note Image](./img/36_BlueprintExample.png)
 
 * Fixed an issue if you converted a monster with no creature type.
 

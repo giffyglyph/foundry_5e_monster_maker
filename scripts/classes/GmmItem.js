@@ -196,6 +196,21 @@ const GmmItem = (function () {
             labels.damage_miss = `${gmmMonster ? Shortcoder.replaceShortcodes(this.system.formula, gmmMonster) : this.system.formula} damage`;
         }
 
+        labels.bpRarity = this.flags.gmm?.blueprint.data.rarity || "";
+
+        switch (this.flags.gmm?.blueprint.data.rarity) {
+            case "default":
+            case "common":
+                labels.rarity = game.i18n.format(`gmm.common.rarity.common`);
+                break;
+            case "uncommon":
+                labels.rarity = game.i18n.format(`gmm.common.rarity.uncommon`);
+                break;
+            case "rare":
+                labels.rarity = game.i18n.format(`gmm.common.rarity.rare`);
+                break;
+        }
+
         switch (itemData.target?.type) {
             case "":
             case "none":

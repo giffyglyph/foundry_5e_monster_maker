@@ -1,8 +1,8 @@
 <div class="gmm-artifact artifact--action artifact--action--vanity">
-    <div class="artifact__header action__header">
+    <div class="artifact__header action__header artifact__header__rarity__{{gmm.action.gmmLabels.bpRarity}}">
         <div class="action__icon" data-action="open-config" data-config="title"><img src="{{gmm.action.image}}"></div>
         <div class="action__title" data-action="open-config" data-config="title">{{gmm.action.name}}</div>
-        <div class="action__type" data-action="open-config" data-config="action-type">{{gmm.action.type}}</div>
+        <div class="action__type" data-action="open-config" data-config="action-type">{{gmm.action.gmmLabels.rarity}} {{gmm.action.type}}</div>
         <div class="action__requirements">
             <div class="level" data-action="open-config" data-config="requirements"><i class="fas fa-crown"></i> {{gmm.action.level_requirement}}</div>
             <div class="rank" data-action="open-config" data-config="requirements"><i class="fas fa-star"></i> {{gmm.action.rank_requirement}}</div>

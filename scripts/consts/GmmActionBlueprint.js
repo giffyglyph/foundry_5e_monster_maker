@@ -43,6 +43,7 @@ export const GMM_ACTION_BLUEPRINT = {
 			long: null,
 			units: null,
 		},
+		rarity: "common",
 		duration: {
 			value: "",
 			units: ""

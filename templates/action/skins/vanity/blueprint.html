@@ -48,10 +48,24 @@
 								<div class="form-group__body">
 									<select name="gmm.blueprint.activation.type">
 										{{#select gmm.blueprint.activation.type}}
-											<option value="">{{localize 'gmm.common.activation_type.trait'}}</option>
-											{{#each gmm.enums.activation_types}}
-												<option value="{{.}}">{{localize (concat 'gmm.common.activation_type.' .)}}</option>
-											{{/each}}
+										<option value="">{{localize 'gmm.common.activation_type.trait'}}</option>
+										{{#each gmm.enums.activation_types}}
+										<option value="{{.}}">{{localize (concat 'gmm.common.activation_type.' .)}}</option>
+										{{/each}}
+										{{/select}}
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="form-group__header">
+									<span class="form-group__title">{{localize 'gmm.action.blueprint.action_type.rarity'}}</span>
+								</div>
+								<div class="form-group__body">
+									<select name="gmm.blueprint.rarity">
+										{{#select gmm.blueprint.rarity}}
+										{{#each gmm.enums.rarities}}
+										<option value="{{.}}">{{localize (concat 'gmm.common.rarity.' .)}}</option>
+										{{/each}}
 										{{/select}}
 									</select>
 								</div>
@@ -61,7 +75,7 @@
 									<span class="form-group__title">{{localize 'gmm.action.blueprint.action_type.quantity'}}</span>
 								</div>
 								<div class="form-group__body">
-									<input name="gmm.blueprint.activation.cost" value="{{gmm.blueprint.activation.cost}}" type="number"/>
+									<input name="gmm.blueprint.activation.cost" value="{{gmm.blueprint.activation.cost}}" type="number" />
 								</div>
 							</div>
 							<div class="form-group">
@@ -69,7 +83,7 @@
 									<span class="form-group__title">{{localize 'gmm.action.blueprint.action_type.condition'}}</span>
 								</div>
 								<div class="form-group__body form-group__body--row">
-									<input name="gmm.blueprint.activation.condition" value="{{gmm.blueprint.activation.condition}}"/>
+									<input name="gmm.blueprint.activation.condition" value="{{gmm.blueprint.activation.condition}}" />
 								</div>
 							</div>
 						</div>

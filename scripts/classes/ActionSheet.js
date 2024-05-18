@@ -6,6 +6,7 @@ import { GMM_ACTION_CONSUMPTION_TYPES } from "../consts/GmmActionConsumptionType
 import { GMM_ACTION_TIME_PERIODS } from "../consts/GmmActionTimePeriods.js";
 import { GMM_ACTION_USE_PERIODS } from "../consts/GmmActionUsePeriods.js";
 import { GMM_ACTION_RANGE_TYPES } from "../consts/GmmActionRangeTypes.js";
+import { GMM_ACTION_RARITIES } from "../consts/GmmActionRarities.js";
 import { GMM_ACTION_TARGET_TYPES } from "../consts/GmmActionTargetTypes.js";
 import { GMM_ACTION_ATTACK_TYPES } from "../consts/GmmActionAttackTypes.js";
 import { GMM_ACTION_ATTACK_DAMAGE_TYPES } from "../consts/GmmActionAttackDamageTypes.js";
@@ -97,6 +98,7 @@ export default class ActionSheet extends ItemSheet {
 				time_periods: GMM_ACTION_TIME_PERIODS,
 				use_periods: GMM_ACTION_USE_PERIODS,
 				range_types: GMM_ACTION_RANGE_TYPES,
+				rarities: GMM_ACTION_RARITIES,
 				target_types: GMM_ACTION_TARGET_TYPES,
 				consumption_targets: this._getActionConsumptionTargets(data.item),
 				ranks: Object.keys(GMM_MONSTER_RANKS).filter((x) => x != "custom"),

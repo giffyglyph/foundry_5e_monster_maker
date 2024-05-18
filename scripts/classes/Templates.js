@@ -102,6 +102,7 @@ const Templates = (function() {
 			return getRelativePath(path);
 		});
 
+
 		Handlebars.registerHelper('getTstCount', function (maxTst) {
 			var checkedChecks = document.querySelectorAll(".tstCheckbox:checked");
 			return checkedChecks.length > maxTst;
