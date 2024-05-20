@@ -9,7 +9,7 @@
 
 ## v1.1.0.4 (dev)
 
-* Added MidiQOL and DFred's Convenient Effects as 'recommended' modules. They're not required for GGMMC to function, but GGMMC has content for them if you are using them.
+* Added MidiQOL and DFred's Convenient Effects as 'recommended' modules. They're not required for GMMC to function, but GMMC has content for them if you are using them.
 * Put the compendium folders in a "Giffyglyph's Monster Maker" top level folder for easier sorting. It's green!
 
 * #34 Added support for ability rarity. This is selected under the "Action Type" accordian on the action editor. 
@@ -50,7 +50,7 @@
 
 1.0 is here! In addition to a number of bugfixes and compatibility updates, 1.0 features a few big ticket items:
 
-* GGMMv3 Compendium Updates! You can now (or soon) add Traits, Features, and Attacks directly from the v3 PDF!
+* GMMv3 Compendium Updates! You can now (or soon) add Traits, Features, and Attacks directly from the v3 PDF!
 	* This means that the compendiums are now in the new format, rather than the old ".db" files that get converted and take time to load.
 	* These new compendiums have built in scalars, attacks, etc, that all work right out of the box and look great.
 	* The old items are still available in the !V2 folders within compendiums if you want to use them.
@@ -92,11 +92,11 @@ Full changelog:
 * #27 Added a related shortcode [maxMod]
 * #32 Added hinter text to anything with an attack if it has a to-hit, range, area, or save DC. 
 	* I.E. You can now add a range+area to a utility attack and have it show.
-* #29 Added a GGMMv3 "Traits" compendium
+* #29 Added a GMMv3 "Traits" compendium
 	* This is a first take on this compendium. If you find an issue, please report it.
-* #30 Updated the "Powers" compendium to GGMMv3
+* #30 Updated the "Powers" compendium to GMMv3
 	* This is a large update to this compendium. If you find an issue, please report it.
-* #31 Updated the "Attacks" compendium to GGMMv3
+* #31 Updated the "Attacks" compendium to GMMv3
 	* Should now have the balance numbers from the V3 PDF, and naming scheme changed to match (even if many are functionally the same as V2)
 	* This is a large update to this compendium. If you find an issue, please report it.
 	* More examples will be added in the future.
