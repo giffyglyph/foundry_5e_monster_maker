@@ -598,7 +598,7 @@ const MonsterForge = (function() {
 		const currencyValuation = Math.round((((inventory.currency.cp || 0) / 100) + ((inventory.currency.sp || 0) / 10) + ((inventory.currency.ep || 0) / 2) + (inventory.currency.gp || 0) + ((inventory.currency.pp || 0) * 10)) * 100) / 100;
 
 		return {
-			visible: inventory.always_show || inventory.items.length > 0 || currencyCoins > 0,
+			visible: inventory.always_show || inventory.currency.always_show || inventory.encumbrance.always_show || inventory.items.length > 0 || currencyCoins > 0,
 			items: inventory.items,
 			weight: inventoryWeight || 0,
 			capacity: inventoryCapacity || 0,
