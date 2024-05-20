@@ -35,8 +35,15 @@ Want to build new monsters for your [Foundry VTT](https://foundryvtt.com/) D&D 5
 ## Installation
 
 ### Dependencies
+These modules are required for GGMMC to function.
 
-* [libwrapper](https://foundryvtt.com/packages/lib-wrapper/) - Allows GGMMC to interact more nicely with other modules, such as MidiQOL.
+* [libwrapper](https://foundryvtt.com/packages/lib-wrapper/) - Allows GGMMC to interact nicely with other modules, including the optional modules.
+
+### Recommended Modules
+These modules are optional, but may improve the experience of using GGMMC.
+
+* [Midi QOL](https://foundryvtt.com/packages/midi-qol) - Provides automation, which some compendium items have built in already if Midi is active.
+* [Dfred's Convenient Effects](https://foundryvtt.com/packages/dfreds-convenient-effects) - Included in the `/importable/` folder is a `dfreds-ce-import.json` file which you can import to include the Conditions compendium in DFred's CE! This makes it easier to apply the conditions rather than needing to transfer them from the compendium actor.
 
 ---
 

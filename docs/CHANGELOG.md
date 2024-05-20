@@ -7,13 +7,23 @@
 [![BlueSky](https://img.shields.io/badge/%40Skyl3lazer_on_BlueSky-grey?logo=bluesky&logoColor=%230285FF&labelColor=grey)](https://bsky.app/profile/skyl3lazer.bsky.social)
 [![Discord](https://img.shields.io/badge/contact-me-blue?logo=discord&logoColor=white)](https://discord.com/channels/@skyl3lazer)
 
-## v1.1.0.0 (dev)
+## v1.1.0.1 (dev)
+
+* Added MidiQOL and DFred's Convenient Effects as 'recommended' modules. They're not required for GGMMC to function, but GGMMC has content for them if you are using them.
+* Put the compendium folders in a "Giffyglyph's Monster Maker" top level folder for easier sorting. It's green!
 
 * #34 Added support for ability rarity. This is selected under the "Action Type" accordian on the action editor. 
 	* Abilities will display color and border tags for their rarity, as well as listing it on the editor.
 	* Updated rarities for all items in the compendiums that have rarities.
 	* This change is mainly visual and for tracking abilities as a GM, it doesn't restrict anything about ability creation.
 
+* #43 Added a new compendium for Conditions.
+	* Simply drag and drop conditions from the actor in the compendium as necessary
+	* Where possible, these have active effects as well (Some may require MidiQOL or DAE).
+
+* #43 (continued) Included an importable json for DFred's convenient effects that adds all of the conditions as custom CE's.
+	* That file can be found in the 'importables' directory of the module's folder.
+	
 ![Patch Note Image](./img/36_RarityExamples.png)
 
 ![Patch Note Image](./img/36_BlueprintExample.png)

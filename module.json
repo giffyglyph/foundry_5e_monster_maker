@@ -20,8 +20,8 @@
 		}
 
 	],
-	"version": "1.1.0.0",
-	"manifestPlusVersion": "1.1.0.0",
+	"version": "1.1.0.1",
+	"manifestPlusVersion": "1.1.0.1",
 
 	"compatibility": {
 		"minimum": "10.291",
@@ -55,6 +55,22 @@
 			"type": "Item",
 			"system": "dnd5e",
 			"module": "giffyglyph-monster-maker-continued"
+		},
+		{
+			"name": "gmm-conditions",
+			"label": "GMM Conditions",
+			"path": "./packs/gmm-conditions.db",
+			"type": "Actor",
+			"system": "dnd5e",
+			"module": "giffyglyph-monster-maker-continued"
+		}
+	],
+	"packFolders": [
+		{
+			"name": "Giffyglyph's Monster Maker",
+			"color": "#4e943d",
+			"sorting": "a",
+			"packs": [ "gmm-monster-traits", "gmm-monster-attacks", "gmm-monster-powers", "gmm-conditions" ]
 		}
 	],
 	"languages": [
@@ -84,6 +100,24 @@
 				"compatibility": {
 					"minimum": "1.0.0.0",
 					"verified": "1.12.13.1"
+				}
+			}
+		],
+		"recommends": [
+			{
+				"id": "midi-qol",
+				"type": "module",
+				"compatibility": {
+					"minimum": "11",
+					"verified": "11.4.24"
+				}
+			},
+			{
+				"id": "dfreds-convenient-effects",
+				"type": "module",
+				"compatibility": {
+					"minimum": "6.0.0",
+					"verified": "6.0.3"
 				}
 			}
 		]

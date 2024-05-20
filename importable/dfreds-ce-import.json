@@ -1,0 +1,933 @@
+{
+  "name": "Custom Convenient Effects",
+  "img": "modules/dfreds-convenient-effects/images/magic-palm.svg",
+  "type": "consumable",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {},
+    "identified": true,
+    "unidentified": {
+      "description": ""
+    },
+    "container": null,
+    "quantity": 1,
+    "weight": 0,
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "rarity": "",
+    "attunement": 0,
+    "equipped": false,
+    "activation": {
+      "type": "",
+      "cost": null,
+      "condition": ""
+    },
+    "duration": {
+      "value": "",
+      "units": ""
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": null,
+      "width": null,
+      "units": "",
+      "type": "",
+      "prompt": true
+    },
+    "range": {
+      "value": null,
+      "long": null,
+      "units": ""
+    },
+    "uses": {
+      "value": null,
+      "max": "",
+      "per": null,
+      "recovery": "",
+      "prompt": true,
+      "autoDestroy": false
+    },
+    "consume": {
+      "type": "",
+      "target": null,
+      "amount": null,
+      "scale": false
+    },
+    "ability": null,
+    "actionType": null,
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "ability": "",
+      "dc": null,
+      "scaling": "spell"
+    },
+    "summons": null,
+    "type": {
+      "value": "potion",
+      "subtype": ""
+    },
+    "magicalBonus": null,
+    "properties": []
+  },
+  "effects": [
+    {
+      "changes": [],
+      "description": "<ul><li><p>You are banished to a harmless plane of existence</p></li><li><p>When this condition ends, you reappear in either a) the space you left or b) the nearest unoccupied space.</p></li></ul>",
+      "disabled": false,
+      "duration": {
+        "rounds": null,
+        "seconds": null,
+        "turns": null,
+        "startTime": null,
+        "combat": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "flags": {
+        "dfreds-convenient-effects": {
+          "isConvenient": true,
+          "isDynamic": false,
+          "isViewable": true,
+          "nestedEffects": [],
+          "subEffects": []
+        },
+        "dae": {
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "specialDuration": []
+        }
+      },
+      "icon": "icons/magic/movement/abstract-ribbons-red-orange.webp",
+      "name": "Banished",
+      "origin": "Item.ag7tr15kLZzMVmm0",
+      "tint": null,
+      "transfer": false,
+      "statuses": [
+        "Convenient Effect: Banished"
+      ],
+      "_id": "JzYUN2YpNNemBPei"
+    },
+    {
+      "changes": [
+        {
+          "key": "flags.midi-qol.grants.criticalThreshold",
+          "mode": 0,
+          "value": "(flags.dnd5e?.weaponCriticalThreshold ?? 20 > item.critical.threshold ?? 20) ?  (flags.dnd5e?.weaponCriticalThreshold ?? 20) - 1 : (item.critical.threshold ?? 20) - 1",
+          "priority": 20
+        }
+      ],
+      "description": "<ul><li><p>Monsters attacking you have their critical threshold reduced by 1.</p></li></ul>",
+      "disabled": false,
+      "duration": {
+        "rounds": null,
+        "seconds": null,
+        "turns": null,
+        "startTime": null,
+        "combat": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "flags": {
+        "dfreds-convenient-effects": {
+          "isConvenient": true,
+          "isDynamic": false,
+          "isViewable": true,
+          "nestedEffects": [],
+          "subEffects": []
+        },
+        "dae": {
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "specialDuration": []
+        }
+      },
+      "icon": "icons/skills/targeting/crosshair-mark-rough-pink.webp",
+      "name": "Exposed",
+      "origin": "Item.ag7tr15kLZzMVmm0",
+      "tint": null,
+      "transfer": false,
+      "statuses": [
+        "Convenient Effect: Exposed"
+      ],
+      "_id": "Wkp9QnLW6wERxCmm"
+    },
+    {
+      "changes": [
+        {
+          "key": "",
+          "mode": 2,
+          "value": "",
+          "priority": 20
+        }
+      ],
+      "description": "<ul><li><p>Whenever you deal damage, reduce it by half.</p></li></ul>",
+      "disabled": false,
+      "duration": {
+        "rounds": null,
+        "seconds": null,
+        "turns": null,
+        "startTime": null,
+        "combat": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "flags": {
+        "dfreds-convenient-effects": {
+          "isConvenient": true,
+          "isDynamic": false,
+          "isViewable": true,
+          "nestedEffects": [],
+          "subEffects": []
+        },
+        "dae": {
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "specialDuration": []
+        }
+      },
+      "icon": "icons/magic/death/hand-withered-gray.webp",
+      "name": "Feeble",
+      "origin": "Item.ag7tr15kLZzMVmm0",
+      "tint": null,
+      "transfer": false,
+      "statuses": [
+        "Convenient Effect: Feeble"
+      ],
+      "_id": "5sKOd5qVAmh8ugjb"
+    },
+    {
+      "changes": [],
+      "description": "<ul><li><p>At the end of your turn, you lose 1 unspent hit die.</p></li><li><p>While you have no hit die, temporarily increase your level of exhaustion by 1.</p><p></p></li></ul>",
+      "disabled": false,
+      "duration": {
+        "rounds": null,
+        "seconds": null,
+        "turns": null,
+        "startTime": null,
+        "combat": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "flags": {
+        "dfreds-convenient-effects": {
+          "isConvenient": true,
+          "isDynamic": false,
+          "isViewable": true,
+          "nestedEffects": [],
+          "subEffects": []
+        },
+        "dae": {
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "specialDuration": []
+        }
+      },
+      "icon": "icons/skills/wounds/blood-drip-droplet-red.webp",
+      "name": "Bleeding",
+      "origin": "Item.ag7tr15kLZzMVmm0",
+      "tint": null,
+      "transfer": false,
+      "statuses": [
+        "Convenient Effect: Bleeding"
+      ],
+      "_id": "lTWURj7l779UfN6T"
+    },
+    {
+      "changes": [],
+      "description": "<ul><li><p>You can't use your hands.</p></li><li><p>You automatically fail any ability check that requires you to make precise movements with your hands.</p></li><li><p>You drop anything you are carrying.</p></li></ul>",
+      "disabled": false,
+      "duration": {
+        "rounds": null,
+        "seconds": null,
+        "turns": null,
+        "startTime": null,
+        "combat": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "flags": {
+        "dfreds-convenient-effects": {
+          "isConvenient": true,
+          "isDynamic": false,
+          "isViewable": true,
+          "nestedEffects": [],
+          "subEffects": []
+        },
+        "dae": {
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "specialDuration": []
+        }
+      },
+      "icon": "icons/commodities/cloth/yarn-skein-white-red.webp",
+      "name": "Bound",
+      "origin": "Item.ag7tr15kLZzMVmm0",
+      "tint": null,
+      "transfer": false,
+      "statuses": [
+        "Convenient Effect: Bound"
+      ],
+      "_id": "hvUQXjK8grGAoh2u"
+    },
+    {
+      "changes": [],
+      "description": "<ul><li><p> If you are reduced to 0 hit points, you die.</p></li></ul>",
+      "disabled": false,
+      "duration": {
+        "rounds": null,
+        "seconds": null,
+        "turns": null,
+        "startTime": null,
+        "combat": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "flags": {
+        "dfreds-convenient-effects": {
+          "isConvenient": true,
+          "isDynamic": false,
+          "isViewable": true,
+          "nestedEffects": [],
+          "subEffects": []
+        },
+        "dae": {
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "specialDuration": []
+        }
+      },
+      "icon": "icons/magic/death/weapon-scythe-rune-green.webp",
+      "name": "Cursed",
+      "origin": "Item.ag7tr15kLZzMVmm0",
+      "tint": null,
+      "transfer": false,
+      "statuses": [
+        "Convenient Effect: Cursed"
+      ],
+      "_id": "Et0NH8rMc4Wh7kjQ"
+    },
+    {
+      "changes": [],
+      "description": "<ul><li><p>During your turn, you can move <em>or</em> take an action (not both).</p></li><li><p>You can't take reactions.</p></li><li><p>You have disadvantage on concentration checks.</p></li></ul>",
+      "disabled": false,
+      "duration": {
+        "rounds": null,
+        "seconds": null,
+        "turns": null,
+        "startTime": null,
+        "combat": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "flags": {
+        "dfreds-convenient-effects": {
+          "isConvenient": true,
+          "isDynamic": false,
+          "isViewable": true,
+          "nestedEffects": [],
+          "subEffects": []
+        },
+        "dae": {
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "specialDuration": []
+        }
+      },
+      "icon": "icons/svg/stoned.svg",
+      "name": "Dazed",
+      "origin": "Item.ag7tr15kLZzMVmm0",
+      "tint": null,
+      "transfer": false,
+      "statuses": [
+        "Convenient Effect: Dazed"
+      ],
+      "_id": "6Zsiv5gKn7taVX5c"
+    },
+    {
+      "changes": [
+        {
+          "key": "system.traits.dm.midi.heal",
+          "mode": 1,
+          "value": "0",
+          "priority": 20
+        }
+      ],
+      "description": "<ul><li><p>You can't regain hit points through any means.</p><p></p></li></ul>",
+      "disabled": false,
+      "duration": {
+        "rounds": null,
+        "seconds": null,
+        "turns": null,
+        "startTime": null,
+        "combat": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "flags": {
+        "dfreds-convenient-effects": {
+          "isConvenient": true,
+          "isDynamic": false,
+          "isViewable": true,
+          "nestedEffects": [],
+          "subEffects": []
+        },
+        "dae": {
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "specialDuration": []
+        }
+      },
+      "icon": "icons/svg/biohazard.svg",
+      "name": "Decaying",
+      "origin": "Item.ag7tr15kLZzMVmm0",
+      "tint": null,
+      "transfer": false,
+      "statuses": [
+        "Convenient Effect: Decaying"
+      ],
+      "_id": "qzfD6F39Ec5C9DJ7"
+    },
+    {
+      "changes": [],
+      "description": "<ul><li><p>Temporarily increase your level of exhaustion by 1.</p></li><li><p>For every additional 24 hours you go without sufficient water, increase this penalty by 1.</p></li></ul>",
+      "disabled": false,
+      "duration": {
+        "rounds": null,
+        "seconds": null,
+        "turns": null,
+        "startTime": null,
+        "combat": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "flags": {
+        "dfreds-convenient-effects": {
+          "isConvenient": true,
+          "isDynamic": false,
+          "isViewable": true,
+          "nestedEffects": [],
+          "subEffects": []
+        },
+        "dae": {
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "specialDuration": []
+        }
+      },
+      "icon": "icons/magic/water/water-drop-swirl-blue.webp",
+      "name": "Dehydrated",
+      "origin": "Item.ag7tr15kLZzMVmm0",
+      "tint": null,
+      "transfer": false,
+      "statuses": [
+        "Convenient Effect: Dehydrated"
+      ],
+      "_id": "LQAb0LwbOWHUMV8r"
+    },
+    {
+      "changes": [
+        {
+          "key": "system.bonuses.All-Attacks",
+          "mode": 2,
+          "value": "-1d4",
+          "priority": 20
+        },
+        {
+          "key": "system.bonuses.abilities.check",
+          "mode": 2,
+          "value": "-1d4",
+          "priority": 20
+        },
+        {
+          "key": "system.bonuses.abilities.save",
+          "mode": 2,
+          "value": "-1d4",
+          "priority": 20
+        }
+      ],
+      "description": "<ul><li><p>Whenever you make an attack roll, ability check, or a saving throw, roll a d4 and subtract that number.</p></li></ul>",
+      "disabled": false,
+      "duration": {
+        "rounds": null,
+        "seconds": null,
+        "turns": null,
+        "startTime": null,
+        "combat": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "flags": {
+        "dfreds-convenient-effects": {
+          "isConvenient": true,
+          "isDynamic": false,
+          "isViewable": true,
+          "nestedEffects": [],
+          "subEffects": []
+        },
+        "dae": {
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "specialDuration": []
+        }
+      },
+      "icon": "icons/skills/trades/academics-astronomy-navigation-purple.webp",
+      "name": "Disoriented",
+      "origin": "Item.ag7tr15kLZzMVmm0",
+      "tint": null,
+      "transfer": false,
+      "statuses": [
+        "Convenient Effect: Disoriented"
+      ],
+      "_id": "UUWWKVme4fATPwHL"
+    },
+    {
+      "changes": [],
+      "description": "<ul><li><p>Temporarily increase your level of exhaustion by 1.</p></li><li><p>For every additional 24 hours you go without sufficient sleep, increase this penalty by 1.</p></li></ul>",
+      "disabled": false,
+      "duration": {
+        "rounds": null,
+        "seconds": null,
+        "turns": null,
+        "startTime": null,
+        "combat": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "flags": {
+        "dfreds-convenient-effects": {
+          "isConvenient": true,
+          "isDynamic": false,
+          "isViewable": true,
+          "nestedEffects": [],
+          "subEffects": []
+        },
+        "dae": {
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "specialDuration": []
+        }
+      },
+      "icon": "icons/skills/trades/mining-pickaxe-stone-cart.webp",
+      "name": "Fatigued",
+      "origin": "Item.ag7tr15kLZzMVmm0",
+      "tint": null,
+      "transfer": false,
+      "statuses": [
+        "Convenient Effect: Fatigued"
+      ],
+      "_id": "lxm4Xu5tElJMtD9h"
+    },
+    {
+      "changes": [
+        {
+          "key": "system.attributes.movement.walk",
+          "mode": 5,
+          "value": "10",
+          "priority": 20
+        }
+      ],
+      "description": "<ul><li><p>Your speed is reduced to 10 ft.</p></li><li><p>You can't take reactions.</p></li></ul>",
+      "disabled": false,
+      "duration": {
+        "rounds": null,
+        "seconds": null,
+        "turns": null,
+        "startTime": null,
+        "combat": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "flags": {
+        "dfreds-convenient-effects": {
+          "isConvenient": true,
+          "isDynamic": false,
+          "isViewable": true,
+          "nestedEffects": [],
+          "subEffects": []
+        },
+        "dae": {
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "specialDuration": []
+        }
+      },
+      "icon": "icons/creatures/invertebrates/snail-movement-tan.webp",
+      "name": "Slowed",
+      "origin": "Item.ag7tr15kLZzMVmm0",
+      "tint": null,
+      "transfer": false,
+      "statuses": [
+        "Convenient Effect: Slowed"
+      ],
+      "_id": "O9tZ2N3T5isuSRrh"
+    },
+    {
+      "changes": [],
+      "description": "<ul><li><p>Temporarily increase your level of exhaustion by 1.</p></li><li><p>For every additional 24 hours you go without sufficient food, increase this penalty by 1.</p></li></ul>",
+      "disabled": false,
+      "duration": {
+        "rounds": null,
+        "seconds": null,
+        "turns": null,
+        "startTime": null,
+        "combat": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "flags": {
+        "dfreds-convenient-effects": {
+          "isConvenient": true,
+          "isDynamic": false,
+          "isViewable": true,
+          "nestedEffects": [],
+          "subEffects": []
+        },
+        "dae": {
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "specialDuration": []
+        }
+      },
+      "icon": "icons/consumables/food/soup-broth-bowl-wooden-yellow.webp",
+      "name": "Starving",
+      "origin": "Item.ag7tr15kLZzMVmm0",
+      "tint": null,
+      "transfer": false,
+      "statuses": [
+        "Convenient Effect: Starving"
+      ],
+      "_id": "bzVUFLkQO0ZuMhSV"
+    },
+    {
+      "changes": [
+        {
+          "key": "flags.midi-qol.disadvantage.concentration",
+          "mode": 0,
+          "value": "1",
+          "priority": 20
+        }
+      ],
+      "description": "<ul><li><p>You have disadvantage on concentration checks and any ability check to interact socially.</p></li></ul><p></p>",
+      "disabled": false,
+      "duration": {
+        "rounds": null,
+        "seconds": null,
+        "turns": null,
+        "startTime": null,
+        "combat": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "flags": {
+        "dfreds-convenient-effects": {
+          "isConvenient": true,
+          "isDynamic": false,
+          "isViewable": true,
+          "nestedEffects": [],
+          "subEffects": []
+        },
+        "dae": {
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "specialDuration": []
+        }
+      },
+      "icon": "icons/consumables/food/cheese-wedge-swiss-white.webp",
+      "name": "Stinking",
+      "origin": "Item.ag7tr15kLZzMVmm0",
+      "tint": null,
+      "transfer": false,
+      "statuses": [
+        "Convenient Effect: Stinking"
+      ],
+      "_id": "mlCJN1a4VPU0QlKR"
+    },
+    {
+      "changes": [
+        {
+          "key": "flags.midi-qol.grants.advantage.attack.all",
+          "mode": 0,
+          "value": "1",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.disadvantage.attack.all",
+          "mode": 0,
+          "value": "1",
+          "priority": 20
+        }
+      ],
+      "description": "<ul><li><p>You move as if in difficult terrain.</p></li><li><p>Attack rolls against you have advantage, and your attack rolls have disadvantage.</p></li></ul><p></p>",
+      "disabled": false,
+      "duration": {
+        "rounds": null,
+        "seconds": null,
+        "turns": null,
+        "startTime": null,
+        "combat": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "flags": {
+        "dfreds-convenient-effects": {
+          "isConvenient": true,
+          "isDynamic": false,
+          "isViewable": true,
+          "nestedEffects": [],
+          "subEffects": []
+        },
+        "dae": {
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "specialDuration": []
+        }
+      },
+      "icon": "icons/creatures/invertebrates/spider-dotted-green.webp",
+      "name": "Swarmed",
+      "origin": "Item.ag7tr15kLZzMVmm0",
+      "tint": null,
+      "transfer": false,
+      "statuses": [
+        "Convenient Effect: Swarmed"
+      ],
+      "_id": "ZVrRvH1Qi4RYkOkK"
+    },
+    {
+      "changes": [],
+      "description": "<ul><li><p>You are physically changed into a new form.</p></li><li><p>Your hit points and attributes are unchanged.</p></li><li><p>Your form dictates the actions you can take. You can't speak, cast spells, or take actions that require hands.</p></li><li><p>Your gear melds into your new form. You can't activate, use, wield, or benefit from your equipment.</p></li></ul>",
+      "disabled": false,
+      "duration": {
+        "rounds": null,
+        "seconds": null,
+        "turns": null,
+        "startTime": null,
+        "combat": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "flags": {
+        "dfreds-convenient-effects": {
+          "isConvenient": true,
+          "isDynamic": false,
+          "isViewable": true,
+          "nestedEffects": [],
+          "subEffects": []
+        },
+        "dae": {
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "specialDuration": []
+        }
+      },
+      "icon": "icons/svg/paralysis.svg",
+      "name": "Transformed",
+      "origin": "Item.ag7tr15kLZzMVmm0",
+      "tint": null,
+      "transfer": false,
+      "statuses": [
+        "Convenient Effect: Transformed"
+      ],
+      "_id": "tOfw4eEp3FSKOoem"
+    },
+    {
+      "changes": [],
+      "description": "<ul><li><p>You gain vulnerability to a particular damage type or, if you have immunity, it is reduced to resistance.</p></li></ul><p></p>",
+      "disabled": false,
+      "duration": {
+        "rounds": null,
+        "seconds": null,
+        "turns": null,
+        "startTime": null,
+        "combat": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "flags": {
+        "dfreds-convenient-effects": {
+          "isConvenient": true,
+          "isDynamic": false,
+          "isViewable": true,
+          "nestedEffects": [],
+          "subEffects": []
+        },
+        "dae": {
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "specialDuration": []
+        }
+      },
+      "icon": "icons/skills/targeting/crosshair-ringed-gray.webp",
+      "name": "Vulnerable",
+      "origin": "Item.ag7tr15kLZzMVmm0",
+      "tint": null,
+      "transfer": false,
+      "statuses": [
+        "Convenient Effect: Vulnerable"
+      ],
+      "_id": "75xycpxErLw9XX0q"
+    },
+    {
+      "changes": [],
+      "description": "<ul><li><p>You can't speak.</p></li><li><p>You automatically fail any ability check that requires you to make a vocal sound.</p></li></ul>",
+      "disabled": false,
+      "duration": {
+        "rounds": null,
+        "seconds": null,
+        "turns": null,
+        "startTime": null,
+        "combat": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "flags": {
+        "dfreds-convenient-effects": {
+          "isConvenient": true,
+          "isDynamic": false,
+          "isViewable": true,
+          "nestedEffects": [],
+          "subEffects": []
+        },
+        "dae": {
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "specialDuration": []
+        }
+      },
+      "icon": "icons/svg/silenced.svg",
+      "name": "Silenced",
+      "origin": "Item.ag7tr15kLZzMVmm0",
+      "tint": null,
+      "transfer": false,
+      "statuses": [
+        "Convenient Effect: Silenced"
+      ],
+      "_id": "2cD2sQMBEjVAPiui"
+    }
+  ],
+  "folder": null,
+  "flags": {
+    "exportSource": {
+      "world": "ggmm-dev",
+      "system": "dnd5e",
+      "coreVersion": "11.315",
+      "systemVersion": "3.1.2"
+    }
+  },
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.1.2",
+    "coreVersion": "11.315",
+    "createdTime": 1716209871796,
+    "modifiedTime": 1716216572812,
+    "lastModifiedBy": "x5I9e6ueO5h4cZXY"
+  }
+}
