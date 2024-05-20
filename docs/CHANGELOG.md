@@ -20,10 +20,13 @@
 * #43 Added a new compendium for Conditions.
 	* Simply drag and drop conditions from the actor in the compendium as necessary
 	* Where possible, these have active effects as well (Some may require MidiQOL or DAE).
-
 * #43 (continued) Included an importable json for DFred's convenient effects that adds all of the conditions as custom CE's.
 	* That file can be found in the 'importables' directory of the module's folder.
 	
+* #38 Reorganized the monster blueprint sidebar to improve logical organization and readability. I'm open to [suggestions](https://github.com/Skyl3lazer/giffyglyph-monster-maker-continued/issues/38) if you have opinions on what is where.
+	* The vague idea now for the categories: Basic, Scaling Abilities, General Features, Overrides, Flavor, "Loot", Display
+
+
 ![Patch Note Image](./img/36_RarityExamples.png)
 
 ![Patch Note Image](./img/36_BlueprintExample.png)
