@@ -17,6 +17,10 @@
 	* Updated rarities for all items in the compendiums that have rarities.
 	* This change is mainly visual and for tracking abilities as a GM, it doesn't restrict anything about ability creation.
 
+![Patch Note Image](./img/36_RarityExamples.png)
+
+![Patch Note Image](./img/36_BlueprintExample.png)
+
 * #43 Added a new compendium for Conditions.
 	* Simply drag and drop conditions from the actor in the compendium as necessary
 	* Where possible, these have active effects as well (Some may require MidiQOL or DAE).
@@ -25,12 +29,6 @@
 	
 * #38 Reorganized the monster blueprint sidebar to improve logical organization and readability. I'm open to [suggestions](https://github.com/Skyl3lazer/giffyglyph-monster-maker-continued/issues/38) if you have opinions on what is where.
 	* The vague idea now for the categories: Basic, Scaling Abilities, General Features, Overrides, Flavor, "Loot", Display
-
-
-![Patch Note Image](./img/36_RarityExamples.png)
-
-![Patch Note Image](./img/36_BlueprintExample.png)
-
 * Fixed an issue if you converted a monster with no creature type.
 * #47 Compendium fixes (typos, settings, etc)
 
