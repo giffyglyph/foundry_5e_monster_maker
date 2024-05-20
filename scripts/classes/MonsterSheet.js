@@ -21,26 +21,39 @@ import ModalBasicDamage from "../modals/ModalBasicDamage.js";
 import ModalSavingThrow from "../modals/ModalSavingThrow.js";
 import MonsterBlueprint from "./MonsterBlueprint.js";
 import Templates from "./Templates.js";
+import CompatibilityHelpers from "./CompatibilityHelpers.js";
 
 export default class MonsterSheet extends ActorSheet {
 
     constructor(...args) {
         super(...args);
-
         this._gui = new Gui();
     }
 
     static get defaultOptions() {
-        return mergeObject(
-            super.defaultOptions,
-            {
-                classes: ["gmm-window window--monster"],
-                height: 900,
-                width: 540,
-                template: Templates.getRelativePath('monster/forge.html'),
-                resizable: true
-            }
-        );
+        if (game.version >= 12) {
+            return foundry.utils.mergeObject(
+                super.defaultOptions,
+                {
+                    classes: ["gmm-window window--monster"],
+                    height: 900,
+                    width: 540,
+                    template: Templates.getRelativePath('monster/forge.html'),
+                    resizable: true
+                }
+            );
+        } else {
+            return mergeObject(
+                super.defaultOptions,
+                {
+                    classes: ["gmm-window window--monster"],
+                    height: 900,
+                    width: 540,
+                    template: Templates.getRelativePath('monster/forge.html'),
+                    resizable: true
+                }
+            );
+        }
     }
 
     activateListeners($el) {
@@ -289,7 +302,7 @@ export default class MonsterSheet extends ActorSheet {
             [`gmm.blueprint.saving_throws.ranking`]: rankings
         });
     }
-
+   
     _onSortItem(event, itemData) {
         // TODO - for now, don't allow sorting for Token Actor overrides
         if (this.actor.isToken) {
@@ -330,11 +343,11 @@ export default class MonsterSheet extends ActorSheet {
         }
 
         let formData = expandObject(form);
-        if (hasProperty(formData, "gmm.blueprint")) {
-            setProperty(formData, "flags.gmm.blueprint", {
+        if (CompatibilityHelpers.hasProperty(formData, "gmm.blueprint")) {
+            CompatibilityHelpers.setProperty(formData, "flags.gmm.blueprint", {
                 vid: 1,
                 type: "monster",
-                data: getProperty(formData, "gmm.blueprint")
+                data: CompatibilityHelpers.getProperty(formData, "gmm.blueprint")
             });
             delete formData.gmm;
 

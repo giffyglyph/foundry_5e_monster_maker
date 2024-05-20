@@ -19,185 +19,198 @@ import Gui from "./Gui.js";
 import ActionBlueprint from "./ActionBlueprint.js";
 import ActionForge from "./ActionForge.js";
 import Templates from "./Templates.js";
+import CompatibilityHelpers from "./CompatibilityHelpers.js";
 
 export default class ActionSheet extends ItemSheet {
 
-	constructor(...args) {
-		super(...args);
+    constructor(...args) {
+        super(...args);
+        this._gui = new Gui();
+    }
 
-		this._gui = new Gui();
-	}
+    static get defaultOptions() {
+        if (game.version >= 12) {
+            return foundry.utils.mergeObject(
+                super.defaultOptions,
+                {
+                    classes: ["gmm-window window--action"],
+                    height: 600,
+                    width: 500,
+                    template: Templates.getRelativePath('action/forge.html'),
+                    resizable: true
+                }
+            );
+        } else {
+            return mergeObject(
+                super.defaultOptions,
+                {
+                    classes: ["gmm-window window--action"],
+                    height: 600,
+                    width: 500,
+                    template: Templates.getRelativePath('action/forge.html'),
+                    resizable: true
+                }
+            );
+        }
+    }
 
-	static get defaultOptions() {
-		return mergeObject(
-			super.defaultOptions,
-			{
-				classes: ["gmm-window window--action"],
-				height: 600,
-				width: 500,
-				template: Templates.getRelativePath('action/forge.html'),
-				resizable: true
-			}
-		);
-	}
+    activateListeners($el) {
+        try {
+            super.activateListeners($el);
+        } catch (e) {
+            console.log(e);
+        }
+        try {
+            this._gui.activateListeners($el);
+            this._gui.applyTo($el);
+            $el.find('[data-action="add-damage"]').click((e) => this._addDamage(e));
+            $el.find('[data-action="remove-damage"]').click((e) => this._removeDamage(e));
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
-	activateListeners($el) {
-		try {
-			super.activateListeners($el);
-		} catch (e) {
-			console.log(e);
-		}
-		try {
-			this._gui.activateListeners($el);
-			this._gui.applyTo($el);
-			$el.find('[data-action="add-damage"]').click((e) => this._addDamage(e));
-			$el.find('[data-action="remove-damage"]').click((e) => this._removeDamage(e));
-		} catch (error) {
-			console.error(error);
-		}
-	}
+    _addDamage(event) {
+        event.preventDefault();
+        const damage = this.item.system.damage;
+        return this.item.update({ "data.damage.parts": damage.parts.concat([["", ""]]) });
+    }
 
-	_addDamage(event) {
-		event.preventDefault();
-		const damage = this.item.system.damage;
-		return this.item.update({"data.damage.parts": damage.parts.concat([["", ""]])});
-	}
+    _removeDamage(event) {
+        event.preventDefault();
+        const a = event.currentTarget;
+        const li = a.closest(".form-group--damage");
+        const damage = duplicate(this.item.system.damage);
+        damage.parts.splice(Number(li.dataset.index), 1);
+        return this.item.update({ "data.damage.parts": damage.parts });
+    }
 
-	_removeDamage(event) {
-		event.preventDefault();
-		const a = event.currentTarget;
-		const li = a.closest(".form-group--damage");
-		const damage = duplicate(this.item.system.damage);
-		damage.parts.splice(Number(li.dataset.index), 1);
-		return this.item.update({"data.damage.parts": damage.parts});
-	}
+    async getData() {
+        const data = super.getData();
+        const itemData = data.item.flags;
 
-	async getData() {
-		const data = super.getData();
-		const itemData = data.item.flags;
+        data.gmm = {
+            blueprint: itemData.gmm?.blueprint ? itemData.gmm.blueprint.data : null,
+            action: itemData.gmm?.blueprint ? ActionForge.createArtifact(itemData.gmm.blueprint).data : null,
+            forge: {
+                layout: itemData.gmm?.blueprint.data.display.layout ? itemData.gmm.blueprint.data.display.layout : game.settings.get(GMM_MODULE_TITLE, "actionLayout"),
+                colors: {
+                    primary: itemData.gmm?.blueprint.data.display.color.primary ? itemData.gmm.blueprint.data.display.color.primary : game.settings.get(GMM_MODULE_TITLE, "actionPrimaryColor"),
+                    secondary: itemData.gmm?.blueprint.data.display.color.secondary ? itemData.gmm.blueprint.data.display.color.secondary : game.settings.get(GMM_MODULE_TITLE, "actionSecondaryColor")
+                },
+                skins: {
+                    artifact: itemData.gmm?.blueprint.data.display.skin.artifact ? itemData.gmm.blueprint.data.display.skin.artifact : game.settings.get(GMM_MODULE_TITLE, "actionArtifactSkin"),
+                    blueprint: itemData.gmm?.blueprint.data.display.skin.blueprint ? itemData.gmm.blueprint.data.display.skin.blueprint : game.settings.get(GMM_MODULE_TITLE, "actionBlueprintSkin"),
+                }
+            },
+            gui: this._gui,
+            enums: {
+                colors: GMM_GUI_COLORS,
+                skins: GMM_GUI_SKINS,
+                activation_types: GMM_ACTION_ACTIVATION_TYPES,
+                consumption_types: GMM_ACTION_CONSUMPTION_TYPES,
+                time_periods: GMM_ACTION_TIME_PERIODS,
+                use_periods: GMM_ACTION_USE_PERIODS,
+                range_types: GMM_ACTION_RANGE_TYPES,
+                rarities: GMM_ACTION_RARITIES,
+                target_types: GMM_ACTION_TARGET_TYPES,
+                consumption_targets: this._getActionConsumptionTargets(data.item),
+                ranks: Object.keys(GMM_MONSTER_RANKS).filter((x) => x != "custom"),
+                roles: Object.keys(GMM_MONSTER_ROLES).filter((x) => x != "custom"),
+                layouts: GMM_GUI_LAYOUTS,
+                attack_types: GMM_ACTION_ATTACK_TYPES,
+                attack_damage_types: GMM_ACTION_ATTACK_DAMAGE_TYPES,
+                deferral_types: GMM_DEFERRAL_TYPES,
+                abilities: GMM_5E_ABILITIES,
+            }
+        };
 
-		data.gmm = {
-			blueprint: itemData.gmm?.blueprint ? itemData.gmm.blueprint.data : null,
-			action: itemData.gmm?.blueprint ? ActionForge.createArtifact(itemData.gmm.blueprint).data : null,
-			forge: {
-				layout: itemData.gmm?.blueprint.data.display.layout ? itemData.gmm.blueprint.data.display.layout : game.settings.get(GMM_MODULE_TITLE, "actionLayout"),
-				colors: {
-					primary: itemData.gmm?.blueprint.data.display.color.primary ? itemData.gmm.blueprint.data.display.color.primary : game.settings.get(GMM_MODULE_TITLE, "actionPrimaryColor"),
-					secondary: itemData.gmm?.blueprint.data.display.color.secondary ? itemData.gmm.blueprint.data.display.color.secondary : game.settings.get(GMM_MODULE_TITLE, "actionSecondaryColor")
-				},
-				skins: {
-					artifact: itemData.gmm?.blueprint.data.display.skin.artifact ? itemData.gmm.blueprint.data.display.skin.artifact : game.settings.get(GMM_MODULE_TITLE, "actionArtifactSkin"),
-					blueprint: itemData.gmm?.blueprint.data.display.skin.blueprint ? itemData.gmm.blueprint.data.display.skin.blueprint : game.settings.get(GMM_MODULE_TITLE, "actionBlueprintSkin"),
-				}
-			},
-			gui: this._gui,
-			enums: {
-				colors: GMM_GUI_COLORS,
-				skins: GMM_GUI_SKINS,
-				activation_types: GMM_ACTION_ACTIVATION_TYPES,
-				consumption_types: GMM_ACTION_CONSUMPTION_TYPES,
-				time_periods: GMM_ACTION_TIME_PERIODS,
-				use_periods: GMM_ACTION_USE_PERIODS,
-				range_types: GMM_ACTION_RANGE_TYPES,
-				rarities: GMM_ACTION_RARITIES,
-				target_types: GMM_ACTION_TARGET_TYPES,
-				consumption_targets: this._getActionConsumptionTargets(data.item),
-				ranks: Object.keys(GMM_MONSTER_RANKS).filter((x) => x != "custom"),
-				roles: Object.keys(GMM_MONSTER_ROLES).filter((x) => x != "custom"),
-				layouts: GMM_GUI_LAYOUTS,
-				attack_types: GMM_ACTION_ATTACK_TYPES,
-				attack_damage_types: GMM_ACTION_ATTACK_DAMAGE_TYPES,
-				deferral_types: GMM_DEFERRAL_TYPES,
-				abilities: GMM_5E_ABILITIES,
-			}
-		};
+        if (data.gmm.action) {
+            data.gmm.action.gmmLabels = await this.item.getGmmLabels();
+        }
 
-		if (data.gmm.action) {
-			data.gmm.action.gmmLabels = await this.item.getGmmLabels();
-		}
+        return data;
+    }
 
-		return data;
-	}
+    _getActionConsumptionTargets(item) {
+        const consume = item.system.consume || {};
+        if (!consume.type) {
+            return [];
+        }
+        const actor = this.item.actor;
+        if (!actor) {
+            return {};
+        }
 
-	_getActionConsumptionTargets(item) {
-		const consume = item.system.consume || {};
-		if ( !consume.type ) {
-			return [];
-		}
-		const actor = this.item.actor;
-		if ( !actor ) {
-			return {};
-		}
-	
-		// Ammunition
-		if ( consume.type === "ammo" ) {
-			return actor.itemTypes.consumable.reduce((ammo, i) =>  {
-					ammo[i.id] = `${i.name} (${i.system.quantity})`;
-				return ammo;
-			}, {[item.id]: `${item.name} (${item.system.quantity})`});
-		} else if ( consume.type === "attribute" ) {
-			const attributes = TokenDocument.getTrackedAttributes(actor.system);
-			attributes.bar.forEach(a => a.push("value"));
-			return attributes.bar.concat(attributes.value).reduce((obj, a) => {
-				let k = a.join(".");
-				obj[k] = k;
-				return obj;
-			}, {});
-		} else if ( consume.type === "material" ) {
-			return actor.items.contents.reduce((obj, i) => {
-				if ( ["consumable", "loot"].includes(i.data.type) && !i.system.activation ) {
-					obj[i.id] = `${i.name} (${i.system.quantity})`;
-				}
-				return obj;
-			}, {});
-		} else if ( consume.type === "charges" ) {
-			return actor.items.contents.reduce((obj, i) => {
-				const uses = i.system.uses || {};
-				if ( uses.per && uses.max ) {
-					const label = uses.per === "charges" ?
-					` (${game.i18n.format("DND5E.AbilityUseChargesLabel", {value: uses.value})})` :
-					` (${game.i18n.format("DND5E.AbilityUseConsumableLabel", {max: uses.max, per: uses.per})})`;
-					obj[i.id] = i.name + label;
-				}
-				const recharge = i.system.recharge || {};
-				if ( recharge.value ) {
-					obj[i.id] = `${i.name} (${game.i18n.format("DND5E.Recharge")})`;
-				}
-				return obj;
-			}, {})
-		} else return {};
-	}
+        // Ammunition
+        if (consume.type === "ammo") {
+            return actor.itemTypes.consumable.reduce((ammo, i) => {
+                ammo[i.id] = `${i.name} (${i.system.quantity})`;
+                return ammo;
+            }, { [item.id]: `${item.name} (${item.system.quantity})` });
+        } else if (consume.type === "attribute") {
+            const attributes = TokenDocument.getTrackedAttributes(actor.system);
+            attributes.bar.forEach(a => a.push("value"));
+            return attributes.bar.concat(attributes.value).reduce((obj, a) => {
+                let k = a.join(".");
+                obj[k] = k;
+                return obj;
+            }, {});
+        } else if (consume.type === "material") {
+            return actor.items.contents.reduce((obj, i) => {
+                if (["consumable", "loot"].includes(i.data.type) && !i.system.activation) {
+                    obj[i.id] = `${i.name} (${i.system.quantity})`;
+                }
+                return obj;
+            }, {});
+        } else if (consume.type === "charges") {
+            return actor.items.contents.reduce((obj, i) => {
+                const uses = i.system.uses || {};
+                if (uses.per && uses.max) {
+                    const label = uses.per === "charges" ?
+                        ` (${game.i18n.format("DND5E.AbilityUseChargesLabel", { value: uses.value })})` :
+                        ` (${game.i18n.format("DND5E.AbilityUseConsumableLabel", { max: uses.max, per: uses.per })})`;
+                    obj[i.id] = i.name + label;
+                }
+                const recharge = i.system.recharge || {};
+                if (recharge.value) {
+                    obj[i.id] = `${i.name} (${game.i18n.format("DND5E.Recharge")})`;
+                }
+                return obj;
+            }, {})
+        } else return {};
+    }
+    
+    _updateObject(event, form) {
+        if (event && event.currentTarget && event.currentTarget.closest(".gmm-modal") != null) {
+            return null;
+        }
 
- 	_updateObject(event, form) {
-		if (event && event.currentTarget && event.currentTarget.closest(".gmm-modal") != null) {
-			return null;
-		}
+        if (event && event.currentTarget) {
+            this._gui.updateFrom(event.currentTarget.closest(".gmm-window"));
+        }
+        let formData = expandObject(form);
 
-		if (event && event.currentTarget) {
-			this._gui.updateFrom(event.currentTarget.closest(".gmm-window"));
-		}
-		let formData = expandObject(form);
+        //Messy but new validation makes this weird with dropdowns
+        if (formData.gmm.blueprint.duration.value === null)
+            formData.gmm.blueprint.duration.value = "";
+        else
+            formData.gmm.blueprint.duration.value = `${formData.gmm.blueprint.duration.value}`
+        if (formData.gmm.blueprint.uses.max === null)
+            formData.gmm.blueprint.uses.max = "";
 
-		//Messy but new validation makes this weird with dropdowns
-		if(formData.gmm.blueprint.duration.value === null)
-			formData.gmm.blueprint.duration.value = "";
-		else
-			formData.gmm.blueprint.duration.value = `${formData.gmm.blueprint.duration.value}`
-		if(formData.gmm.blueprint.uses.max === null)
-			formData.gmm.blueprint.uses.max = "";
+        if (CompatibilityHelpers.hasProperty(formData, "gmm.blueprint")) {
+            CompatibilityHelpers.setProperty(formData, "flags.gmm.blueprint", {
+                vid: 1,
+                type: "action",
+                data: CompatibilityHelpers.getProperty(formData, "gmm.blueprint")
+            });
+            delete formData.gmm;
 
-		if (hasProperty(formData, "gmm.blueprint")) {
-			setProperty(formData, "flags.gmm.blueprint", {
-				vid: 1,
-				type: "action",
-				data: getProperty(formData, "gmm.blueprint")
-			});
-			delete formData.gmm;
-
-			$.extend(true, formData, ActionBlueprint.getItemDataFromBlueprint(formData.flags.gmm.blueprint));
-		}
+            $.extend(true, formData, ActionBlueprint.getItemDataFromBlueprint(formData.flags.gmm.blueprint));
+        }
 
 
-		  return this.document.update(formData);
-	}
+        return this.document.update(formData);
+    }
 }

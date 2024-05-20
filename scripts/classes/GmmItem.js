@@ -459,7 +459,7 @@ const GmmItem = (function () {
         }
 
         // Condense the resulting attack bonus formula into a simplified label
-        let toHitLabel = simplifyRollFormula(Roll.replaceFormulaData(parts.join('+').trim(), rollData));
+        let toHitLabel = simplifyRollFormula(foundry.dice.Roll.replaceFormulaData(parts.join('+').trim(), rollData));
         item.labels.toHit = (toHitLabel.charAt(0) !== '-') ? `+ ${toHitLabel}` : toHitLabel;
 
         // Update labels and return the prepared roll data
@@ -545,7 +545,11 @@ const GmmItem = (function () {
 
         // Call the roll helper utility
         //return damageRoll(mergeObject(rollConfig, options));
-        return mergeObject(rollConfig, options);
+        if (game.version >= 12) {
+            return foundry.utils.mergeObject(rollConfig, options);
+        } else {
+            return mergeObject(rollConfig, options);    
+        }
     }
     function _getSortingCategory() {
         if (this.getSheetId() == `${GMM_MODULE_TITLE}.ActionSheet`) {

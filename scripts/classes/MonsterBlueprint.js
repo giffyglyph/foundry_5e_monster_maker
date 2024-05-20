@@ -9,8 +9,9 @@ import { GMM_MONSTER_BLUEPRINT } from "../consts/GmmMonsterBlueprint.js";
 import { GMM_MONSTER_RANKS } from "../consts/GmmMonsterRanks.js";
 import { GMM_MONSTER_ROLES } from "../consts/GmmMonsterRoles.js";
 import { GMM_5E_XP } from "../consts/Gmm5eXp.js";
+import CompatibilityHelpers from "./CompatibilityHelpers.js";
 
-const MonsterBlueprint = (function() {
+const MonsterBlueprint = (function () {
 
 	const mappings = [
 		{ from: "biography.text", to: "system.details.biography.value" },
@@ -140,15 +141,14 @@ const MonsterBlueprint = (function() {
 				break;
 		}
 	}
-
+	
 	function _syncActorDataToBlueprint(blueprint, actor) {
 		const blueprintData = blueprint.data;
 		const actorData = actor;
-
 		try {
 			mappings.forEach((x) => {
-				if (hasProperty(actor, x.to)) {
-					setProperty(blueprintData, x.from, getProperty(actor, x.to));
+				if (CompatibilityHelpers.hasProperty(actor, x.to)) {
+					CompatibilityHelpers.setProperty(blueprintData, x.from, CompatibilityHelpers.getProperty(actor, x.to));
 				}
 			});
 
@@ -293,55 +293,55 @@ const MonsterBlueprint = (function() {
 		const actorData = {};
 
 		mappings.forEach((x) => {
-			if (hasProperty(blueprint.data, x.from)) {
-				setProperty(actorData, x.to, getProperty(blueprint.data, x.from));
+			if (CompatibilityHelpers.hasProperty(blueprint.data, x.from)) {
+				CompatibilityHelpers.setProperty(actorData, x.to, CompatibilityHelpers.getProperty(blueprint.data, x.from));
 			}
 		});
 
-		if (hasProperty(blueprint.data, "description.alignment.category")) {
+		if (CompatibilityHelpers.hasProperty(blueprint.data, "description.alignment.category")) {
 			const alignment = blueprint.data.description.alignment.category;
 			if (alignment) {
-				setProperty(actorData, "system.details.alignment", game.i18n.format(`gmm.common.alignment.${alignment}`));
+				CompatibilityHelpers.setProperty(actorData, "system.details.alignment", game.i18n.format(`gmm.common.alignment.${alignment}`));
 			} else {
-				const custom = getProperty(blueprint.data, "description.alignment.custom");
-				setProperty(actorData, "system.details.alignment", custom);
+				const custom = CompatibilityHelpers.getProperty(blueprint.data, "description.alignment.custom");
+				CompatibilityHelpers.setProperty(actorData, "system.details.alignment", custom);
 			}
 		}
 
-		if (hasProperty(blueprint.data, "speeds.units")) {
+		if (CompatibilityHelpers.hasProperty(blueprint.data, "speeds.units")) {
 			const unit = GMM_5E_UNITS.find((x) => x.name == blueprint.data.speeds.units);
-			setProperty(actorData, "system.attributes.movement.units", unit ? unit.foundry : null);
+			CompatibilityHelpers.setProperty(actorData, "system.attributes.movement.units", unit ? unit.foundry : null);
 		}
 
-		if (hasProperty(blueprint.data, "senses.units")) {
+		if (CompatibilityHelpers.hasProperty(blueprint.data, "senses.units")) {
 			const unit = GMM_5E_UNITS.find((x) => x.name == blueprint.data.senses.units);
-			setProperty(actorData, "system.attributes.senses.units", unit ? unit.foundry : null);
+			CompatibilityHelpers.setProperty(actorData, "system.attributes.senses.units", unit ? unit.foundry : null);
 		}
 
-		if (hasProperty(blueprint.data, "description.size")) {
+		if (CompatibilityHelpers.hasProperty(blueprint.data, "description.size")) {
 			const size = GMM_5E_SIZES.find((x) => x.name == blueprint.data.description.size);
-			setProperty(actorData, "system.traits.size", size ? size.foundry : null);
+			CompatibilityHelpers.setProperty(actorData, "system.traits.size", size ? size.foundry : null);
 		}
 
-		if (hasProperty(blueprint.data, "description.type.swarm")) {
+		if (CompatibilityHelpers.hasProperty(blueprint.data, "description.type.swarm")) {
 			const size = GMM_5E_SIZES.find((x) => x.name == blueprint.data.description.type.swarm);
-			setProperty(actorData, "system.details.type.swarm", size ? size.foundry : "");
+			CompatibilityHelpers.setProperty(actorData, "system.details.type.swarm", size ? size.foundry : "");
 		}
 
 		GMM_5E_SKILLS.forEach((x) => {
-			if (hasProperty(blueprint.data, `skills.${x.name}`)) {
+			if (CompatibilityHelpers.hasProperty(blueprint.data, `skills.${x.name}`)) {
 				switch (blueprint.data.skills[x.name]) {
 					case "half-proficient":
-						setProperty(actorData, `system.skills.${x.foundry}.value`, 0.5);
+						CompatibilityHelpers.setProperty(actorData, `system.skills.${x.foundry}.value`, 0.5);
 						break;
 					case "proficient":
-						setProperty(actorData, `system.skills.${x.foundry}.value`, 1);
+						CompatibilityHelpers.setProperty(actorData, `system.skills.${x.foundry}.value`, 1);
 						break;
 					case "expert":
-						setProperty(actorData, `system.skills.${x.foundry}.value`, 2);
+						CompatibilityHelpers.setProperty(actorData, `system.skills.${x.foundry}.value`, 2);
 						break;
 					default:
-						setProperty(actorData, `system.skills.${x.foundry}.value`, 0);
+						CompatibilityHelpers.setProperty(actorData, `system.skills.${x.foundry}.value`, 0);
 						break;
 				}
 			}
@@ -357,14 +357,14 @@ const MonsterBlueprint = (function() {
 	}
 
 	function _convertTraits(blueprint, actorData, values, blueprintField, foundryField) {
-		if (hasProperty(blueprint.data, `${blueprintField}.other`)) {
+		if (CompatibilityHelpers.hasProperty(blueprint.data, `${blueprintField}.other`)) {
 			let traits = [];
 			values.forEach((x) => {
 				if (blueprint.data[blueprintField][x]) {
 					traits.push(x);
 				}
 			});
-			setProperty(actorData, `system.traits.${foundryField}.value`, traits);
+			CompatibilityHelpers.setProperty(actorData, `system.traits.${foundryField}.value`, traits);
 		}
 	}
 

@@ -9,9 +9,10 @@ import { GMM_5E_SIZES } from "../consts/Gmm5eSizes.js";
 import { GMM_5E_SPEEDS } from "../consts/Gmm5eSpeeds.js";
 import { GMM_5E_SENSES } from "../consts/Gmm5eSenses.js";
 import DerivedAttribute from "./DerivedAttribute.js";
+import CompatibilityHelpers from "./CompatibilityHelpers.js";
 
 const MonsterForge = (function() {
-
+	
 	function createArtifact(blueprint) {
 		const derivedAttributes = MonsterHelpers.getDerivedAttributes(
 			blueprint.data.combat.level,
@@ -616,13 +617,13 @@ const MonsterForge = (function() {
 			}
 		};
 	}
-
+	
 	function _getInventoryWeight(data) {
 		const weight = new DerivedAttribute();
 		const displayUnit = data.display.units;
 		["bonus_actions.items", "actions.items", "reactions.items", "lair_actions.items", "legendary_actions.items", "traits.items", "inventory.items", "spellbook.spells.0", "spellbook.spells.1", "spellbook.spells.2", "spellbook.spells.3", "spellbook.spells.4", "spellbook.spells.5", "spellbook.spells.6", "spellbook.spells.7", "spellbook.spells.8", "spellbook.spells.9", "spellbook.spells.other"].forEach((x) => {
-			if (hasProperty(data, x)) {
-				getProperty(data, x).forEach((y) => {
+			if (CompatibilityHelpers.hasProperty(data, x)) {
+				CompatibilityHelpers.getProperty(data, x).forEach((y) => {
 					weight.add(y.weight * y.quantity, y.name)
 				});
 			}
