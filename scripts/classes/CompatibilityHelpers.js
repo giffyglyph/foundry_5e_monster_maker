@@ -1,21 +1,21 @@
 const CompatibilityHelpers = (function () {
-	function hasProperty(data1, data2) {
+	function hasProperty(...args) {
 		if (game.version >= 12) {
-			return foundry.utils.hasProperty(data1, data2);
+			return foundry.utils.hasProperty(...args);
 		}
-		return null;
+		return hasProperty(...args);
 	}
-	function setProperty(data1, data2) {
+	function setProperty(...args) {
 		if (game.version >= 12) {
-			return foundry.utils.setProperty(data1, data2);
+			return foundry.utils.setProperty(...args);
 		}
-		return null;
+		return setProperty(...args);
 	}
-	function getProperty(data1, data2) {
+	function getProperty(...args) {
 		if (game.version >= 12) {
-			return foundry.utils.getProperty(data1, data2);
+			return foundry.utils.getProperty(...args);
 		}
-		return null;
+		return getProperty(...args);
 	}
 	return {
 		hasProperty: hasProperty,
