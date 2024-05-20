@@ -391,52 +391,6 @@
                     </div>
                 </div>
                 <div class="accordion-group">
-                    <div class="accordion-section" data-section="ability-modifiers">
-                        <div class="accordion-section__header">
-                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.ability_modifiers.title'}}</span>
-                            <span class="accordion-section__info">
-                                {{#if gmm.blueprint.ability_modifiers.modifier.value includeZero=true}}
-                                <span class="modifier"></span>
-                                {{/if}}
-                            </span>
-                        </div>
-                        <div class="accordion-section__body">
-                            <div class="form-group">
-                                <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.ability_modifiers.ranking'}}</span>
-                                    <button type="button" class="button button--help" data-action="open-modal" data-modal="modal_ranked_abilities">
-                                        <i class="fas fa-question"></i>
-                                    </button>
-                                </div>
-                                <div class="form-group__body ability-rankings">
-                                    {{#repeat 6}}
-                                    {{#with (lookup ../gmm.blueprint.ability_modifiers.ranking .) as | value |}}
-                                    <div class="move-parent ability-ranking">
-                                        <input type="hidden" name="gmm.blueprint.ability_modifiers.ranking" value="{{value}}" />
-                                        <span class="value"><i class="{{localize (concat 'gmm.common.ability.' value '.icon')}} fa-fw"></i> {{localize (concat 'gmm.common.ability.' value '.name')}}</span>
-                                        <button type="button" class="move-up"><i class="fas fa-arrow-up"></i></button>
-                                        <button type="button" class="move-down"><i class="fas fa-arrow-down"></i></button>
-                                    </div>
-                                    {{/with}}
-                                    {{/repeat}}
-                                </div>
-                            </div>
-                            <div class="form-group form-group--modifier">
-                                <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.ability_modifiers.modifiers'}}</span>
-                                    <button type="button" class="button button--help" data-action="open-modal" data-modal="modal_modifying_abilities">
-                                        <i class="fas fa-question"></i>
-                                    </button>
-                                </div>
-                                <div class="form-group__body">
-                                    <input name="gmm.blueprint.ability_modifiers.modifier.value" value="{{gmm.blueprint.ability_modifiers.modifier.value}}" />
-                                    <label class="checkbox">
-                                        <input type="checkbox" name="gmm.blueprint.ability_modifiers.modifier.override" {{#if gmm.blueprint.ability_modifiers.modifier.override}} checked{{/if}} /> {{localize 'gmm.monster.blueprint.is_fixed'}}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="accordion-section" data-section="actions">
                         <div class="accordion-section__header">
                             <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.actions.title'}}</span>
@@ -472,124 +426,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-section" data-section="armor-class">
-                        <div class="accordion-section__header">
-                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.armor_class.title'}}</span>
-                            <span class="accordion-section__info">
-                                {{#if gmm.blueprint.armor_class.modifier.value includeZero=true}}
-                                <span class="modifier"></span>
-                                {{/if}}
-                            </span>
-                        </div>
-                        <div class="accordion-section__body">
-                            <div class="form-group">
-                                <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.armor_class.type'}}</span>
-                                </div>
-                                <div class="form-group__body">
-                                    <input name="gmm.blueprint.armor_class.type" value="{{gmm.blueprint.armor_class.type}}" />
-                                </div>
-                            </div>
-                            <div class="form-group form-group--modifier">
-                                <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.armor_class.modifier'}}</span>
-                                    <button type="button" class="button button--help" data-action="open-modal" data-modal="modal_modifiers">
-                                        <i class="fas fa-question"></i>
-                                    </button>
-                                </div>
-                                <div class="form-group__body">
-                                    <input name="gmm.blueprint.armor_class.modifier.value" type="number" value="{{gmm.blueprint.armor_class.modifier.value}}" />
-                                    <label class="checkbox">
-                                        <input type="checkbox" name="gmm.blueprint.armor_class.modifier.override" {{#if gmm.blueprint.armor_class.modifier.override}} checked{{/if}} /> {{localize 'gmm.monster.blueprint.is_fixed'}}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-section" data-section="attack-bonus">
-                        <div class="accordion-section__header">
-                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.attack_bonus.title'}}</span>
-                            <span class="accordion-section__info">
-                                {{#if gmm.blueprint.attack_bonus.modifier.value includeZero=true}}
-                                <span class="modifier"></span>
-                                {{/if}}
-                            </span>
-                        </div>
-                        <div class="accordion-section__body">
-                            <div class="form-group form-group--modifier">
-                                <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.attack_bonus.modifier'}}</span>
-                                    <button type="button" class="button button--help" data-action="open-modal" data-modal="modal_modifiers">
-                                        <i class="fas fa-question"></i>
-                                    </button>
-                                </div>
-                                <div class="form-group__body">
-                                    <input name="gmm.blueprint.attack_bonus.modifier.value" type="number" value="{{gmm.blueprint.attack_bonus.modifier.value}}" />
-                                    <label class="checkbox">
-                                        <input type="checkbox" name="gmm.blueprint.attack_bonus.modifier.override" {{#if gmm.blueprint.attack_bonus.modifier.override}} checked{{/if}} /> {{localize 'gmm.monster.blueprint.is_fixed'}}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-section" data-section="attack-dc">
-                        <div class="accordion-section__header">
-                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.attack_dcs.title'}}</span>
-                            <span class="accordion-section__info">
-                                {{#if gmm.blueprint.attack_dcs.primary.modifier.value includeZero=true}}
-                                <span class="modifier"></span>
-                                {{/if}}
-                            </span>
-                        </div>
-                        <div class="accordion-section__body">
-                            <div class="form-fieldset">
-                                <div class="form-group">
-                                    <div class="form-group__header">
-                                        <span class="form-group__title">{{localize 'gmm.monster.blueprint.attack_dcs.type'}}</span>
-                                    </div>
-                                    <div class="form-group__body">
-                                        <input name="gmm.blueprint.attack_dcs.primary.type" value="{{gmm.blueprint.attack_dcs.primary.type}}" />
-                                    </div>
-                                </div>
-                                <div class="form-group form-group--modifier">
-                                    <div class="form-group__header">
-                                        <span class="form-group__title">{{localize 'gmm.monster.blueprint.attack_dcs.modifier'}}</span>
-                                        <button type="button" class="button button--help" data-action="open-modal" data-modal="modal_modifiers">
-                                            <i class="fas fa-question"></i>
-                                        </button>
-                                    </div>
-                                    <div class="form-group__body">
-                                        <input name="gmm.blueprint.attack_dcs.primary.modifier.value" type="number" value="{{gmm.blueprint.attack_dcs.primary.modifier.value}}" />
-                                        <label class="checkbox">
-                                            <input type="checkbox" name="gmm.blueprint.attack_dcs.primary.modifier.override" {{#if gmm.blueprint.attack_dcs.primary.modifier.override}} checked{{/if}} /> {{localize 'gmm.monster.blueprint.is_fixed'}}
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-section" data-section="biography">
-                        <div class="accordion-section__header">
-                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.biography.title'}}</span>
-                        </div>
-                        <div class="accordion-section__body">
-                            <div class="form-group form-group--modifier">
-                                <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.biography.always_hide'}}</span>
-                                </div>
-                                <div class="form-group__body">
-                                    <input type="checkbox" name="gmm.blueprint.biography.always_hide" {{#if gmm.blueprint.biography.always_hide}} checked{{/if}} />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-group__body">
-                                    <div class="html-field">
-                                        {{editor gmm.blueprint.biography.text target='gmm.blueprint.biography.text' button=true owner=owner editable=editable}}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="accordion-section" data-section="bonus-actions">
                         <div class="accordion-section__header">
                             <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.bonus_actions.title'}}</span>
@@ -618,473 +454,6 @@
                                 <div class="form-fieldset__body">
                                     <div class="items item-list">
                                         {{#each gmm.blueprint.bonus_actions.items as | item |}}
-                                        {{> (getTemplate "monster/skins/vanity/partials/blueprint_item.html") item=.}}
-                                        {{/each}}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-section" data-section="condition-immunities">
-                        <div class="accordion-section__header">
-                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.condition_immunities.title'}}</span>
-                        </div>
-                        <div class="accordion-section__body">
-                            <div class="form-group">
-                                <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.condition_immunities.options'}}</span>
-                                </div>
-                                <div class="form-group__body">
-                                    <div class="checkboxes">
-                                        {{#each gmm.enums.conditions}}
-                                        <label class="checkbox">
-                                            <input type="checkbox" name="gmm.blueprint.condition_immunities.{{.}}" {{#if (lookup ../gmm.blueprint.condition_immunities .)}} checked{{/if}} /> {{localize (concat 'gmm.common.condition.' .)}}
-                                        </label>
-                                        {{/each}}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.condition_immunities.other'}}</span>
-                                </div>
-                                <div class="form-group__body">
-                                    <input name="gmm.blueprint.condition_immunities.other" value="{{gmm.blueprint.condition_immunities.other}}" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-section" data-section="challenge-rating">
-                        <div class="accordion-section__header">
-                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.challenge_rating.title'}}</span>
-                            <span class="accordion-section__info">
-                                {{#if gmm.blueprint.challenge_rating.modifier.value includeZero=true}}
-                                <span class="modifier"></span>
-                                {{/if}}
-                            </span>
-                        </div>
-                        <div class="accordion-section__body">
-                            <div class="form-group form-group--modifier">
-                                <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.challenge_rating.modifier'}}</span>
-                                    <button type="button" class="button button--help" data-action="open-modal" data-modal="modal_modifiers">
-                                        <i class="fas fa-question"></i>
-                                    </button>
-                                </div>
-                                <div class="form-group__body">
-                                    <input name="gmm.blueprint.challenge_rating.modifier.value" type="number" value="{{gmm.blueprint.challenge_rating.modifier.value}}" />
-                                    <label class="checkbox">
-                                        <input type="checkbox" name="gmm.blueprint.challenge_rating.modifier.override" {{#if gmm.blueprint.challenge_rating.modifier.override}} checked{{/if}} /> {{localize 'gmm.monster.blueprint.is_fixed'}}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-section" data-section="damage-per-action">
-                        <div class="accordion-section__header">
-                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.damage.title'}}</span>
-                            <span class="accordion-section__info">
-                                {{#if gmm.blueprint.damage_per_action.modifier.value includeZero=true}}
-                                <span class="modifier"></span>
-                                {{/if}}
-                            </span>
-                        </div>
-                        <div class="accordion-section__body">
-                            <div class="form-group">
-                                <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.damage.type'}}</span>
-                                </div>
-                                <div class="form-group__body">
-                                    <input name="gmm.blueprint.damage_per_action.type" value="{{gmm.blueprint.damage_per_action.type}}" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.damage.dice_size'}}</span>
-                                </div>
-                                <div class="form-group__body">
-                                    <select name="gmm.blueprint.damage_per_action.die_size">
-                                        {{#select gmm.blueprint.damage_per_action.die_size}}
-                                        <option value="4">d4</option>
-                                        <option value="6">d6</option>
-                                        <option value="8">d8</option>
-                                        <option value="10">d10</option>
-                                        <option value="12">d12</option>
-                                        <option value="20">d20</option>
-                                        <option value="100">d100</option>
-                                        {{/select}}
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.damage.maximum_dice'}}</span>
-                                </div>
-                                <div class="form-group__body">
-                                    <input name="gmm.blueprint.damage_per_action.maximum_dice" type="number" placeholder="0" value="{{gmm.blueprint.damage_per_action.maximum_dice}}" />
-                                </div>
-                            </div>
-                            <div class="form-group form-group--modifier">
-                                <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.damage.modifier'}}</span>
-                                    <button type="button" class="button button--help" data-action="open-modal" data-modal="modal_modifiers">
-                                        <i class="fas fa-question"></i>
-                                    </button>
-                                </div>
-                                <div class="form-group__body">
-                                    <input name="gmm.blueprint.damage_per_action.modifier.value" type="number" value="{{gmm.blueprint.damage_per_action.modifier.value}}" />
-                                    <label class="checkbox">
-                                        <input type="checkbox" name="gmm.blueprint.damage_per_action.modifier.override" {{#if gmm.blueprint.damage_per_action.modifier.override}} checked{{/if}} /> {{localize 'gmm.monster.blueprint.is_fixed'}}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-section" data-section="damage-immunities">
-                        <div class="accordion-section__header">
-                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.damage_immunities.title'}}</span>
-                        </div>
-                        <div class="accordion-section__body">
-                            <div class="form-group">
-                                <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.damage_immunities.options'}}</span>
-                                </div>
-                                <div class="form-group__body">
-                                    <div class="checkboxes">
-                                        {{#each gmm.enums.damage_types}}
-                                        <label class="checkbox">
-                                            <input type="checkbox" name="gmm.blueprint.damage_immunities.{{.}}" {{#if (lookup ../gmm.blueprint.damage_immunities .)}} checked{{/if}} /> {{localize (concat 'gmm.common.damage.' .)}}
-                                        </label>
-                                        {{/each}}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.damage_immunities.other'}}</span>
-                                </div>
-                                <div class="form-group__body">
-                                    <input name="gmm.blueprint.damage_immunities.other" value="{{gmm.blueprint.damage_immunities.other}}" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-section" data-section="damage-resistances">
-                        <div class="accordion-section__header">
-                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.damage_resistances.title'}}</span>
-                        </div>
-                        <div class="accordion-section__body">
-                            <div class="form-group">
-                                <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.damage_resistances.options'}}</span>
-                                </div>
-                                <div class="form-group__body">
-                                    <div class="checkboxes">
-                                        {{#each gmm.enums.damage_types}}
-                                        <label class="checkbox">
-                                            <input type="checkbox" name="gmm.blueprint.damage_resistances.{{.}}" {{#if (lookup ../gmm.blueprint.damage_resistances .)}} checked{{/if}} /> {{localize (concat 'gmm.common.damage.' .)}}
-                                        </label>
-                                        {{/each}}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.damage_resistances.other'}}</span>
-                                </div>
-                                <div class="form-group__body">
-                                    <input name="gmm.blueprint.damage_resistances.other" value="{{gmm.blueprint.damage_resistances.other}}" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-section" data-section="damage-vulnerabilities">
-                        <div class="accordion-section__header">
-                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.damage_vulnerabilities.title'}}</span>
-                        </div>
-                        <div class="accordion-section__body">
-                            <div class="form-group">
-                                <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.damage_vulnerabilities.options'}}</span>
-                                </div>
-                                <div class="form-group__body">
-                                    <div class="checkboxes">
-                                        {{#each gmm.enums.damage_types}}
-                                        <label class="checkbox">
-                                            <input type="checkbox" name="gmm.blueprint.damage_vulnerabilities.{{.}}" {{#if (lookup ../gmm.blueprint.damage_vulnerabilities .)}} checked{{/if}} /> {{localize (concat 'gmm.common.damage.' .)}}
-                                        </label>
-                                        {{/each}}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.damage_vulnerabilities.other'}}</span>
-                                </div>
-                                <div class="form-group__body">
-                                    <input name="gmm.blueprint.damage_vulnerabilities.other" value="{{gmm.blueprint.damage_vulnerabilities.other}}" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-section" data-section="hit-points">
-                        <div class="accordion-section__header">
-                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.hit_points.title'}}</span>
-                            <span class="accordion-section__info">
-                                {{#if gmm.blueprint.hit_points.maximum.modifier.value includeZero=true}}
-                                <span class="modifier"></span>
-                                {{/if}}
-                            </span>
-                        </div>
-                        <div class="accordion-section__body">
-                            <div class="form-group">
-                                <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.hit_points.current'}}</span>
-                                </div>
-                                <div class="form-group__body">
-                                    <input name="gmm.blueprint.hit_points.current" type="number" min="0" value="{{gmm.blueprint.hit_points.current}}" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.hit_points.temporary'}}</span>
-                                </div>
-                                <div class="form-group__body">
-                                    <input name="gmm.blueprint.hit_points.temporary" type="number" min="0" value="{{gmm.blueprint.hit_points.temporary}}" />
-                                </div>
-                            </div>
-                            <div class="form-fieldset">
-                                <div class="form-fieldset__header">{{localize 'gmm.monster.blueprint.hit_points.maximum'}}</div>
-                                <div class="form-fieldset__body">
-                                    <div class="form-group form-group--modifier">
-                                        <div class="form-group__header">
-                                            <span class="form-group__title">{{localize 'gmm.monster.blueprint.hit_points.modifier'}}</span>
-                                            <button type="button" class="button button--help" data-action="open-modal" data-modal="modal_modifiers">
-                                                <i class="fas fa-question"></i>
-                                            </button>
-                                        </div>
-                                        <div class="form-group__body">
-                                            <input name="gmm.blueprint.hit_points.maximum.modifier.value" type="number" value="{{gmm.blueprint.hit_points.maximum.modifier.value}}" />
-                                            <label class="checkbox">
-                                                <input type="checkbox" name="gmm.blueprint.hit_points.maximum.modifier.override" {{#if gmm.blueprint.hit_points.maximum.modifier.override}} checked{{/if}} /> {{localize 'gmm.monster.blueprint.is_fixed'}}
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-fieldset">
-                                <div class="form-fieldset__header">{{localize 'gmm.monster.blueprint.hit_points.formula'}}</div>
-                                <div class="form-fieldset__body">
-                                    <div class="form-group form-group--modifier">
-                                        <div class="form-group__header">
-                                            <span class="form-group__title">{{localize 'gmm.monster.blueprint.hit_points.use_formula'}}</span>
-                                        </div>
-                                        <div class="form-group__body">
-                                            <input type="checkbox" name="gmm.blueprint.hit_points.maximum.use_formula" {{#if gmm.blueprint.hit_points.maximum.use_formula}} checked{{/if}} />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="form-group__header">
-                                            <span class="form-group__title">{{localize 'gmm.monster.blueprint.hit_points.dice_size'}}</span>
-                                        </div>
-                                        <div class="form-group__body">
-                                            <select name="gmm.blueprint.hit_points.maximum.die_size">
-                                                {{#select gmm.blueprint.hit_points.maximum.die_size}}
-                                                <option value="4">d4</option>
-                                                <option value="6">d6</option>
-                                                <option value="8">d8</option>
-                                                <option value="10">d10</option>
-                                                <option value="12">d12</option>
-                                                <option value="20">d20</option>
-                                                <option value="100">d100</option>
-                                                {{/select}}
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="form-group__header">
-                                            <span class="form-group__title">{{localize 'gmm.monster.blueprint.hit_points.maximum_dice'}}</span>
-                                        </div>
-                                        <div class="form-group__body">
-                                            <input name="gmm.blueprint.hit_points.maximum.maximum_dice" type="number" placeholder="0" value="{{gmm.blueprint.hit_points.maximum.maximum_dice}}" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-section" data-section="initiative">
-                        <div class="accordion-section__header">
-                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.initiative.title'}}</span>
-                            <span class="accordion-section__info">
-                                {{#if gmm.blueprint.hit_points.initiative.modifier.value includeZero=true}}
-                                <span class="modifier"></span>
-                                {{/if}}
-                            </span>
-                        </div>
-                        <div class="accordion-section__body">
-                            <div class="form-group">
-                                <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.initiative.ability'}}</span>
-                                </div>
-                                <div class="form-group__body">
-                                    <select name="gmm.blueprint.initiative.ability">
-                                        {{#select gmm.blueprint.initiative.ability}}
-                                        {{#each gmm.enums.abilities}}
-                                        <option value="{{.}}">{{localize (concat 'gmm.common.ability.' . '.name')}}</option>
-                                        {{/each}}
-                                        {{/select}}
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group form-group--modifier">
-                                <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.initiative.advantage'}}</span>
-                                </div>
-                                <div class="form-group__body">
-                                    <input type="checkbox" name="gmm.blueprint.initiative.advantage" {{#if gmm.blueprint.initiative.advantage}} checked{{/if}} />
-                                </div>
-                            </div>
-                            <div class="form-group form-group--modifier">
-                                <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.initiative.modifier'}}</span>
-                                    <button type="button" class="button button--help" data-action="open-modal" data-modal="modal_modifiers">
-                                        <i class="fas fa-question"></i>
-                                    </button>
-                                </div>
-                                <div class="form-group__body">
-                                    <input name="gmm.blueprint.initiative.modifier.value" type="number" value="{{gmm.blueprint.initiative.modifier.value}}" />
-                                    <label class="checkbox">
-                                        <input type="checkbox" name="gmm.blueprint.initiative.modifier.override" {{#if gmm.blueprint.initiative.modifier.override}} checked{{/if}} /> {{localize 'gmm.monster.blueprint.is_fixed'}}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-section" data-section="inventory">
-                        <div class="accordion-section__header">
-                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.inventory.title'}}</span>
-                            {{#if gmm.blueprint.inventory.total}}
-                            <span class="accordion-section__info">
-                                <span class="badge">{{gmm.blueprint.inventory.total}}</span>
-                            </span>
-                            {{/if}}
-                        </div>
-                        <div class="accordion-section__body">
-                            <div class="form-group form-group--modifier">
-                                <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.inventory.always_show'}}</span>
-                                </div>
-                                <div class="form-group__body">
-                                    <input type="checkbox" name="gmm.blueprint.inventory.always_show" {{#if gmm.blueprint.inventory.always_show}} checked{{/if}} />
-                                </div>
-                            </div>
-                            <div class="form-fieldset">
-                                <div class="form-fieldset__header">{{localize 'gmm.monster.blueprint.inventory.currency.title'}}</div>
-                                <div class="form-fieldset__body">
-                                    <div class="form-group form-group--modifier">
-                                        <div class="form-group__header">
-                                            <span class="form-group__title">{{localize 'gmm.monster.blueprint.inventory.currency.always_show'}}</span>
-                                        </div>
-                                        <div class="form-group__body">
-                                            <input type="checkbox" name="gmm.blueprint.inventory.currency.always_show" {{#if gmm.blueprint.inventory.currency.always_show}} checked{{/if}} />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="form-group__header">
-                                            <span class="form-group__title">{{localize 'gmm.monster.blueprint.inventory.currency.cp'}}</span>
-                                        </div>
-                                        <div class="form-group__body">
-                                            <input name="gmm.blueprint.inventory.currency.cp" value="{{gmm.blueprint.inventory.currency.cp}}" type="number" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="form-group__header">
-                                            <span class="form-group__title">{{localize 'gmm.monster.blueprint.inventory.currency.sp'}}</span>
-                                        </div>
-                                        <div class="form-group__body">
-                                            <input name="gmm.blueprint.inventory.currency.sp" value="{{gmm.blueprint.inventory.currency.sp}}" type="number" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="form-group__header">
-                                            <span class="form-group__title">{{localize 'gmm.monster.blueprint.inventory.currency.ep'}}</span>
-                                        </div>
-                                        <div class="form-group__body">
-                                            <input name="gmm.blueprint.inventory.currency.ep" value="{{gmm.blueprint.inventory.currency.ep}}" type="number" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="form-group__header">
-                                            <span class="form-group__title">{{localize 'gmm.monster.blueprint.inventory.currency.gp'}}</span>
-                                        </div>
-                                        <div class="form-group__body">
-                                            <input name="gmm.blueprint.inventory.currency.gp" value="{{gmm.blueprint.inventory.currency.gp}}" type="number" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="form-group__header">
-                                            <span class="form-group__title">{{localize 'gmm.monster.blueprint.inventory.currency.pp'}}</span>
-                                        </div>
-                                        <div class="form-group__body">
-                                            <input name="gmm.blueprint.inventory.currency.pp" value="{{gmm.blueprint.inventory.currency.pp}}" type="number" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-fieldset">
-                                <div class="form-fieldset__header">{{localize 'gmm.monster.blueprint.inventory.encumbrance.title'}}</div>
-                                <div class="form-fieldset__body">
-                                    <div class="form-group form-group--modifier">
-                                        <div class="form-group__header">
-                                            <span class="form-group__title">{{localize 'gmm.monster.blueprint.inventory.encumbrance.always_show'}}</span>
-                                        </div>
-                                        <div class="form-group__body">
-                                            <input type="checkbox" name="gmm.blueprint.inventory.encumbrance.always_show" {{#if gmm.blueprint.inventory.encumbrance.always_show}} checked{{/if}} />
-                                        </div>
-                                    </div>
-                                    <div class="form-group form-group--modifier">
-                                        <div class="form-group__header">
-                                            <span class="form-group__title">{{localize 'gmm.monster.blueprint.inventory.encumbrance.powerful_build'}}</span>
-                                        </div>
-                                        <div class="form-group__body">
-                                            <input type="checkbox" name="gmm.blueprint.inventory.encumbrance.powerful_build" {{#if gmm.blueprint.inventory.encumbrance.powerful_build}} checked{{/if}} />
-                                        </div>
-                                    </div>
-                                    <div class="form-group form-group--modifier">
-                                        <div class="form-group__header">
-                                            <span class="form-group__title">{{localize 'gmm.monster.blueprint.inventory.encumbrance.weight'}}</span>
-                                        </div>
-                                        <div class="form-group__body">
-                                            <input name="gmm.blueprint.inventory.encumbrance.weight.modifier.value" type="number" value="{{gmm.blueprint.inventory.encumbrance.weight.modifier.value}}" />
-                                            <label class="checkbox">
-                                                <input type="checkbox" name="gmm.blueprint.inventory.encumbrance.weight.modifier.override" {{#if gmm.blueprint.inventory.encumbrance.weight.modifier.override}} checked{{/if}} /> {{localize 'gmm.monster.blueprint.is_fixed'}}
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group form-group--modifier">
-                                        <div class="form-group__header">
-                                            <span class="form-group__title">{{localize 'gmm.monster.blueprint.inventory.encumbrance.capacity'}}</span>
-                                        </div>
-                                        <div class="form-group__body">
-                                            <input name="gmm.blueprint.inventory.encumbrance.capacity.modifier.value" type="number" value="{{gmm.blueprint.inventory.encumbrance.capacity.modifier.value}}" />
-                                            <label class="checkbox">
-                                                <input type="checkbox" name="gmm.blueprint.inventory.encumbrance.capacity.modifier.override" {{#if gmm.blueprint.inventory.encumbrance.capacity.modifier.override}} checked{{/if}} /> {{localize 'gmm.monster.blueprint.is_fixed'}}
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-fieldset">
-                                <div class="form-fieldset__header">
-                                    <span>{{localize 'gmm.monster.blueprint.inventory.items.title'}}</span>
-                                    <button type="button" data-action="add-item" data-type="loot">
-                                        {{localize 'gmm.monster.blueprint.inventory.items.add'}}
-                                    </button>
-                                </div>
-                                <div class="form-fieldset__body">
-                                    <div class="items item-list">
-                                        {{#each gmm.monster.inventory.items as | item |}}
                                         {{> (getTemplate "monster/skins/vanity/partials/blueprint_item.html") item=.}}
                                         {{/each}}
                                     </div>
@@ -1135,35 +504,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-section" data-section="languages">
-                        <div class="accordion-section__header">
-                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.languages.title'}}</span>
-                        </div>
-                        <div class="accordion-section__body">
-                            <div class="form-group">
-                                <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.languages.options'}}</span>
-                                </div>
-                                <div class="form-group__body">
-                                    <div class="checkboxes">
-                                        {{#each gmm.enums.languages}}
-                                        <label class="checkbox">
-                                            <input type="checkbox" name="gmm.blueprint.languages.{{.}}" {{#if (lookup ../gmm.blueprint.languages .)}} checked{{/if}} /> {{localize (concat 'gmm.common.language.' .)}}
-                                        </label>
-                                        {{/each}}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.languages.other'}}</span>
-                                </div>
-                                <div class="form-group__body">
-                                    <input name="gmm.blueprint.languages.other" value="{{gmm.blueprint.languages.other}}" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                     <div class="accordion-section" data-section="legendary-actions">
                         <div class="accordion-section__header">
                             <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.legendary_actions.title'}}</span>
@@ -1215,141 +556,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-section" data-section="legendary-resistances">
-                        <div class="accordion-section__header">
-                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.legendary_resistances.title'}}</span>
-                        </div>
-                        <div class="accordion-section__body">
-                            <div class="form-group form-group--modifier">
-                                <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.legendary_resistances.always_show'}}</span>
-                                </div>
-                                <div class="form-group__body">
-                                    <input type="checkbox" name="gmm.blueprint.legendary_resistances.always_show" {{#if gmm.blueprint.legendary_resistances.always_show}} checked{{/if}} />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.legendary_resistances.current'}}</span>
-                                </div>
-                                <div class="form-group__body">
-                                    <input name="gmm.blueprint.legendary_resistances.current" value="{{gmm.blueprint.legendary_resistances.current}}" type="number" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.legendary_resistances.maximum'}}</span>
-                                </div>
-                                <div class="form-group__body">
-                                    <input name="gmm.blueprint.legendary_resistances.maximum" value="{{gmm.blueprint.legendary_resistances.maximum}}" type="number" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-section" data-section="paragon-actions">
-                        <div class="accordion-section__header">
-                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.paragon_actions.title'}}</span>
-                            <span class="accordion-section__info">
-                                {{#if gmm.blueprint.paragon_actions.maximum.modifier.value includeZero=true}}
-                                <span class="modifier"></span>
-                                {{/if}}
-                            </span>
-                        </div>
-                        <div class="accordion-section__body">
-                            <div class="form-group form-group--modifier">
-                                <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.paragon_actions.always_show'}}</span>
-                                </div>
-                                <div class="form-group__body">
-                                    <input type="checkbox" name="gmm.blueprint.paragon_actions.always_show" {{#if gmm.blueprint.paragon_actions.always_show}} checked{{/if}} />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.paragon_actions.current'}}</span>
-                                </div>
-                                <div class="form-group__body">
-                                    <input name="gmm.blueprint.paragon_actions.current" value="{{gmm.blueprint.paragon_actions.current}}" type="number" />
-                                </div>
-                            </div>
-                            <div class="form-fieldset">
-                                <div class="form-fieldset__header">{{localize 'gmm.monster.blueprint.paragon_actions.maximum'}}</div>
-                                <div class="form-fieldset__body">
-                                    <div class="form-group form-group--modifier">
-                                        <div class="form-group__header">
-                                            <span class="form-group__title">{{localize 'gmm.monster.blueprint.paragon_actions.modifier'}}</span>
-                                            <button type="button" class="button button--help" data-action="open-modal" data-modal="modal_modifiers">
-                                                <i class="fas fa-question"></i>
-                                            </button>
-                                        </div>
-                                        <div class="form-group__body">
-                                            <input name="gmm.blueprint.paragon_actions.maximum.modifier.value" type="number" value="{{gmm.blueprint.paragon_actions.maximum.modifier.value}}" />
-                                            <label class="checkbox">
-                                                <input type="checkbox" name="gmm.blueprint.paragon_actions.maximum.modifier.override" {{#if gmm.blueprint.paragon_actions.maximum.modifier.override}} checked{{/if}} /> {{localize 'gmm.monster.blueprint.is_fixed'}}
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-section" data-section="paragon-defenses">
-                        <div class="accordion-section__header">
-                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.paragon_defenses.title'}}</span>
-                        </div>
-                        <div class="accordion-section__body">
-                            <div class="form-group form-group--modifier">
-                                <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.paragon_defenses.always_show'}}</span>
-                                </div>
-                                <div class="form-group__body">
-                                    <input type="checkbox" name="gmm.blueprint.paragon_defenses.always_show" {{#if gmm.blueprint.paragon_defenses.always_show}} checked{{/if}} />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.paragon_defenses.current'}}</span>
-                                </div>
-                                <div class="form-group__body">
-                                    <input name="gmm.blueprint.paragon_defenses.current" value="{{gmm.blueprint.paragon_defenses.current}}" type="number" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.paragon_defenses.maximum'}}</span>
-                                </div>
-                                <div class="form-group__body">
-                                    <input name="gmm.blueprint.paragon_defenses.maximum.modifier.value" value="{{gmm.blueprint.paragon_defenses.maximum.modifier.value}}" type="number" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-section" data-section="passive-perception">
-                        <div class="accordion-section__header">
-                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.passive_perception.title'}}</span>
-                            <span class="accordion-section__info">
-                                {{#if gmm.blueprint.passive_perception.modifier.value includeZero=true}}
-                                <span class="modifier"></span>
-                                {{/if}}
-                            </span>
-                        </div>
-                        <div class="accordion-section__body">
-                            <div class="form-group form-group--modifier">
-                                <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.passive_perception.modifier'}}</span>
-                                    <button type="button" class="button button--help" data-action="open-modal" data-modal="modal_modifiers">
-                                        <i class="fas fa-question"></i>
-                                    </button>
-                                </div>
-                                <div class="form-group__body">
-                                    <input name="gmm.blueprint.passive_perception.modifier.value" type="number" value="{{gmm.blueprint.passive_perception.modifier.value}}" />
-                                    <label class="checkbox">
-                                        <input type="checkbox" name="gmm.blueprint.passive_perception.modifier.override" {{#if gmm.blueprint.passive_perception.modifier.override}} checked{{/if}} /> {{localize 'gmm.monster.blueprint.is_fixed'}}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                     <div class="accordion-section" data-section="reactions">
                         <div class="accordion-section__header">
                             <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.reactions.title'}}</span>
@@ -1385,11 +592,49 @@
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-section" data-section="saving-throws">
+
+                    <div class="accordion-section" data-section="traits">
                         <div class="accordion-section__header">
-                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.saving_throws.title'}}</span>
+                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.traits.title'}}</span>
+                            {{#if gmm.blueprint.traits.items}}
                             <span class="accordion-section__info">
-                                {{#if (getTstCount gmm.monster.tst_count) includeZero=false}}
+                                <span class="badge">{{gmm.blueprint.traits.items.length}}</span>
+                            </span>
+                            {{/if}}
+                        </div>
+                        <div class="accordion-section__body">
+                            <div class="form-group form-group--modifier">
+                                <div class="form-group__header">
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.traits.always_show'}}</span>
+                                </div>
+                                <div class="form-group__body">
+                                    <input type="checkbox" name="gmm.blueprint.traits.always_show" {{#if gmm.blueprint.traits.always_show}} checked{{/if}} />
+                                </div>
+                            </div>
+                            <div class="form-fieldset">
+                                <div class="form-fieldset__header">
+                                    <span>{{localize 'gmm.monster.blueprint.traits.items'}}</span>
+                                    <button type="button" data-action="add-item" data-type="feat">
+                                        {{localize 'gmm.monster.blueprint.traits.add'}}
+                                    </button>
+                                </div>
+                                <div class="form-fieldset__body">
+                                    <div class="items item-list">
+                                        {{#each gmm.blueprint.traits.items as | item |}}
+                                        {{> (getTemplate "monster/skins/vanity/partials/blueprint_item.html") item=.}}
+                                        {{/each}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-group">
+                    <div class="accordion-section" data-section="ability-modifiers">
+                        <div class="accordion-section__header">
+                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.ability_modifiers.title'}}</span>
+                            <span class="accordion-section__info">
+                                {{#if gmm.blueprint.ability_modifiers.modifier.value includeZero=true}}
                                 <span class="modifier"></span>
                                 {{/if}}
                             </span>
@@ -1397,50 +642,161 @@
                         <div class="accordion-section__body">
                             <div class="form-group">
                                 <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.saving_throws.method.title'}}</span>
-                                </div>
-                                <div class="form-group__body">
-                                    <select name="gmm.blueprint.trained_saves.method">
-                                        {{#select gmm.blueprint.trained_saves.method}}
-                                        <option value="sync">{{localize 'gmm.monster.blueprint.saving_throws.method.sync'}}</option>
-                                        <option value="custom">{{localize 'gmm.monster.blueprint.saving_throws.method.custom'}}</option>
-                                        {{/select}}
-                                    </select>
-                                </div>
-                            </div>
-                            {{#if (eq gmm.blueprint.trained_saves.method 'custom')}}
-                            <div class="form-group">
-                                <div class="form-group__header">
-                                    <div class="form-group__title">{{localize 'gmm.monster.blueprint.is_trained'}}</div>
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.ability_modifiers.ranking'}}</span>
                                     <button type="button" class="button button--help" data-action="open-modal" data-modal="modal_ranked_abilities">
                                         <i class="fas fa-question"></i>
                                     </button>
-                                    <div><i class="fas fa-exclamation-point">Max: {{gmm.monster.tst_count}} </i></div>
                                 </div>
-                                <div class="form-group__body save_rankings">
-                                    <div class="checkboxes" id="monster__tst_count" name="{{gmm.monster.tst_count}}">
-                                        {{#each gmm.enums.abilities}}
+                                <div class="form-group__body ability-rankings">
+                                    {{#repeat 6}}
+                                    {{#with (lookup ../gmm.blueprint.ability_modifiers.ranking .) as | value |}}
+                                    <div class="move-parent ability-ranking">
+                                        <input type="hidden" name="gmm.blueprint.ability_modifiers.ranking" value="{{value}}" />
+                                        <span class="value"><i class="{{localize (concat 'gmm.common.ability.' value '.icon')}} fa-fw"></i> {{localize (concat 'gmm.common.ability.' value '.name')}}</span>
+                                        <button type="button" class="move-up"><i class="fas fa-arrow-up"></i></button>
+                                        <button type="button" class="move-down"><i class="fas fa-arrow-down"></i></button>
+                                    </div>
+                                    {{/with}}
+                                    {{/repeat}}
+                                </div>
+                            </div>
+                            <div class="form-group form-group--modifier">
+                                <div class="form-group__header">
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.ability_modifiers.modifiers'}}</span>
+                                    <button type="button" class="button button--help" data-action="open-modal" data-modal="modal_modifying_abilities">
+                                        <i class="fas fa-question"></i>
+                                    </button>
+                                </div>
+                                <div class="form-group__body">
+                                    <input name="gmm.blueprint.ability_modifiers.modifier.value" value="{{gmm.blueprint.ability_modifiers.modifier.value}}" />
+                                    <label class="checkbox">
+                                        <input type="checkbox" name="gmm.blueprint.ability_modifiers.modifier.override" {{#if gmm.blueprint.ability_modifiers.modifier.override}} checked{{/if}} /> {{localize 'gmm.monster.blueprint.is_fixed'}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-section" data-section="condition-immunities">
+                        <div class="accordion-section__header">
+                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.condition_immunities.title'}}</span>
+                        </div>
+                        <div class="accordion-section__body">
+                            <div class="form-group">
+                                <div class="form-group__header">
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.condition_immunities.options'}}</span>
+                                </div>
+                                <div class="form-group__body">
+                                    <div class="checkboxes">
+                                        {{#each gmm.enums.conditions}}
                                         <label class="checkbox">
-                                            <!--onclick="{selectiveCheck {../ gmm.monster.tst_count } {.}}"-->
-                                            <input type="checkbox" class="tstCheckbox" name="gmm.blueprint.trained_saves.{{.}}.trained" {{#if (getSaveTrain ../gmm.blueprint.trained_saves .)}} checked{{/if}} />
-                                            <i class="{{localize (concat 'gmm.common.ability.' . '.icon')}} fa-fw"></i>
-                                            &nbsp;{{localize (concat 'gmm.common.ability.' . '.name')}}
+                                            <input type="checkbox" name="gmm.blueprint.condition_immunities.{{.}}" {{#if (lookup ../gmm.blueprint.condition_immunities .)}} checked{{/if}} /> {{localize (concat 'gmm.common.condition.' .)}}
                                         </label>
                                         {{/each}}
                                     </div>
                                 </div>
                             </div>
-                            {{/if}}
-                            <div class="form-group form-group--modifier">
+                            <div class="form-group">
                                 <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.saving_throws.modifiers'}}</span>
-                                    <button type="button" class="button button--help" data-action="open-modal" data-modal="modal_modifying_abilities">
-                                        <i class="fas fa-question"></i>
-                                    </button>
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.condition_immunities.other'}}</span>
+                                </div>
+                                <div class="form-group__body">
+                                    <input name="gmm.blueprint.condition_immunities.other" value="{{gmm.blueprint.condition_immunities.other}}" />
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <div class="accordion-section" data-section="damage-immunities">
+                        <div class="accordion-section__header">
+                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.damage_immunities.title'}}</span>
+                        </div>
+                        <div class="accordion-section__body">
+                            <div class="form-group">
+                                <div class="form-group__header">
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.damage_immunities.options'}}</span>
+                                </div>
+                                <div class="form-group__body">
+                                    <div class="checkboxes">
+                                        {{#each gmm.enums.damage_types}}
+                                        <label class="checkbox">
+                                            <input type="checkbox" name="gmm.blueprint.damage_immunities.{{.}}" {{#if (lookup ../gmm.blueprint.damage_immunities .)}} checked{{/if}} /> {{localize (concat 'gmm.common.damage.' .)}}
+                                        </label>
+                                        {{/each}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-group__header">
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.damage_immunities.other'}}</span>
+                                </div>
+                                <div class="form-group__body">
+                                    <input name="gmm.blueprint.damage_immunities.other" value="{{gmm.blueprint.damage_immunities.other}}" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-section" data-section="damage-resistances">
+                        <div class="accordion-section__header">
+                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.damage_resistances.title'}}</span>
+                        </div>
+                        <div class="accordion-section__body">
+                            <div class="form-group">
+                                <div class="form-group__header">
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.damage_resistances.options'}}</span>
+                                </div>
+                                <div class="form-group__body">
+                                    <div class="checkboxes">
+                                        {{#each gmm.enums.damage_types}}
+                                        <label class="checkbox">
+                                            <input type="checkbox" name="gmm.blueprint.damage_resistances.{{.}}" {{#if (lookup ../gmm.blueprint.damage_resistances .)}} checked{{/if}} /> {{localize (concat 'gmm.common.damage.' .)}}
+                                        </label>
+                                        {{/each}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-group__header">
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.damage_resistances.other'}}</span>
+                                </div>
+                                <div class="form-group__body">
+                                    <input name="gmm.blueprint.damage_resistances.other" value="{{gmm.blueprint.damage_resistances.other}}" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-section" data-section="damage-vulnerabilities">
+                        <div class="accordion-section__header">
+                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.damage_vulnerabilities.title'}}</span>
+                        </div>
+                        <div class="accordion-section__body">
+                            <div class="form-group">
+                                <div class="form-group__header">
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.damage_vulnerabilities.options'}}</span>
+                                </div>
+                                <div class="form-group__body">
+                                    <div class="checkboxes">
+                                        {{#each gmm.enums.damage_types}}
+                                        <label class="checkbox">
+                                            <input type="checkbox" name="gmm.blueprint.damage_vulnerabilities.{{.}}" {{#if (lookup ../gmm.blueprint.damage_vulnerabilities .)}} checked{{/if}} /> {{localize (concat 'gmm.common.damage.' .)}}
+                                        </label>
+                                        {{/each}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-group__header">
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.damage_vulnerabilities.other'}}</span>
+                                </div>
+                                <div class="form-group__body">
+                                    <input name="gmm.blueprint.damage_vulnerabilities.other" value="{{gmm.blueprint.damage_vulnerabilities.other}}" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="accordion-section" data-section="senses">
                         <div class="accordion-section__header">
                             <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.senses.title'}}</span>
@@ -1502,6 +858,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="accordion-section" data-section="skills">
                         <div class="accordion-section__header">
                             <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.skills.title'}}</span>
@@ -1526,6 +883,7 @@
                             {{/each}}
                         </div>
                     </div>
+
                     <div class="accordion-section" data-section="speed">
                         <div class="accordion-section__header">
                             <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.speeds.title'}}</span>
@@ -1598,6 +956,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="accordion-section" data-section="spellbook">
                         <div class="accordion-section__header">
                             <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.spellbook.title'}}</span>
@@ -1748,34 +1107,699 @@
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-section" data-section="traits">
+                </div>
+                <div class="accordion-group">
+
+                    <div class="accordion-section" data-section="armor-class">
                         <div class="accordion-section__header">
-                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.traits.title'}}</span>
-                            {{#if gmm.blueprint.traits.items}}
+                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.armor_class.title'}}</span>
                             <span class="accordion-section__info">
-                                <span class="badge">{{gmm.blueprint.traits.items.length}}</span>
+                                {{#if gmm.blueprint.armor_class.modifier.value includeZero=true}}
+                                <span class="modifier"></span>
+                                {{/if}}
+                            </span>
+                        </div>
+                        <div class="accordion-section__body">
+                            <div class="form-group">
+                                <div class="form-group__header">
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.armor_class.type'}}</span>
+                                </div>
+                                <div class="form-group__body">
+                                    <input name="gmm.blueprint.armor_class.type" value="{{gmm.blueprint.armor_class.type}}" />
+                                </div>
+                            </div>
+                            <div class="form-group form-group--modifier">
+                                <div class="form-group__header">
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.armor_class.modifier'}}</span>
+                                    <button type="button" class="button button--help" data-action="open-modal" data-modal="modal_modifiers">
+                                        <i class="fas fa-question"></i>
+                                    </button>
+                                </div>
+                                <div class="form-group__body">
+                                    <input name="gmm.blueprint.armor_class.modifier.value" type="number" value="{{gmm.blueprint.armor_class.modifier.value}}" />
+                                    <label class="checkbox">
+                                        <input type="checkbox" name="gmm.blueprint.armor_class.modifier.override" {{#if gmm.blueprint.armor_class.modifier.override}} checked{{/if}} /> {{localize 'gmm.monster.blueprint.is_fixed'}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-section" data-section="attack-dc">
+                        <div class="accordion-section__header">
+                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.attack_dcs.title'}}</span>
+                            <span class="accordion-section__info">
+                                {{#if gmm.blueprint.attack_dcs.primary.modifier.value includeZero=true}}
+                                <span class="modifier"></span>
+                                {{/if}}
+                            </span>
+                        </div>
+                        <div class="accordion-section__body">
+                            <div class="form-fieldset">
+                                <div class="form-group">
+                                    <div class="form-group__header">
+                                        <span class="form-group__title">{{localize 'gmm.monster.blueprint.attack_dcs.type'}}</span>
+                                    </div>
+                                    <div class="form-group__body">
+                                        <input name="gmm.blueprint.attack_dcs.primary.type" value="{{gmm.blueprint.attack_dcs.primary.type}}" />
+                                    </div>
+                                </div>
+                                <div class="form-group form-group--modifier">
+                                    <div class="form-group__header">
+                                        <span class="form-group__title">{{localize 'gmm.monster.blueprint.attack_dcs.modifier'}}</span>
+                                        <button type="button" class="button button--help" data-action="open-modal" data-modal="modal_modifiers">
+                                            <i class="fas fa-question"></i>
+                                        </button>
+                                    </div>
+                                    <div class="form-group__body">
+                                        <input name="gmm.blueprint.attack_dcs.primary.modifier.value" type="number" value="{{gmm.blueprint.attack_dcs.primary.modifier.value}}" />
+                                        <label class="checkbox">
+                                            <input type="checkbox" name="gmm.blueprint.attack_dcs.primary.modifier.override" {{#if gmm.blueprint.attack_dcs.primary.modifier.override}} checked{{/if}} /> {{localize 'gmm.monster.blueprint.is_fixed'}}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-section" data-section="damage-per-action">
+                        <div class="accordion-section__header">
+                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.damage.title'}}</span>
+                            <span class="accordion-section__info">
+                                {{#if gmm.blueprint.damage_per_action.modifier.value includeZero=true}}
+                                <span class="modifier"></span>
+                                {{/if}}
+                            </span>
+                        </div>
+                        <div class="accordion-section__body">
+                            <div class="form-group">
+                                <div class="form-group__header">
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.damage.type'}}</span>
+                                </div>
+                                <div class="form-group__body">
+                                    <input name="gmm.blueprint.damage_per_action.type" value="{{gmm.blueprint.damage_per_action.type}}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-group__header">
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.damage.dice_size'}}</span>
+                                </div>
+                                <div class="form-group__body">
+                                    <select name="gmm.blueprint.damage_per_action.die_size">
+                                        {{#select gmm.blueprint.damage_per_action.die_size}}
+                                        <option value="4">d4</option>
+                                        <option value="6">d6</option>
+                                        <option value="8">d8</option>
+                                        <option value="10">d10</option>
+                                        <option value="12">d12</option>
+                                        <option value="20">d20</option>
+                                        <option value="100">d100</option>
+                                        {{/select}}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-group__header">
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.damage.maximum_dice'}}</span>
+                                </div>
+                                <div class="form-group__body">
+                                    <input name="gmm.blueprint.damage_per_action.maximum_dice" type="number" placeholder="0" value="{{gmm.blueprint.damage_per_action.maximum_dice}}" />
+                                </div>
+                            </div>
+                            <div class="form-group form-group--modifier">
+                                <div class="form-group__header">
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.damage.modifier'}}</span>
+                                    <button type="button" class="button button--help" data-action="open-modal" data-modal="modal_modifiers">
+                                        <i class="fas fa-question"></i>
+                                    </button>
+                                </div>
+                                <div class="form-group__body">
+                                    <input name="gmm.blueprint.damage_per_action.modifier.value" type="number" value="{{gmm.blueprint.damage_per_action.modifier.value}}" />
+                                    <label class="checkbox">
+                                        <input type="checkbox" name="gmm.blueprint.damage_per_action.modifier.override" {{#if gmm.blueprint.damage_per_action.modifier.override}} checked{{/if}} /> {{localize 'gmm.monster.blueprint.is_fixed'}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-section" data-section="hit-points">
+                        <div class="accordion-section__header">
+                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.hit_points.title'}}</span>
+                            <span class="accordion-section__info">
+                                {{#if gmm.blueprint.hit_points.maximum.modifier.value includeZero=true}}
+                                <span class="modifier"></span>
+                                {{/if}}
+                            </span>
+                        </div>
+                        <div class="accordion-section__body">
+                            <div class="form-group">
+                                <div class="form-group__header">
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.hit_points.current'}}</span>
+                                </div>
+                                <div class="form-group__body">
+                                    <input name="gmm.blueprint.hit_points.current" type="number" min="0" value="{{gmm.blueprint.hit_points.current}}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-group__header">
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.hit_points.temporary'}}</span>
+                                </div>
+                                <div class="form-group__body">
+                                    <input name="gmm.blueprint.hit_points.temporary" type="number" min="0" value="{{gmm.blueprint.hit_points.temporary}}" />
+                                </div>
+                            </div>
+                            <div class="form-fieldset">
+                                <div class="form-fieldset__header">{{localize 'gmm.monster.blueprint.hit_points.maximum'}}</div>
+                                <div class="form-fieldset__body">
+                                    <div class="form-group form-group--modifier">
+                                        <div class="form-group__header">
+                                            <span class="form-group__title">{{localize 'gmm.monster.blueprint.hit_points.modifier'}}</span>
+                                            <button type="button" class="button button--help" data-action="open-modal" data-modal="modal_modifiers">
+                                                <i class="fas fa-question"></i>
+                                            </button>
+                                        </div>
+                                        <div class="form-group__body">
+                                            <input name="gmm.blueprint.hit_points.maximum.modifier.value" type="number" value="{{gmm.blueprint.hit_points.maximum.modifier.value}}" />
+                                            <label class="checkbox">
+                                                <input type="checkbox" name="gmm.blueprint.hit_points.maximum.modifier.override" {{#if gmm.blueprint.hit_points.maximum.modifier.override}} checked{{/if}} /> {{localize 'gmm.monster.blueprint.is_fixed'}}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-fieldset">
+                                <div class="form-fieldset__header">{{localize 'gmm.monster.blueprint.hit_points.formula'}}</div>
+                                <div class="form-fieldset__body">
+                                    <div class="form-group form-group--modifier">
+                                        <div class="form-group__header">
+                                            <span class="form-group__title">{{localize 'gmm.monster.blueprint.hit_points.use_formula'}}</span>
+                                        </div>
+                                        <div class="form-group__body">
+                                            <input type="checkbox" name="gmm.blueprint.hit_points.maximum.use_formula" {{#if gmm.blueprint.hit_points.maximum.use_formula}} checked{{/if}} />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-group__header">
+                                            <span class="form-group__title">{{localize 'gmm.monster.blueprint.hit_points.dice_size'}}</span>
+                                        </div>
+                                        <div class="form-group__body">
+                                            <select name="gmm.blueprint.hit_points.maximum.die_size">
+                                                {{#select gmm.blueprint.hit_points.maximum.die_size}}
+                                                <option value="4">d4</option>
+                                                <option value="6">d6</option>
+                                                <option value="8">d8</option>
+                                                <option value="10">d10</option>
+                                                <option value="12">d12</option>
+                                                <option value="20">d20</option>
+                                                <option value="100">d100</option>
+                                                {{/select}}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-group__header">
+                                            <span class="form-group__title">{{localize 'gmm.monster.blueprint.hit_points.maximum_dice'}}</span>
+                                        </div>
+                                        <div class="form-group__body">
+                                            <input name="gmm.blueprint.hit_points.maximum.maximum_dice" type="number" placeholder="0" value="{{gmm.blueprint.hit_points.maximum.maximum_dice}}" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-section" data-section="initiative">
+                        <div class="accordion-section__header">
+                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.initiative.title'}}</span>
+                            <span class="accordion-section__info">
+                                {{#if gmm.blueprint.hit_points.initiative.modifier.value includeZero=true}}
+                                <span class="modifier"></span>
+                                {{/if}}
+                            </span>
+                        </div>
+                        <div class="accordion-section__body">
+                            <div class="form-group">
+                                <div class="form-group__header">
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.initiative.ability'}}</span>
+                                </div>
+                                <div class="form-group__body">
+                                    <select name="gmm.blueprint.initiative.ability">
+                                        {{#select gmm.blueprint.initiative.ability}}
+                                        {{#each gmm.enums.abilities}}
+                                        <option value="{{.}}">{{localize (concat 'gmm.common.ability.' . '.name')}}</option>
+                                        {{/each}}
+                                        {{/select}}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group form-group--modifier">
+                                <div class="form-group__header">
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.initiative.advantage'}}</span>
+                                </div>
+                                <div class="form-group__body">
+                                    <input type="checkbox" name="gmm.blueprint.initiative.advantage" {{#if gmm.blueprint.initiative.advantage}} checked{{/if}} />
+                                </div>
+                            </div>
+                            <div class="form-group form-group--modifier">
+                                <div class="form-group__header">
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.initiative.modifier'}}</span>
+                                    <button type="button" class="button button--help" data-action="open-modal" data-modal="modal_modifiers">
+                                        <i class="fas fa-question"></i>
+                                    </button>
+                                </div>
+                                <div class="form-group__body">
+                                    <input name="gmm.blueprint.initiative.modifier.value" type="number" value="{{gmm.blueprint.initiative.modifier.value}}" />
+                                    <label class="checkbox">
+                                        <input type="checkbox" name="gmm.blueprint.initiative.modifier.override" {{#if gmm.blueprint.initiative.modifier.override}} checked{{/if}} /> {{localize 'gmm.monster.blueprint.is_fixed'}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-section" data-section="legendary-resistances">
+                        <div class="accordion-section__header">
+                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.legendary_resistances.title'}}</span>
+                        </div>
+                        <div class="accordion-section__body">
+                            <div class="form-group form-group--modifier">
+                                <div class="form-group__header">
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.legendary_resistances.always_show'}}</span>
+                                </div>
+                                <div class="form-group__body">
+                                    <input type="checkbox" name="gmm.blueprint.legendary_resistances.always_show" {{#if gmm.blueprint.legendary_resistances.always_show}} checked{{/if}} />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-group__header">
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.legendary_resistances.current'}}</span>
+                                </div>
+                                <div class="form-group__body">
+                                    <input name="gmm.blueprint.legendary_resistances.current" value="{{gmm.blueprint.legendary_resistances.current}}" type="number" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-group__header">
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.legendary_resistances.maximum'}}</span>
+                                </div>
+                                <div class="form-group__body">
+                                    <input name="gmm.blueprint.legendary_resistances.maximum" value="{{gmm.blueprint.legendary_resistances.maximum}}" type="number" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-section" data-section="paragon-actions">
+                        <div class="accordion-section__header">
+                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.paragon_actions.title'}}</span>
+                            <span class="accordion-section__info">
+                                {{#if gmm.blueprint.paragon_actions.maximum.modifier.value includeZero=true}}
+                                <span class="modifier"></span>
+                                {{/if}}
+                            </span>
+                        </div>
+                        <div class="accordion-section__body">
+                            <div class="form-group form-group--modifier">
+                                <div class="form-group__header">
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.paragon_actions.always_show'}}</span>
+                                </div>
+                                <div class="form-group__body">
+                                    <input type="checkbox" name="gmm.blueprint.paragon_actions.always_show" {{#if gmm.blueprint.paragon_actions.always_show}} checked{{/if}} />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-group__header">
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.paragon_actions.current'}}</span>
+                                </div>
+                                <div class="form-group__body">
+                                    <input name="gmm.blueprint.paragon_actions.current" value="{{gmm.blueprint.paragon_actions.current}}" type="number" />
+                                </div>
+                            </div>
+                            <div class="form-fieldset">
+                                <div class="form-fieldset__header">{{localize 'gmm.monster.blueprint.paragon_actions.maximum'}}</div>
+                                <div class="form-fieldset__body">
+                                    <div class="form-group form-group--modifier">
+                                        <div class="form-group__header">
+                                            <span class="form-group__title">{{localize 'gmm.monster.blueprint.paragon_actions.modifier'}}</span>
+                                            <button type="button" class="button button--help" data-action="open-modal" data-modal="modal_modifiers">
+                                                <i class="fas fa-question"></i>
+                                            </button>
+                                        </div>
+                                        <div class="form-group__body">
+                                            <input name="gmm.blueprint.paragon_actions.maximum.modifier.value" type="number" value="{{gmm.blueprint.paragon_actions.maximum.modifier.value}}" />
+                                            <label class="checkbox">
+                                                <input type="checkbox" name="gmm.blueprint.paragon_actions.maximum.modifier.override" {{#if gmm.blueprint.paragon_actions.maximum.modifier.override}} checked{{/if}} /> {{localize 'gmm.monster.blueprint.is_fixed'}}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-section" data-section="paragon-defenses">
+                        <div class="accordion-section__header">
+                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.paragon_defenses.title'}}</span>
+                        </div>
+                        <div class="accordion-section__body">
+                            <div class="form-group form-group--modifier">
+                                <div class="form-group__header">
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.paragon_defenses.always_show'}}</span>
+                                </div>
+                                <div class="form-group__body">
+                                    <input type="checkbox" name="gmm.blueprint.paragon_defenses.always_show" {{#if gmm.blueprint.paragon_defenses.always_show}} checked{{/if}} />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-group__header">
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.paragon_defenses.current'}}</span>
+                                </div>
+                                <div class="form-group__body">
+                                    <input name="gmm.blueprint.paragon_defenses.current" value="{{gmm.blueprint.paragon_defenses.current}}" type="number" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-group__header">
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.paragon_defenses.maximum'}}</span>
+                                </div>
+                                <div class="form-group__body">
+                                    <input name="gmm.blueprint.paragon_defenses.maximum.modifier.value" value="{{gmm.blueprint.paragon_defenses.maximum.modifier.value}}" type="number" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-section" data-section="passive-perception">
+                        <div class="accordion-section__header">
+                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.passive_perception.title'}}</span>
+                            <span class="accordion-section__info">
+                                {{#if gmm.blueprint.passive_perception.modifier.value includeZero=true}}
+                                <span class="modifier"></span>
+                                {{/if}}
+                            </span>
+                        </div>
+                        <div class="accordion-section__body">
+                            <div class="form-group form-group--modifier">
+                                <div class="form-group__header">
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.passive_perception.modifier'}}</span>
+                                    <button type="button" class="button button--help" data-action="open-modal" data-modal="modal_modifiers">
+                                        <i class="fas fa-question"></i>
+                                    </button>
+                                </div>
+                                <div class="form-group__body">
+                                    <input name="gmm.blueprint.passive_perception.modifier.value" type="number" value="{{gmm.blueprint.passive_perception.modifier.value}}" />
+                                    <label class="checkbox">
+                                        <input type="checkbox" name="gmm.blueprint.passive_perception.modifier.override" {{#if gmm.blueprint.passive_perception.modifier.override}} checked{{/if}} /> {{localize 'gmm.monster.blueprint.is_fixed'}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-section" data-section="attack-bonus">
+                        <div class="accordion-section__header">
+                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.attack_bonus.title'}}</span>
+                            <span class="accordion-section__info">
+                                {{#if gmm.blueprint.attack_bonus.modifier.value includeZero=true}}
+                                <span class="modifier"></span>
+                                {{/if}}
+                            </span>
+                        </div>
+                        <div class="accordion-section__body">
+                            <div class="form-group form-group--modifier">
+                                <div class="form-group__header">
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.attack_bonus.modifier'}}</span>
+                                    <button type="button" class="button button--help" data-action="open-modal" data-modal="modal_modifiers">
+                                        <i class="fas fa-question"></i>
+                                    </button>
+                                </div>
+                                <div class="form-group__body">
+                                    <input name="gmm.blueprint.attack_bonus.modifier.value" type="number" value="{{gmm.blueprint.attack_bonus.modifier.value}}" />
+                                    <label class="checkbox">
+                                        <input type="checkbox" name="gmm.blueprint.attack_bonus.modifier.override" {{#if gmm.blueprint.attack_bonus.modifier.override}} checked{{/if}} /> {{localize 'gmm.monster.blueprint.is_fixed'}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-section" data-section="saving-throws">
+                        <div class="accordion-section__header">
+                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.saving_throws.title'}}</span>
+                            <span class="accordion-section__info">
+                                {{#if (getTstCount gmm.monster.tst_count) includeZero=false}}
+                                <span class="modifier"></span>
+                                {{/if}}
+                            </span>
+                        </div>
+                        <div class="accordion-section__body">
+                            <div class="form-group">
+                                <div class="form-group__header">
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.saving_throws.method.title'}}</span>
+                                </div>
+                                <div class="form-group__body">
+                                    <select name="gmm.blueprint.trained_saves.method">
+                                        {{#select gmm.blueprint.trained_saves.method}}
+                                        <option value="sync">{{localize 'gmm.monster.blueprint.saving_throws.method.sync'}}</option>
+                                        <option value="custom">{{localize 'gmm.monster.blueprint.saving_throws.method.custom'}}</option>
+                                        {{/select}}
+                                    </select>
+                                </div>
+                            </div>
+                            {{#if (eq gmm.blueprint.trained_saves.method 'custom')}}
+                            <div class="form-group">
+                                <div class="form-group__header">
+                                    <div class="form-group__title">{{localize 'gmm.monster.blueprint.is_trained'}}</div>
+                                    <button type="button" class="button button--help" data-action="open-modal" data-modal="modal_ranked_abilities">
+                                        <i class="fas fa-question"></i>
+                                    </button>
+                                    <div><i class="fas fa-exclamation-point">Max: {{gmm.monster.tst_count}} </i></div>
+                                </div>
+                                <div class="form-group__body save_rankings">
+                                    <div class="checkboxes" id="monster__tst_count" name="{{gmm.monster.tst_count}}">
+                                        {{#each gmm.enums.abilities}}
+                                        <label class="checkbox">
+                                            <!--onclick="{selectiveCheck {../ gmm.monster.tst_count } {.}}"-->
+                                            <input type="checkbox" class="tstCheckbox" name="gmm.blueprint.trained_saves.{{.}}.trained" {{#if (getSaveTrain ../gmm.blueprint.trained_saves .)}} checked{{/if}} />
+                                            <i class="{{localize (concat 'gmm.common.ability.' . '.icon')}} fa-fw"></i>
+                                            &nbsp;{{localize (concat 'gmm.common.ability.' . '.name')}}
+                                        </label>
+                                        {{/each}}
+                                    </div>
+                                </div>
+                            </div>
+                            {{/if}}
+                            <div class="form-group form-group--modifier">
+                                <div class="form-group__header">
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.saving_throws.modifiers'}}</span>
+                                    <button type="button" class="button button--help" data-action="open-modal" data-modal="modal_modifying_abilities">
+                                        <i class="fas fa-question"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-group">
+                    <div class="accordion-section" data-section="biography">
+                        <div class="accordion-section__header">
+                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.biography.title'}}</span>
+                        </div>
+                        <div class="accordion-section__body">
+                            <div class="form-group form-group--modifier">
+                                <div class="form-group__header">
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.biography.always_hide'}}</span>
+                                </div>
+                                <div class="form-group__body">
+                                    <input type="checkbox" name="gmm.blueprint.biography.always_hide" {{#if gmm.blueprint.biography.always_hide}} checked{{/if}} />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-group__body">
+                                    <div class="html-field">
+                                        {{editor gmm.blueprint.biography.text target='gmm.blueprint.biography.text' button=true owner=owner editable=editable}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-section" data-section="languages">
+                        <div class="accordion-section__header">
+                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.languages.title'}}</span>
+                        </div>
+                        <div class="accordion-section__body">
+                            <div class="form-group">
+                                <div class="form-group__header">
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.languages.options'}}</span>
+                                </div>
+                                <div class="form-group__body">
+                                    <div class="checkboxes">
+                                        {{#each gmm.enums.languages}}
+                                        <label class="checkbox">
+                                            <input type="checkbox" name="gmm.blueprint.languages.{{.}}" {{#if (lookup ../gmm.blueprint.languages .)}} checked{{/if}} /> {{localize (concat 'gmm.common.language.' .)}}
+                                        </label>
+                                        {{/each}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-group__header">
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.languages.other'}}</span>
+                                </div>
+                                <div class="form-group__body">
+                                    <input name="gmm.blueprint.languages.other" value="{{gmm.blueprint.languages.other}}" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-group">
+
+                    <div class="accordion-section" data-section="challenge-rating">
+                        <div class="accordion-section__header">
+                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.challenge_rating.title'}}</span>
+                            <span class="accordion-section__info">
+                                {{#if gmm.blueprint.challenge_rating.modifier.value includeZero=true}}
+                                <span class="modifier"></span>
+                                {{/if}}
+                            </span>
+                        </div>
+                        <div class="accordion-section__body">
+                            <div class="form-group form-group--modifier">
+                                <div class="form-group__header">
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.challenge_rating.modifier'}}</span>
+                                    <button type="button" class="button button--help" data-action="open-modal" data-modal="modal_modifiers">
+                                        <i class="fas fa-question"></i>
+                                    </button>
+                                </div>
+                                <div class="form-group__body">
+                                    <input name="gmm.blueprint.challenge_rating.modifier.value" type="number" value="{{gmm.blueprint.challenge_rating.modifier.value}}" />
+                                    <label class="checkbox">
+                                        <input type="checkbox" name="gmm.blueprint.challenge_rating.modifier.override" {{#if gmm.blueprint.challenge_rating.modifier.override}} checked{{/if}} /> {{localize 'gmm.monster.blueprint.is_fixed'}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-section" data-section="inventory">
+                        <div class="accordion-section__header">
+                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.inventory.title'}}</span>
+                            {{#if gmm.blueprint.inventory.total}}
+                            <span class="accordion-section__info">
+                                <span class="badge">{{gmm.blueprint.inventory.total}}</span>
                             </span>
                             {{/if}}
                         </div>
                         <div class="accordion-section__body">
                             <div class="form-group form-group--modifier">
                                 <div class="form-group__header">
-                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.traits.always_show'}}</span>
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.inventory.always_show'}}</span>
                                 </div>
                                 <div class="form-group__body">
-                                    <input type="checkbox" name="gmm.blueprint.traits.always_show" {{#if gmm.blueprint.traits.always_show}} checked{{/if}} />
+                                    <input type="checkbox" name="gmm.blueprint.inventory.always_show" {{#if gmm.blueprint.inventory.always_show}} checked{{/if}} />
+                                </div>
+                            </div>
+                            <div class="form-fieldset">
+                                <div class="form-fieldset__header">{{localize 'gmm.monster.blueprint.inventory.currency.title'}}</div>
+                                <div class="form-fieldset__body">
+                                    <div class="form-group form-group--modifier">
+                                        <div class="form-group__header">
+                                            <span class="form-group__title">{{localize 'gmm.monster.blueprint.inventory.currency.always_show'}}</span>
+                                        </div>
+                                        <div class="form-group__body">
+                                            <input type="checkbox" name="gmm.blueprint.inventory.currency.always_show" {{#if gmm.blueprint.inventory.currency.always_show}} checked{{/if}} />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-group__header">
+                                            <span class="form-group__title">{{localize 'gmm.monster.blueprint.inventory.currency.cp'}}</span>
+                                        </div>
+                                        <div class="form-group__body">
+                                            <input name="gmm.blueprint.inventory.currency.cp" value="{{gmm.blueprint.inventory.currency.cp}}" type="number" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-group__header">
+                                            <span class="form-group__title">{{localize 'gmm.monster.blueprint.inventory.currency.sp'}}</span>
+                                        </div>
+                                        <div class="form-group__body">
+                                            <input name="gmm.blueprint.inventory.currency.sp" value="{{gmm.blueprint.inventory.currency.sp}}" type="number" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-group__header">
+                                            <span class="form-group__title">{{localize 'gmm.monster.blueprint.inventory.currency.ep'}}</span>
+                                        </div>
+                                        <div class="form-group__body">
+                                            <input name="gmm.blueprint.inventory.currency.ep" value="{{gmm.blueprint.inventory.currency.ep}}" type="number" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-group__header">
+                                            <span class="form-group__title">{{localize 'gmm.monster.blueprint.inventory.currency.gp'}}</span>
+                                        </div>
+                                        <div class="form-group__body">
+                                            <input name="gmm.blueprint.inventory.currency.gp" value="{{gmm.blueprint.inventory.currency.gp}}" type="number" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-group__header">
+                                            <span class="form-group__title">{{localize 'gmm.monster.blueprint.inventory.currency.pp'}}</span>
+                                        </div>
+                                        <div class="form-group__body">
+                                            <input name="gmm.blueprint.inventory.currency.pp" value="{{gmm.blueprint.inventory.currency.pp}}" type="number" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-fieldset">
+                                <div class="form-fieldset__header">{{localize 'gmm.monster.blueprint.inventory.encumbrance.title'}}</div>
+                                <div class="form-fieldset__body">
+                                    <div class="form-group form-group--modifier">
+                                        <div class="form-group__header">
+                                            <span class="form-group__title">{{localize 'gmm.monster.blueprint.inventory.encumbrance.always_show'}}</span>
+                                        </div>
+                                        <div class="form-group__body">
+                                            <input type="checkbox" name="gmm.blueprint.inventory.encumbrance.always_show" {{#if gmm.blueprint.inventory.encumbrance.always_show}} checked{{/if}} />
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group--modifier">
+                                        <div class="form-group__header">
+                                            <span class="form-group__title">{{localize 'gmm.monster.blueprint.inventory.encumbrance.powerful_build'}}</span>
+                                        </div>
+                                        <div class="form-group__body">
+                                            <input type="checkbox" name="gmm.blueprint.inventory.encumbrance.powerful_build" {{#if gmm.blueprint.inventory.encumbrance.powerful_build}} checked{{/if}} />
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group--modifier">
+                                        <div class="form-group__header">
+                                            <span class="form-group__title">{{localize 'gmm.monster.blueprint.inventory.encumbrance.weight'}}</span>
+                                        </div>
+                                        <div class="form-group__body">
+                                            <input name="gmm.blueprint.inventory.encumbrance.weight.modifier.value" type="number" value="{{gmm.blueprint.inventory.encumbrance.weight.modifier.value}}" />
+                                            <label class="checkbox">
+                                                <input type="checkbox" name="gmm.blueprint.inventory.encumbrance.weight.modifier.override" {{#if gmm.blueprint.inventory.encumbrance.weight.modifier.override}} checked{{/if}} /> {{localize 'gmm.monster.blueprint.is_fixed'}}
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group--modifier">
+                                        <div class="form-group__header">
+                                            <span class="form-group__title">{{localize 'gmm.monster.blueprint.inventory.encumbrance.capacity'}}</span>
+                                        </div>
+                                        <div class="form-group__body">
+                                            <input name="gmm.blueprint.inventory.encumbrance.capacity.modifier.value" type="number" value="{{gmm.blueprint.inventory.encumbrance.capacity.modifier.value}}" />
+                                            <label class="checkbox">
+                                                <input type="checkbox" name="gmm.blueprint.inventory.encumbrance.capacity.modifier.override" {{#if gmm.blueprint.inventory.encumbrance.capacity.modifier.override}} checked{{/if}} /> {{localize 'gmm.monster.blueprint.is_fixed'}}
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-fieldset">
                                 <div class="form-fieldset__header">
-                                    <span>{{localize 'gmm.monster.blueprint.traits.items'}}</span>
-                                    <button type="button" data-action="add-item" data-type="feat">
-                                        {{localize 'gmm.monster.blueprint.traits.add'}}
+                                    <span>{{localize 'gmm.monster.blueprint.inventory.items.title'}}</span>
+                                    <button type="button" data-action="add-item" data-type="loot">
+                                        {{localize 'gmm.monster.blueprint.inventory.items.add'}}
                                     </button>
                                 </div>
                                 <div class="form-fieldset__body">
                                     <div class="items item-list">
-                                        {{#each gmm.blueprint.traits.items as | item |}}
+                                        {{#each gmm.monster.inventory.items as | item |}}
                                         {{> (getTemplate "monster/skins/vanity/partials/blueprint_item.html") item=.}}
                                         {{/each}}
                                     </div>
@@ -1783,6 +1807,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="accordion-section" data-section="xp">
                         <div class="accordion-section__header">
                             <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.xp.title'}}</span>
