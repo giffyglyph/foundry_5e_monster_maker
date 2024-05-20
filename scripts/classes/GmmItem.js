@@ -9,10 +9,10 @@ import { GMM_MODULE_TITLE } from '../consts/GmmModuleTitle.js';
 const GmmItem = (function () {
     function simplifyRollFormula(...args) {
         return dnd5e.dice.simplifyRollFormula(...args);
-    }
+    }/*
     function damageRoll(...args) {
         return dnd5e.dice.damageRoll(...args);
-    }
+    }*/
     /**
      * Patch the Foundry Item5e entity to control how data is prepared based on the active sheet.
      */
@@ -49,18 +49,18 @@ const GmmItem = (function () {
         }, 'MIXED');
         libWrapper.register('giffyglyph-monster-maker-continued', 'game.dnd5e.documents.Item5e.prototype.rollDamage', function (wrapped, ...args) {
             if (this.getSheetId() == `${GMM_MODULE_TITLE}.ActionSheet` && this.isOwnedByGmmMonster()) {
-                return _rollActionDamage({
+                return wrapped(_rollActionDamage({
                     item: this,
                     critical: args[0]?.critical ?? false,
                     event: args[0]?.event ?? null,
                     spellLevel: args[0]?.spellLevel ?? null,
                     versatile: args[0]?.versatile ?? false,
                     options: args[0]?.options ?? {}
-                });
+                }));
             } else {
                 return wrapped(...args);
             }
-        }, 'MIXED');
+        }, 'WRAPPER');
         libWrapper.register('giffyglyph-monster-maker-continued', 'CONFIG.Item.documentClass.prototype.use', function (wrapped, ...args) {
             if (this.getSheetId() == `${GMM_MODULE_TITLE}.ActionSheet` && this.isOwnedByGmmMonster()) {
                 const gmmMonster = this.getOwningGmmMonster();
@@ -95,7 +95,6 @@ const GmmItem = (function () {
                 return wrapped(...args);
             }
         }, 'MIXED');
-
         /*
 
         */
@@ -105,8 +104,8 @@ const GmmItem = (function () {
         //game.dnd5e.documents.Item5e.prototype.getAttackToHit = _getAttackToHit;
         game.dnd5e.documents.Item5e.prototype.get5eSaveDC = game.dnd5e.documents.Item5e.prototype.getSaveDC;
         //game.dnd5e.documents.Item5e.prototype.getSaveDC = _getSaveDC;
-        game.dnd5e.documents.Item5e.prototype.roll5eDamage = game.dnd5e.documents.Item5e.prototype.rollDamage;
         //game.dnd5e.documents.Item5e.prototype.rollDamage = _rollDamage;
+        game.dnd5e.documents.Item5e.prototype.roll5eDamage = game.dnd5e.documents.Item5e.prototype.rollDamage;
         //game.dnd5e.documents.Item5e.prototype.rollFormula = _rollFormula;
 
         game.dnd5e.documents.Item5e.prototype.prepareShortcodes = _prepareShortcodes;
@@ -545,7 +544,8 @@ const GmmItem = (function () {
         }
 
         // Call the roll helper utility
-        return damageRoll(mergeObject(rollConfig, options));
+        //return damageRoll(mergeObject(rollConfig, options));
+        return mergeObject(rollConfig, options);
     }
     function _getSortingCategory() {
         if (this.getSheetId() == `${GMM_MODULE_TITLE}.ActionSheet`) {
