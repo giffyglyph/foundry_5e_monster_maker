@@ -7,7 +7,7 @@
 [![BlueSky](https://img.shields.io/badge/%40Skyl3lazer_on_BlueSky-grey?logo=bluesky&logoColor=%230285FF&labelColor=grey)](https://bsky.app/profile/skyl3lazer.bsky.social)
 [![Discord](https://img.shields.io/badge/contact-me-blue?logo=discord&logoColor=white)](https://discord.com/channels/@skyl3lazer)
 
-## v1.1.0.2 (dev)
+## v1.1.0.3 (dev)
 
 * Added MidiQOL and DFred's Convenient Effects as 'recommended' modules. They're not required for GGMMC to function, but GGMMC has content for them if you are using them.
 * Put the compendium folders in a "Giffyglyph's Monster Maker" top level folder for easier sorting. It's green!
@@ -32,6 +32,7 @@
 * Fixed an issue if you converted a monster with no creature type.
 * #47 Compendium fixes (typos, settings, etc)
 * #42 Fixed the "add" button for inventory items not working
+* #42 (cont) If "always show" is enabled for either encumbrance or currency, the inventory will show.
 
 ## v1.0.2.1 (latest)
 
