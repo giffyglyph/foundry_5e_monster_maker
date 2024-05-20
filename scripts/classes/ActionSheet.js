@@ -9,6 +9,7 @@ import { GMM_ACTION_RANGE_TYPES } from "../consts/GmmActionRangeTypes.js";
 import { GMM_ACTION_RARITIES } from "../consts/GmmActionRarities.js";
 import { GMM_ACTION_TARGET_TYPES } from "../consts/GmmActionTargetTypes.js";
 import { GMM_ACTION_ATTACK_TYPES } from "../consts/GmmActionAttackTypes.js";
+import { GMM_DEFERRAL_TYPES } from "../consts/GmmDeferralTypes.js";
 import { GMM_ACTION_ATTACK_DAMAGE_TYPES } from "../consts/GmmActionAttackDamageTypes.js";
 import { GMM_MONSTER_RANKS } from "../consts/GmmMonsterRanks.js";
 import { GMM_MONSTER_ROLES } from "../consts/GmmMonsterRoles.js";
@@ -106,6 +107,7 @@ export default class ActionSheet extends ItemSheet {
 				layouts: GMM_GUI_LAYOUTS,
 				attack_types: GMM_ACTION_ATTACK_TYPES,
 				attack_damage_types: GMM_ACTION_ATTACK_DAMAGE_TYPES,
+				deferral_types: GMM_DEFERRAL_TYPES,
 				abilities: GMM_5E_ABILITIES,
 			}
 		};

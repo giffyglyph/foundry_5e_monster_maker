@@ -32,6 +32,11 @@ export const GMM_ACTION_BLUEPRINT = {
 			condition: null
 		},
 		cover: null,
+		deferral: {
+			type: null,
+			timer: null,
+			respite: null
+		},
 		target: {
 			value: null,
 			units: null,

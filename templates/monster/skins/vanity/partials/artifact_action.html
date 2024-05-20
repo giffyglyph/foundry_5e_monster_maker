@@ -12,21 +12,31 @@
                 {{#if item.gmmLabels.legendary_cost}}
                 <div class="item__cost">({{localize 'gmm.monster.artifact.legendary_actions.cost' cost=item.gmmLabels.legendary_cost}})</div>
                 {{/if}}
+                {{#if (or item.gmmLabels.deferral item.gmmLabels.recharge item.gmmLabels.uses)}}
+                {{#unless (or (and item.gmmLabels.recharge item.gmmLabels.deferral) (or item.gmmLabels.deferral item.gmmLabels.uses))}}
+                <div class="item__recharge">
+                    ({{item.gmmLabels.deferral.type}} {{item.gmmLabels.deferral.timer}})
+                </div>
+                {{else}}
                 {{#if item.gmmLabels.recharge}}
                 <div class="item__recharge {{#if item.recharge.charged}}charged{{/if}}">
                     {{#if item.gmmLabels.recharge.charged}}
-                    (charged)
+                    (charged{{#if (and item.gmmLabels.recharge.charged item.gmmLabels.deferral)}} , {{/if}}{{#if item.gmmLabels.deferral}}{{item.gmmLabels.deferral.type}} {{item.gmmLabels.deferral.timer}}{{/if}})
                     {{else}}
-                    <button class="button--text" data-action="recharge-item"><i class="fas fa-dice-d6"></i> recharge {{item.gmmLabels.recharge.value}}</button>
+                    <button class="button--text" data-action="recharge-item"><i class="fas fa-dice-d6"></i> recharge {{item.gmmLabels.recharge.value}}{{#if item.gmmLabels.deferral}} , {{item.gmmLabels.deferral.type}} {{item.gmmLabels.deferral.timer}}{{/if}}</button>
                     {{/if}}
                 </div>
                 {{else}}
                 {{#if item.gmmLabels.uses}}
                 <div class="item__uses">
+                    {{#if item.gmmLabels.uses}}
                     <input class="input--uses" data-action="update-item" data-target="{{item.id}}" data-field="data.uses.value" data-type="number" />
-                    <span class="value">({{item.gmmLabels.uses.current}}, {{item.gmmLabels.uses.maximum}}/{{localize (concat 'gmm.common.use_period.' item.gmmLabels.uses.per)}})</span>
+                    {{/if}}
+                    <span class="">(<span class="value">{{#if item.gmmLabels.uses}}{{item.gmmLabels.uses.current}}, {{item.gmmLabels.uses.maximum}}/{{localize (concat 'gmm.common.use_period.' item.gmmLabels.uses.per)}}{{/if}}</span>{{#if (and item.gmmLabels.uses item.gmmLabels.deferral)}} , {{/if}}{{#if item.gmmLabels.deferral}}{{item.gmmLabels.deferral.type}} {{item.gmmLabels.deferral.timer}}{{/if}})</span>
                 </div>
                 {{/if}}
+                {{/if}}
+                {{/unless}}
                 {{/if}}
             </div>
         </div>
@@ -67,22 +77,28 @@
                     <span>{{item.gmmLabels.damage_miss}}</span>
                 </span>
                 {{/if}}
+                {{#if item.gmmLabels.deferral.respite}}
+                <span class="item__damage">
+                    <span class="attack__title"><i>{{localize 'gmm.common.deferral.respite'}}:</i></span>
+                    <span>{{item.gmmLabels.deferral.respite}}</span>
+                </span>
+                {{/if}}
             </div>
             {{/if}}
             {{#if item.gmmLabels.description}}
             <div class="item__description">{{{item.gmmLabels.description}}}</div>
             {{/if}}
-        <div class="item__pills">
-            {{#if item.gmmLabels.isConcentration}}
-            <div class="item__pill-sm">Concentration</div>
-            {{/if}}
-            {{#if item.gmmLabels.duration}}
-            <div class="item__pill-sm">{{item.gmmLabels.duration}}</div>
-            {{/if}}
-            {{#if item.gmmLabels.condition}}
-            <div class="item__pill-sm">{{item.gmmLabels.condition}}</div>
-            {{/if}}
-        </div>
+            <div class="item__pills">
+                {{#if item.gmmLabels.isConcentration}}
+                <div class="item__pill-sm">Concentration</div>
+                {{/if}}
+                {{#if item.gmmLabels.duration}}
+                <div class="item__pill-sm">{{item.gmmLabels.duration}}</div>
+                {{/if}}
+                {{#if item.gmmLabels.condition}}
+                <div class="item__pill-sm">{{item.gmmLabels.condition}}</div>
+                {{/if}}
+            </div>
         </div>
         <div class="item__actions">
             <button data-action="display-item"><i class="fas fa-fw fa-comments"></i></button>

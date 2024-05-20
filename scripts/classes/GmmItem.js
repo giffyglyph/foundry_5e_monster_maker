@@ -289,12 +289,21 @@ const GmmItem = (function () {
                 per: itemData.uses.per
             };
         }
-
-        if (itemData.recharge && itemData.recharge.value != null) {
+        let gmmDeferral = this.flags.gmm?.blueprint.data.deferral;
+        if (gmmDeferral?.type) {
+            labels.deferral = {
+                type: game.i18n.format(`gmm.common.deferral_type.${gmmDeferral.type}`),
+                timer: gmmDeferral.timer,
+                respite: gmmDeferral.respite
+            };
+        }
+        if (itemData.recharge && (itemData.recharge.value != null)) {
             labels.recharge = {
                 value: itemData.recharge.value < 6 ? `${itemData.recharge.value}-6` : itemData.recharge.value,
                 charged: itemData.recharge.charged
             };
+        } else {
+            labels.recharge = null;
         }
 
         if (itemData.activation && itemData.activation.type != "") {

@@ -12,6 +12,7 @@
   "author": "Skyl3lazer",
   "license": "ISC",
   "devDependencies": {
+    "eslint": "^9.3.0",
     "gulp": "^4.0.2",
     "gulp-sass": "^5.1.0",
     "gulp-using": "^0.1.1",
