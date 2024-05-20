@@ -18,7 +18,7 @@
                     <div class="item__cost" data-action="open-config" data-config="action-type">({{localize 'gmm.monster.artifact.legendary_actions.cost' cost=gmm.action.gmmLabels.legendary_cost}})</div>
                     {{/if}}
                     {{#if (or gmm.action.gmmLabels.deferral gmm.action.gmmLabels.recharge gmm.action.gmmLabels.uses)}}
-                    {{#unless (or (and gmm.action.gmmLabels.recharge gmm.action.gmmLabels.deferral) (or gmm.action.gmmLabels.deferral gmm.action.gmmLabels.uses))}}
+                    {{#unless (or gmm.action.gmmLabels.recharge gmm.action.gmmLabels.uses)}}
                     <div class="item__recharge" data-action="open-config" data-config="deferral">
                         ({{gmm.action.gmmLabels.deferral.type}} {{gmm.action.gmmLabels.deferral.timer}})
                     </div>
