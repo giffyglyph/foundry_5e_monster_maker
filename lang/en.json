@@ -162,7 +162,7 @@
   "gmm.action.blueprint.description.title": "Description",
   "gmm.action.blueprint.deferral.title": "Deferral",
   "gmm.action.blueprint.deferral.type": "Deferral Type",
-  "gmm.action.blueprint.deferral.timer": "Delay",
+  "gmm.action.blueprint.deferral.timer": "Timer",
   "gmm.action.blueprint.deferral.respite": "Respite/Dispel",
   "gmm.action.blueprint.display.colors.primary": "Primary",
   "gmm.action.blueprint.display.colors.secondary": "Secondary",
