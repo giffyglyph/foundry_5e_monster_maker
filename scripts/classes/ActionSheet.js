@@ -29,7 +29,7 @@ export default class ActionSheet extends dnd5e.applications.item.ItemSheet5e {
     }
 
     static get defaultOptions() {
-        return CompatibilityHelpers.mergeObject(
+        let mergedOptions = CompatibilityHelpers.mergeObject(
             super.defaultOptions,
             {
                 classes: ["gmm-window window--action"],
@@ -37,14 +37,18 @@ export default class ActionSheet extends dnd5e.applications.item.ItemSheet5e {
                 height: 600,
                 width: 500,
                 template: Templates.getRelativePath('action/forge.html'),
-                resizable: true
+                resizable: true,
+                dragDrop: [{ "dragSelector": "[data-effect-id]", "dropSelector": null }]
             }
         );
+        return mergedOptions;
     }
     get template() {
         return Templates.getRelativePath('action/forge.html');
     }
-
+    _onDrop(event) {
+        return super._onDrop(event);
+    }
     activateListeners($el) {
         try {
             super.activateListeners($el);

@@ -31,7 +31,7 @@ export default class MonsterSheet extends dnd5e.applications.actor.ActorSheet5eN
     }
 
     static get defaultOptions() {
-        return CompatibilityHelpers.mergeObject(
+        let mergedOptions = CompatibilityHelpers.mergeObject(
             super.defaultOptions,
             {
                 classes: ["gmm-window window--monster"],
@@ -42,6 +42,7 @@ export default class MonsterSheet extends dnd5e.applications.actor.ActorSheet5eN
                 resizable: true
             }
         );
+        return mergedOptions;
     }
     get template() {
         return Templates.getRelativePath('monster/forge.html')
@@ -330,7 +331,11 @@ export default class MonsterSheet extends dnd5e.applications.actor.ActorSheet5eN
             [`gmm.blueprint.saving_throws.ranking`]: rankings
         });
     }
-
+    async _onDropActiveEffect(event, data) {
+        const effect = await ActiveEffect.implementation.fromDropData(data);
+        if (effect?.target === this.actor) return false;
+        return super._onDropActiveEffect(event, data);
+    }
     _onSortItem(event, itemData) {
         // TODO - for now, don't allow sorting for Token Actor overrides
         if (this.actor.isToken) {
