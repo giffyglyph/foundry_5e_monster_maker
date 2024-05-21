@@ -813,8 +813,14 @@
                                 {{#each effects as |section sid|}}
                                 {{#unless section.hidden}}
                                 <div class="form-fieldset">
-                                    <div class="form-fieldset__header">
-                                        <span>{{localize section.label}}</span>
+                                    <div class="form-fieldset__header effect-section" data-effect-type="{{section.type}}">
+                                        <span>
+                                            {{localize section.label}}
+                                        </span>
+                                        <button data-action="create-effect" data-tooltip="{{section.localizationPrefix}}Create"
+                                                aria-label="{{ localize (concat section.localizationPrefix 'Create') }}">
+                                            {{localize 'gmm.monster.blueprint.effects.add'}}
+                                        </button>
                                     </div>
                                     <div class="form-fieldset__body">
                                         <div class="items item-list">

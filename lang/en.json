@@ -778,6 +778,7 @@
   "gmm.monster.blueprint.effects.passive": "Passive Effects",
   "gmm.monster.blueprint.effects.inactive": "Inactive Effects",
   "gmm.monster.blueprint.effects.temporary": "Temporary Effects",
+  "gmm.monster.blueprint.effects.add": "Add",
   "gmm.monster.blueprint.hit_points.current": "Current",
   "gmm.monster.blueprint.hit_points.maximum": "Maximum",
   "gmm.monster.blueprint.hit_points.formula": "Formula",

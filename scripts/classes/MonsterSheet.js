@@ -67,6 +67,7 @@ export default class MonsterSheet extends dnd5e.applications.actor.ActorSheet5eN
             $el.find('[data-action="edit-effect"]').click(this._editEffect.bind(this));
             $el.find('[data-action="toggle-effect"]').click(this._toggleEffect.bind(this));
             $el.find('[data-action="delete-effect"]').click(this._deleteEffect.bind(this));
+            $el.find('[data-action="create-effect"]').click(this._createEffect.bind(this));
             $el.find('[data-action="delete-item"]').click(this._deleteItem.bind(this));
             $el.find('[data-action="add-item"]').click(this._addItem.bind(this));
             $el.find('[data-action="roll-item"]').click(this._rollItem.bind(this));
@@ -282,6 +283,20 @@ export default class MonsterSheet extends dnd5e.applications.actor.ActorSheet5eN
         });
         const effect = this.getEffect(dataset);
         return effect.deleteDialog();
+    }
+    _createEffect(clickEvent) {
+        const target = clickEvent.currentTarget;
+        const li = target.closest(".effect-section");
+        const isActor = this.document instanceof Actor;
+        const isEnchantment = li.dataset.effectType.startsWith("enchantment");
+        return this.document.createEmbeddedDocuments("ActiveEffect", [{
+            name: isActor ? game.i18n.localize("DND5E.EffectNew") : this.document.name,
+            icon: isActor ? "icons/svg/aura.svg" : this.document.img,
+            origin: isEnchantment ? undefined : this.document.uuid,
+            "duration.rounds": li.dataset.effectType === "temporary" ? 1 : undefined,
+            disabled: ["inactive", "enchantmentInactive"].includes(li.dataset.effectType),
+            "flags.dnd5e.type": isEnchantment ? "enchantment" : undefined
+        }]);
     }
 
     async _addItem(event) {
