@@ -23,7 +23,7 @@ import MonsterBlueprint from "./MonsterBlueprint.js";
 import Templates from "./Templates.js";
 import CompatibilityHelpers from "./CompatibilityHelpers.js";
 
-export default class MonsterSheet extends ActorSheet {
+export default class MonsterSheet extends dnd5e.applications.actor.ActorSheet5eNPC {
 
     constructor(...args) {
         super(...args);
@@ -31,16 +31,21 @@ export default class MonsterSheet extends ActorSheet {
     }
 
     static get defaultOptions() {
-        return CompatibilityHelpers.mergeObject(
+        let mergedOptions = CompatibilityHelpers.mergeObject(
             super.defaultOptions,
             {
                 classes: ["gmm-window window--monster"],
+                scrollY: null,
                 height: 900,
                 width: 540,
                 template: Templates.getRelativePath('monster/forge.html'),
                 resizable: true
             }
         );
+        return mergedOptions;
+    }
+    get template() {
+        return Templates.getRelativePath('monster/forge.html')
     }
 
     activateListeners($el) {
@@ -59,6 +64,9 @@ export default class MonsterSheet extends ActorSheet {
             $el.find('.item .item__title input').click((e) => e.stopPropagation());
             $el.find('.item .item__title').click(this._toggleItemDetails.bind(this));
             $el.find('[data-action="edit-item"]').click(this._editItem.bind(this));
+            $el.find('[data-action="edit-effect"]').click(this._editEffect.bind(this));
+            $el.find('[data-action="toggle-effect"]').click(this._toggleEffect.bind(this));
+            $el.find('[data-action="delete-effect"]').click(this._deleteEffect.bind(this));
             $el.find('[data-action="delete-item"]').click(this._deleteItem.bind(this));
             $el.find('[data-action="add-item"]').click(this._addItem.bind(this));
             $el.find('[data-action="roll-item"]').click(this._rollItem.bind(this));
@@ -76,7 +84,7 @@ export default class MonsterSheet extends ActorSheet {
     }
 
     async getData() {
-        const data = super.getData();
+        const data = await super.getData();
         const actorData = data.actor.flags;
         data.gmm = {
             blueprint: actorData.gmm?.blueprint ? actorData.gmm.blueprint.data : null,
@@ -242,6 +250,40 @@ export default class MonsterSheet extends ActorSheet {
         this.actor.deleteEmbeddedDocuments("Item", [li.dataset.itemId]);
     }
 
+    _editEffect(clickEvent) {
+        const li = clickEvent.currentTarget.closest(".effect");
+        const dataset = li.dataset;
+        const event = new CustomEvent("effect", {
+            bubbles: true,
+            cancelable: true,
+            detail: "edit"
+        });
+        const effect = this.getEffect(dataset);
+        return effect.sheet.render(true);
+    }
+    _toggleEffect(clickEvent) {
+        const li = clickEvent.currentTarget.closest(".effect");
+        const dataset = li.dataset;
+        const event = new CustomEvent("effect", {
+            bubbles: true,
+            cancelable: true,
+            detail: "toggle"
+        });
+        const effect = this.getEffect(dataset);
+        return this._onToggleCondition(dataset.conditionId);
+    }
+    _deleteEffect(clickEvent) {
+        const li = clickEvent.currentTarget.closest(".effect");
+        const dataset = li.dataset;
+        const event = new CustomEvent("effect", {
+            bubbles: true,
+            cancelable: true,
+            detail: "delete"
+        });
+        const effect = this.getEffect(dataset);
+        return effect.deleteDialog();
+    }
+
     async _addItem(event) {
         const header = event.currentTarget;
         const type = header.dataset.type;
@@ -289,7 +331,11 @@ export default class MonsterSheet extends ActorSheet {
             [`gmm.blueprint.saving_throws.ranking`]: rankings
         });
     }
-
+    async _onDropActiveEffect(event, data) {
+        const effect = await ActiveEffect.implementation.fromDropData(data);
+        if (effect?.target === this.actor) return false;
+        return super._onDropActiveEffect(event, data);
+    }
     _onSortItem(event, itemData) {
         // TODO - for now, don't allow sorting for Token Actor overrides
         if (this.actor.isToken) {

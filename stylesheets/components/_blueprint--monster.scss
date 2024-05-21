@@ -161,6 +161,16 @@
 				}
 			}
 
+			.effect {
+				display: flex;
+				padding: 0.25rem 0.5rem;
+				align-items: center;
+
+				&:not(:last-child) {
+					border-bottom: 1px dotted var(--color-primary-tint-3);
+				}
+			}
+
 			.item__icon {
 				margin: -0.25rem 6px -0.25rem -0.5rem;
 				width: 26px;

@@ -37,6 +37,9 @@ export const GMM_ACTION_BLUEPRINT = {
 			timer: null,
 			respite: null
 		},
+		effects: {
+			always_show: false
+		},
 		target: {
 			value: null,
 			units: null,

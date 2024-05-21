@@ -183,6 +183,9 @@ export const GMM_MONSTER_BLUEPRINT = {
 			ignore_item_requirements: false,
 			units: "imperial"
 		},
+		effects: {
+			always_show: false
+		},
 		hit_points: {
 			current: null,
 			temporary: null,
