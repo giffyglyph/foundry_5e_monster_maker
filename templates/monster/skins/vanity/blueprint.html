@@ -796,7 +796,37 @@
                             </div>
                         </div>
                     </div>
-
+                    <div class="accordion-section" data-section="effects">
+                        <div class="accordion-section__header">
+                            <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.effects.title'}}</span>
+                        </div>
+                        <div class="accordion-section__body">
+                            <div class="form-group form-group--modifier">
+                                <div class="form-group__header">
+                                    <span class="form-group__title">{{localize 'gmm.monster.blueprint.effects.always_show'}}</span>
+                                </div>
+                                <div class="form-group__body">
+                                    <input type="checkbox" name="gmm.blueprint.effects.always_show" {{#if gmm.blueprint.effects.always_show}} checked{{/if}} />
+                                </div>
+                            </div>
+                            <{{elements.effects}}>
+                                {{#each effects as |section sid|}}
+                                <div class="form-fieldset">
+                                    <div class="form-fieldset__header">
+                                        <span>{{localize section.label}}</span>
+                                    </div>
+                                    <div class="form-fieldset__body">
+                                        <div class="items item-list">
+                                            {{#each section.effects as |effect|}}
+                                            {{> (getTemplate "monster/skins/vanity/partials/blueprint_effect.html") item=.}}
+                                            {{/each}}
+                                        </div>
+                                    </div>
+                                </div>
+                                {{/each}}
+                            </{{elements.effects}}>
+                        </div>
+                    </div>
                     <div class="accordion-section" data-section="senses">
                         <div class="accordion-section__header">
                             <span class="accordion-section__title">{{localize 'gmm.monster.blueprint.senses.title'}}</span>
