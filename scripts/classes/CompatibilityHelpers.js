@@ -1,4 +1,5 @@
 const CompatibilityHelpers = (function () {
+	//v14 - Property management moved to foundry.utils
 	function hasProperty(...args) {
 		if (game.version >= 12) {
 			return foundry.utils.hasProperty(...args);
@@ -17,10 +18,19 @@ const CompatibilityHelpers = (function () {
 		}
 		return getProperty(...args);
 	}
+	//v14 - clamped becomes clamp
+	function clamped(...args) {
+		if (game.version >= 12) {
+			return Math.clamp(...args);
+		}
+		return Math.clamped(...args);
+	}
+
 	return {
 		hasProperty: hasProperty,
 		setProperty: setProperty,
-		getProperty: getProperty
+		getProperty: getProperty,
+		clamp: clamp
 	};
 })();
 export default CompatibilityHelpers;
