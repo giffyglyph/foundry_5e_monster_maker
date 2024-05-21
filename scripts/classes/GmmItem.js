@@ -459,7 +459,7 @@ const GmmItem = (function () {
         }
 
         // Condense the resulting attack bonus formula into a simplified label
-        let toHitLabel = simplifyRollFormula(CompatibilityHelpers.replaceFormulaData(parts.join('+').trim(), rollData));
+        let toHitLabel = gmmMonster ? simplifyRollFormula(CompatibilityHelpers.replaceFormulaData(parts.join('+').trim(), rollData)) : "0";
         item.labels.toHit = (toHitLabel.charAt(0) !== '-') ? `+ ${toHitLabel}` : toHitLabel;
 
         // Update labels and return the prepared roll data
@@ -482,7 +482,7 @@ const GmmItem = (function () {
                 dc = Shortcoder.replaceShortcodes(dc, gmmMonster);
             }
 
-            item.system.save.dc = simplifyRollFormula(dc);
+            item.system.save.dc = gmmMonster ? simplifyRollFormula(dc) : 0;
             item.system.save.ability = itemData.save.ability;
             item.system.save.scaling = "flat";
             item.labels.save = game.i18n.format("DND5E.SaveDC", {
