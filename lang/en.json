@@ -176,6 +176,7 @@
   "gmm.action.blueprint.duration.title": "Duration",
   "gmm.action.blueprint.duration.type": "Type",
   "gmm.action.blueprint.effects.title": "Effects",
+  "gmm.action.blueprint.effects.add": "Add",
   "gmm.action.blueprint.properties.concentration": "Requires Concentration",
   "gmm.action.blueprint.range.long": "Long Range",
   "gmm.action.blueprint.range.normal": "Normal Range",

@@ -60,6 +60,7 @@ export default class ActionSheet extends dnd5e.applications.item.ItemSheet5e {
             this._gui.applyTo($el);
             $el.find('[data-action="add-damage"]').click((e) => this._addDamage(e));
             $el.find('[data-action="remove-damage"]').click((e) => this._removeDamage(e));
+            $el.find('[data-action="create-effect"]').click((e) => this._createEffect(e));
         } catch (error) {
             console.error(error);
         }
@@ -80,6 +81,19 @@ export default class ActionSheet extends dnd5e.applications.item.ItemSheet5e {
         return this.item.update({ "data.damage.parts": damage.parts });
     }
 
+    _createEffect(clickEvent) {
+        const target = clickEvent.currentTarget;
+        const li = target.closest(".effect-section");
+        const isEnchantment = li.dataset.effectType.startsWith("enchantment");
+        return this.document.createEmbeddedDocuments("ActiveEffect", [{
+            name: game.i18n.localize("DND5E.EffectNew"),
+            icon: this.document.img,
+            origin: isEnchantment ? undefined : this.document.uuid,
+            "duration.rounds": li.dataset.effectType === "temporary" ? 1 : undefined,
+            disabled: ["inactive", "enchantmentInactive"].includes(li.dataset.effectType),
+            "flags.dnd5e.type": isEnchantment ? "enchantment" : undefined
+        }]);
+    }
     async getData() {
         const data = await super.getData();
         const itemData = data.item.flags;

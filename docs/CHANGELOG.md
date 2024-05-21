@@ -33,8 +33,8 @@
 	* There is no automation associated with these at the moment. Roadmap item?
 
 * #50 Added an effects tab for Monsters and Features
-	* You can now view effects similar to the 'effects' tab in the default sheets.
-	* It's in the 'effects' dropdown in the blueprint
+	* You can now view and create effects similar to the 'effects' tab in the default sheets.
+	* It's in the 'effects' dropdown in the blueprints
 	* Drop Active Effects onto sheets to add them to the monsters, or make your attacks apply conditions when they hit!
 
 * #38 Reorganized the monster blueprint sidebar to improve logical organization and readability. I'm open to [suggestions](https://github.com/Skyl3lazer/giffyglyph-monster-maker-continued/issues/38) if you have opinions on what is where.

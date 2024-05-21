@@ -64,9 +64,6 @@ export default class MonsterSheet extends dnd5e.applications.actor.ActorSheet5eN
             $el.find('.item .item__title input').click((e) => e.stopPropagation());
             $el.find('.item .item__title').click(this._toggleItemDetails.bind(this));
             $el.find('[data-action="edit-item"]').click(this._editItem.bind(this));
-            $el.find('[data-action="edit-effect"]').click(this._editEffect.bind(this));
-            $el.find('[data-action="toggle-effect"]').click(this._toggleEffect.bind(this));
-            $el.find('[data-action="delete-effect"]').click(this._deleteEffect.bind(this));
             $el.find('[data-action="create-effect"]').click(this._createEffect.bind(this));
             $el.find('[data-action="delete-item"]').click(this._deleteItem.bind(this));
             $el.find('[data-action="add-item"]').click(this._addItem.bind(this));
@@ -250,48 +247,13 @@ export default class MonsterSheet extends dnd5e.applications.actor.ActorSheet5eN
         const li = event.currentTarget.closest(".item");
         this.actor.deleteEmbeddedDocuments("Item", [li.dataset.itemId]);
     }
-
-    _editEffect(clickEvent) {
-        const li = clickEvent.currentTarget.closest(".effect");
-        const dataset = li.dataset;
-        const event = new CustomEvent("effect", {
-            bubbles: true,
-            cancelable: true,
-            detail: "edit"
-        });
-        const effect = this.getEffect(dataset);
-        return effect.sheet.render(true);
-    }
-    _toggleEffect(clickEvent) {
-        const li = clickEvent.currentTarget.closest(".effect");
-        const dataset = li.dataset;
-        const event = new CustomEvent("effect", {
-            bubbles: true,
-            cancelable: true,
-            detail: "toggle"
-        });
-        const effect = this.getEffect(dataset);
-        return this._onToggleCondition(dataset.conditionId);
-    }
-    _deleteEffect(clickEvent) {
-        const li = clickEvent.currentTarget.closest(".effect");
-        const dataset = li.dataset;
-        const event = new CustomEvent("effect", {
-            bubbles: true,
-            cancelable: true,
-            detail: "delete"
-        });
-        const effect = this.getEffect(dataset);
-        return effect.deleteDialog();
-    }
     _createEffect(clickEvent) {
         const target = clickEvent.currentTarget;
         const li = target.closest(".effect-section");
-        const isActor = this.document instanceof Actor;
         const isEnchantment = li.dataset.effectType.startsWith("enchantment");
         return this.document.createEmbeddedDocuments("ActiveEffect", [{
-            name: isActor ? game.i18n.localize("DND5E.EffectNew") : this.document.name,
-            icon: isActor ? "icons/svg/aura.svg" : this.document.img,
+            name: game.i18n.localize("DND5E.EffectNew"),
+            icon: "icons/svg/aura.svg",
             origin: isEnchantment ? undefined : this.document.uuid,
             "duration.rounds": li.dataset.effectType === "temporary" ? 1 : undefined,
             disabled: ["inactive", "enchantmentInactive"].includes(li.dataset.effectType),
