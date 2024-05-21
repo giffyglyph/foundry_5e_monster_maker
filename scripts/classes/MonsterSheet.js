@@ -127,7 +127,7 @@ export default class MonsterSheet extends ActorSheet {
                 let promises = this._getItemMapping(type, data.gmm.monster);
                 if (promises) {
                     await Promise.all(promises).then(function (results) {
-                        setProperty(data.gmm.monster, type, results);
+                        CompatibilityHelpers.setProperty(data.gmm.monster, type, results);
                     });
                 }
             }
@@ -161,7 +161,7 @@ export default class MonsterSheet extends ActorSheet {
         return data;
     }
     _getItemMapping(type, monster) {
-        let items = getProperty(monster, type);
+        let items = CompatibilityHelpers.getProperty(monster, type);
         let mappedItems;
         if (items) {
             mappedItems = items.map(async (y) => {
