@@ -11,6 +11,7 @@
 
 * Added MidiQOL and DFred's Convenient Effects as 'recommended' modules. They're not required for GMMC to function, but GMMC has content for them if you are using them.
 * Put the compendium folders in a "Giffyglyph's Monster Maker" top level folder for easier sorting. It's green!
+* #19 V12 compatibility updates for the RC and dnd5e 3.1. **V12 IS A BETA!** You shouldn't use it for in-progress games even when it reaches "stable" soon. Please do report issues you find, just be aware that some functionality may take time to fix! Additionally, whenever dnd5e 3.2 comes out that will likely break things too.
 
 * #34 Added support for ability rarity. This is selected under the "Action Type" accordian on the action editor. 
 	* Abilities will display color and border tags for their rarity, as well as listing it on the editor.
