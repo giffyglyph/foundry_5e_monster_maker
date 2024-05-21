@@ -26,11 +26,19 @@ const CompatibilityHelpers = (function () {
 		return Math.clamped(...args);
 	}
 
+	function mergeObject(...args) {
+		if (game.version >= 12) {
+			return foundry.utils.mergeObject(...args);
+		}
+		return mergeObject(...args);
+	}
+	 
 	return {
 		hasProperty: hasProperty,
 		setProperty: setProperty,
 		getProperty: getProperty,
-		clamp: clamp
+		clamp: clamp,
+		mergeObject: mergeObject
 	};
 })();
 export default CompatibilityHelpers;

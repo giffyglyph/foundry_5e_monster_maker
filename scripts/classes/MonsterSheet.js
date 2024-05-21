@@ -31,29 +31,16 @@ export default class MonsterSheet extends ActorSheet {
     }
 
     static get defaultOptions() {
-        if (game.version >= 12) {
-            return foundry.utils.mergeObject(
-                super.defaultOptions,
-                {
-                    classes: ["gmm-window window--monster"],
-                    height: 900,
-                    width: 540,
-                    template: Templates.getRelativePath('monster/forge.html'),
-                    resizable: true
-                }
-            );
-        } else {
-            return mergeObject(
-                super.defaultOptions,
-                {
-                    classes: ["gmm-window window--monster"],
-                    height: 900,
-                    width: 540,
-                    template: Templates.getRelativePath('monster/forge.html'),
-                    resizable: true
-                }
-            );
-        }
+        return CompatibilityHelpers.mergeObject(
+            super.defaultOptions,
+            {
+                classes: ["gmm-window window--monster"],
+                height: 900,
+                width: 540,
+                template: Templates.getRelativePath('monster/forge.html'),
+                resizable: true
+            }
+        );
     }
 
     activateListeners($el) {
@@ -302,7 +289,7 @@ export default class MonsterSheet extends ActorSheet {
             [`gmm.blueprint.saving_throws.ranking`]: rankings
         });
     }
-   
+
     _onSortItem(event, itemData) {
         // TODO - for now, don't allow sorting for Token Actor overrides
         if (this.actor.isToken) {

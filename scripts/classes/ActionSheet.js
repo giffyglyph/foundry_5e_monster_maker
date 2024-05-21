@@ -29,29 +29,16 @@ export default class ActionSheet extends ItemSheet {
     }
 
     static get defaultOptions() {
-        if (game.version >= 12) {
-            return foundry.utils.mergeObject(
-                super.defaultOptions,
-                {
-                    classes: ["gmm-window window--action"],
-                    height: 600,
-                    width: 500,
-                    template: Templates.getRelativePath('action/forge.html'),
-                    resizable: true
-                }
-            );
-        } else {
-            return mergeObject(
-                super.defaultOptions,
-                {
-                    classes: ["gmm-window window--action"],
-                    height: 600,
-                    width: 500,
-                    template: Templates.getRelativePath('action/forge.html'),
-                    resizable: true
-                }
-            );
-        }
+        return CompatibilityHelpers.mergeObject(
+            super.defaultOptions,
+            {
+                classes: ["gmm-window window--action"],
+                height: 600,
+                width: 500,
+                template: Templates.getRelativePath('action/forge.html'),
+                resizable: true
+            }
+        );
     }
 
     activateListeners($el) {
@@ -180,7 +167,7 @@ export default class ActionSheet extends ItemSheet {
             }, {})
         } else return {};
     }
-    
+
     _updateObject(event, form) {
         if (event && event.currentTarget && event.currentTarget.closest(".gmm-modal") != null) {
             return null;

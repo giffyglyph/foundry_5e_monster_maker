@@ -544,12 +544,8 @@ const GmmItem = (function () {
         }
 
         // Call the roll helper utility
-        //return damageRoll(mergeObject(rollConfig, options));
-        if (game.version >= 12) {
-            return foundry.utils.mergeObject(rollConfig, options);
-        } else {
-            return mergeObject(rollConfig, options);    
-        }
+         return CompatibilityHelpers.mergeObject(rollConfig, options);
+        
     }
     function _getSortingCategory() {
         if (this.getSheetId() == `${GMM_MODULE_TITLE}.ActionSheet`) {
