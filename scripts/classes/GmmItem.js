@@ -1,7 +1,7 @@
-
 import ActionBlueprint from './ActionBlueprint.js';
 import Shortcoder from './Shortcoder.js';
 import { GMM_MODULE_TITLE } from '../consts/GmmModuleTitle.js';
+import CompatibilityHelpers from "./CompatibilityHelpers.js";
 
 /**
  * A patcher which controls item data based on the selected sheet.
@@ -459,7 +459,7 @@ const GmmItem = (function () {
         }
 
         // Condense the resulting attack bonus formula into a simplified label
-        let toHitLabel = simplifyRollFormula(foundry.dice.Roll.replaceFormulaData(parts.join('+').trim(), rollData));
+        let toHitLabel = simplifyRollFormula(CompatibilityHelpers.replaceFormulaData(parts.join('+').trim(), rollData));
         item.labels.toHit = (toHitLabel.charAt(0) !== '-') ? `+ ${toHitLabel}` : toHitLabel;
 
         // Update labels and return the prepared roll data

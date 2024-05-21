@@ -32,13 +32,20 @@ const CompatibilityHelpers = (function () {
 		}
 		return globalThis.mergeObject(...args);
 	}
-	 
+	function replaceFormulaData(...args) {
+		if (game.version >= 12) {
+			return foundry.dice.Roll.replaceFormulaData(...args);
+		}
+		return Roll.replaceFormulaData(...args);
+		
+	}
 	return {
 		hasProperty: hasProperty,
 		setProperty: setProperty,
 		getProperty: getProperty,
-		clamp: clamp,
-		mergeObject: mergeObject
+		clamped: clamped,
+		mergeObject: mergeObject,
+		replaceFormulaData: replaceFormulaData
 	};
 })();
 export default CompatibilityHelpers;
