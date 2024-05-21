@@ -38,7 +38,6 @@ export default class MonsterSheet extends dnd5e.applications.actor.ActorSheet5eN
                 scrollY: null,
                 height: 900,
                 width: 540,
-                tabs: [],
                 template: Templates.getRelativePath('monster/forge.html'),
                 resizable: true
             }

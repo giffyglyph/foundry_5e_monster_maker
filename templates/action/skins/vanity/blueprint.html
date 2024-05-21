@@ -436,6 +436,31 @@
                             </div>
                         </div>
                     </div>
+                    <div class="accordion-section" data-section="effects">
+                        <div class="accordion-section__header">
+                            <span class="accordion-section__title">{{localize 'gmm.action.blueprint.effects.title'}}</span>
+                        </div>
+                        <div class="accordion-section__body">
+                            <{{elements.effects}}>
+                                {{#each effects as |section sid|}}
+                                {{#unless section.hidden}}
+                                <div class="form-fieldset">
+                                    <div class="form-fieldset__header">
+                                        <span>{{localize section.label}}</span>
+                                    </div>
+                                    <div class="form-fieldset__body">
+                                        <div class="items item-list">
+                                            {{#each section.effects as |effect|}}
+                                            {{> (getTemplate "monster/skins/vanity/partials/blueprint_effect.html") effect=effect}}
+                                            {{/each}}
+                                        </div>
+                                    </div>
+                                </div>
+                                {{/unless}}
+                                {{/each}}
+                            </{{elements.effects}}>
+                        </div>
+                    </div>
                     <div class="accordion-section" data-section="range">
                         <div class="accordion-section__header">
                             <span class="accordion-section__title">{{localize 'gmm.action.blueprint.range.title'}}</span>

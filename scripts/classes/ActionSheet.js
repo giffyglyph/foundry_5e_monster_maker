@@ -21,7 +21,7 @@ import ActionForge from "./ActionForge.js";
 import Templates from "./Templates.js";
 import CompatibilityHelpers from "./CompatibilityHelpers.js";
 
-export default class ActionSheet extends ItemSheet {
+export default class ActionSheet extends dnd5e.applications.item.ItemSheet5e {
 
     constructor(...args) {
         super(...args);
@@ -33,12 +33,16 @@ export default class ActionSheet extends ItemSheet {
             super.defaultOptions,
             {
                 classes: ["gmm-window window--action"],
+                scrollY: null,
                 height: 600,
                 width: 500,
                 template: Templates.getRelativePath('action/forge.html'),
                 resizable: true
             }
         );
+    }
+    get template() {
+        return Templates.getRelativePath('action/forge.html');
     }
 
     activateListeners($el) {
@@ -73,7 +77,7 @@ export default class ActionSheet extends ItemSheet {
     }
 
     async getData() {
-        const data = super.getData();
+        const data = await super.getData();
         const itemData = data.item.flags;
 
         data.gmm = {

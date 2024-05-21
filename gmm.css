@@ -2130,6 +2130,65 @@
   color: var(--color-secondary-base);
   cursor: pointer;
 }
+.gmm-blueprint.blueprint--action.blueprint--action--vanity .items .item {
+  display: flex;
+  padding: 0.25rem 0.5rem;
+  align-items: center;
+}
+.gmm-blueprint.blueprint--action.blueprint--action--vanity .items .item:not(:last-child) {
+  border-bottom: 1px dotted var(--color-primary-tint-3);
+}
+.gmm-blueprint.blueprint--action.blueprint--action--vanity .items .effect {
+  display: flex;
+  padding: 0.25rem 0.5rem;
+  align-items: center;
+}
+.gmm-blueprint.blueprint--action.blueprint--action--vanity .items .effect:not(:last-child) {
+  border-bottom: 1px dotted var(--color-primary-tint-3);
+}
+.gmm-blueprint.blueprint--action.blueprint--action--vanity .items .item__icon {
+  margin: -0.25rem 6px -0.25rem -0.5rem;
+  width: 26px;
+  height: 26px;
+  background: black;
+}
+.gmm-blueprint.blueprint--action.blueprint--action--vanity .items .item__icon img {
+  max-width: 100%;
+  max-height: 100%;
+  border: none;
+  display: block;
+}
+.gmm-blueprint.blueprint--action.blueprint--action--vanity .items .item__title {
+  flex-grow: 1;
+  white-space: nowrap;
+  margin-right: 1rem;
+}
+.gmm-blueprint.blueprint--action.blueprint--action--vanity .items .item__actions {
+  display: flex;
+  margin-right: -0.25rem;
+  margin-top: -0.25rem;
+  margin-bottom: -0.25rem;
+}
+.gmm-blueprint.blueprint--action.blueprint--action--vanity .items .item__actions button {
+  background: none;
+  color: var(--color-primary-tint-3);
+  border: none;
+  font-weight: bold;
+  line-height: 1.5;
+  padding: 0;
+  cursor: pointer;
+  text-align: center;
+}
+.gmm-blueprint.blueprint--action.blueprint--action--vanity .items .item__actions button i {
+  margin: 0;
+}
+.gmm-blueprint.blueprint--action.blueprint--action--vanity .items .item__actions button + * {
+  margin-left: 0.5rem;
+}
+.gmm-blueprint.blueprint--action.blueprint--action--vanity .items .item__actions button:hover {
+  box-shadow: none;
+  color: var(--color-primary-base);
+}
 
 .gmm-blueprint.blueprint--monster.blueprint--monster--vanity .form-group--image img {
   background: black;
