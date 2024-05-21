@@ -23,7 +23,7 @@ import MonsterBlueprint from "./MonsterBlueprint.js";
 import Templates from "./Templates.js";
 import CompatibilityHelpers from "./CompatibilityHelpers.js";
 
-export default class MonsterSheet extends ActorSheet {
+export default class MonsterSheet extends dnd5e.applications.actor.ActorSheet5e {
 
     constructor(...args) {
         super(...args);
@@ -35,6 +35,8 @@ export default class MonsterSheet extends ActorSheet {
             super.defaultOptions,
             {
                 classes: ["gmm-window window--monster"],
+                scrollY: null,
+                tabs: null,
                 height: 900,
                 width: 540,
                 template: Templates.getRelativePath('monster/forge.html'),
@@ -76,7 +78,7 @@ export default class MonsterSheet extends ActorSheet {
     }
 
     async getData() {
-        const data = super.getData();
+        const data = await super.getData();
         const actorData = data.actor.flags;
         data.gmm = {
             blueprint: actorData.gmm?.blueprint ? actorData.gmm.blueprint.data : null,
