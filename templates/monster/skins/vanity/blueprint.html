@@ -810,7 +810,8 @@
                                 </div>
                             </div>
                             <{{elements.effects}}>
-                                {{#each data.effects as |section sid|}}
+                                {{#each effects as |section sid|}}
+                                {{#unless section.hidden}}
                                 <div class="form-fieldset">
                                     <div class="form-fieldset__header">
                                         <span>{{localize section.label}}</span>
@@ -818,11 +819,12 @@
                                     <div class="form-fieldset__body">
                                         <div class="items item-list">
                                             {{#each section.effects as |effect|}}
-                                            {{> (getTemplate "monster/skins/vanity/partials/blueprint_effect.html") item=.}}
+                                            {{> (getTemplate "monster/skins/vanity/partials/blueprint_effect.html") effect=effect}}
                                             {{/each}}
                                         </div>
                                     </div>
                                 </div>
+                                {{/unless}}
                                 {{/each}}
                             </{{elements.effects}}>
                         </div>

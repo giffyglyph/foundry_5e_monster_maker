@@ -23,7 +23,7 @@ import MonsterBlueprint from "./MonsterBlueprint.js";
 import Templates from "./Templates.js";
 import CompatibilityHelpers from "./CompatibilityHelpers.js";
 
-export default class MonsterSheet extends dnd5e.applications.actor.ActorSheet5e {
+export default class MonsterSheet extends dnd5e.applications.actor.ActorSheet5eNPC {
 
     constructor(...args) {
         super(...args);
@@ -36,13 +36,16 @@ export default class MonsterSheet extends dnd5e.applications.actor.ActorSheet5e 
             {
                 classes: ["gmm-window window--monster"],
                 scrollY: null,
-                tabs: null,
                 height: 900,
                 width: 540,
+                tabs: [],
                 template: Templates.getRelativePath('monster/forge.html'),
                 resizable: true
             }
         );
+    }
+    get template() {
+        return Templates.getRelativePath('monster/forge.html')
     }
 
     activateListeners($el) {
@@ -61,6 +64,9 @@ export default class MonsterSheet extends dnd5e.applications.actor.ActorSheet5e 
             $el.find('.item .item__title input').click((e) => e.stopPropagation());
             $el.find('.item .item__title').click(this._toggleItemDetails.bind(this));
             $el.find('[data-action="edit-item"]').click(this._editItem.bind(this));
+            $el.find('[data-action="edit-effect"]').click(this._editEffect.bind(this));
+            $el.find('[data-action="toggle-effect"]').click(this._toggleEffect.bind(this));
+            $el.find('[data-action="delete-effect"]').click(this._deleteEffect.bind(this));
             $el.find('[data-action="delete-item"]').click(this._deleteItem.bind(this));
             $el.find('[data-action="add-item"]').click(this._addItem.bind(this));
             $el.find('[data-action="roll-item"]').click(this._rollItem.bind(this));
@@ -242,6 +248,40 @@ export default class MonsterSheet extends dnd5e.applications.actor.ActorSheet5e 
     _deleteItem(event) {
         const li = event.currentTarget.closest(".item");
         this.actor.deleteEmbeddedDocuments("Item", [li.dataset.itemId]);
+    }
+
+    _editEffect(clickEvent) {
+        const li = clickEvent.currentTarget.closest(".effect");
+        const dataset = li.dataset;
+        const event = new CustomEvent("effect", {
+            bubbles: true,
+            cancelable: true,
+            detail: "edit"
+        });
+        const effect = this.getEffect(dataset);
+        return effect.sheet.render(true);
+    }
+    _toggleEffect(clickEvent) {
+        const li = clickEvent.currentTarget.closest(".effect");
+        const dataset = li.dataset;
+        const event = new CustomEvent("effect", {
+            bubbles: true,
+            cancelable: true,
+            detail: "toggle"
+        });
+        const effect = this.getEffect(dataset);
+        return this._onToggleCondition(dataset.conditionId);
+    }
+    _deleteEffect(clickEvent) {
+        const li = clickEvent.currentTarget.closest(".effect");
+        const dataset = li.dataset;
+        const event = new CustomEvent("effect", {
+            bubbles: true,
+            cancelable: true,
+            detail: "delete"
+        });
+        const effect = this.getEffect(dataset);
+        return effect.deleteDialog();
     }
 
     async _addItem(event) {

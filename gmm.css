@@ -2245,6 +2245,14 @@
 .gmm-blueprint.blueprint--monster.blueprint--monster--vanity .items .item:not(:last-child) {
   border-bottom: 1px dotted var(--color-primary-tint-3);
 }
+.gmm-blueprint.blueprint--monster.blueprint--monster--vanity .items .effect {
+  display: flex;
+  padding: 0.25rem 0.5rem;
+  align-items: center;
+}
+.gmm-blueprint.blueprint--monster.blueprint--monster--vanity .items .effect:not(:last-child) {
+  border-bottom: 1px dotted var(--color-primary-tint-3);
+}
 .gmm-blueprint.blueprint--monster.blueprint--monster--vanity .items .item__icon {
   margin: -0.25rem 6px -0.25rem -0.5rem;
   width: 26px;
