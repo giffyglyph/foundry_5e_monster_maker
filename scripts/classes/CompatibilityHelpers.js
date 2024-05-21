@@ -4,19 +4,19 @@ const CompatibilityHelpers = (function () {
 		if (game.version >= 12) {
 			return foundry.utils.hasProperty(...args);
 		}
-		return hasProperty(...args);
+		return globalThis.hasProperty(...args);
 	}
 	function setProperty(...args) {
 		if (game.version >= 12) {
 			return foundry.utils.setProperty(...args);
 		}
-		return setProperty(...args);
+		return globalThis.setProperty(...args);
 	}
 	function getProperty(...args) {
 		if (game.version >= 12) {
 			return foundry.utils.getProperty(...args);
 		}
-		return getProperty(...args);
+		return globalThis.getProperty(...args);
 	}
 	//v14 - clamped becomes clamp
 	function clamped(...args) {
@@ -30,7 +30,7 @@ const CompatibilityHelpers = (function () {
 		if (game.version >= 12) {
 			return foundry.utils.mergeObject(...args);
 		}
-		return mergeObject(...args);
+		return globalThis.mergeObject(...args);
 	}
 	 
 	return {
