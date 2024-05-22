@@ -9,6 +9,8 @@
 
 ## v1.1.1.0 (dev)
 
+* dnd5e 3.2 support
+
 ## v1.1.0.7 (latest)
 
 * Added MidiQOL and DFred's Convenient Effects as 'recommended' modules. They're not required for GMMC to function, but GMMC has content for them if you are using them.
