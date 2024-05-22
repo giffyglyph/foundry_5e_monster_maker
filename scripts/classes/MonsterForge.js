@@ -625,7 +625,7 @@ const MonsterForge = (function () {
         ["bonus_actions.items", "actions.items", "reactions.items", "lair_actions.items", "legendary_actions.items", "traits.items", "inventory.items", "spellbook.spells.0", "spellbook.spells.1", "spellbook.spells.2", "spellbook.spells.3", "spellbook.spells.4", "spellbook.spells.5", "spellbook.spells.6", "spellbook.spells.7", "spellbook.spells.8", "spellbook.spells.9", "spellbook.spells.other"].forEach((x) => {
             if (CompatibilityHelpers.hasProperty(data, x)) {
                 CompatibilityHelpers.getProperty(data, x).forEach((y) => {
-                    weight.add(y.weight * y.quantity, y.name)
+                    weight.add(CompatibilityHelpers.weight(y.weight, displayUnit) * y.quantity, y.name)
                 });
             }
         });

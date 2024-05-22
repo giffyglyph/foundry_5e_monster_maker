@@ -9,7 +9,7 @@
 
 ## v1.1.1.0 (dev)
 
-* dnd5e 3.2 support
+* dnd5e 3.2 support (tentative)
 
 ## v1.1.0.7 (latest)
 

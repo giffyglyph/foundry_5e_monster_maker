@@ -35,7 +35,7 @@
                     <input class="input--quantity" data-action="update-item" data-target="{{item.id}}" data-field="data.quantity" data-type="number"/>
                 </li>
                 <li class="item__weight">
-                    {{item.system.weight}}lb
+                    {{item.system.weight.value}}{{item.system.weight.units}}
                     <input class="input--weight" data-action="update-item" data-target="{{item.id}}" data-field="data.weight" data-type="number"/>
                 </li>
                 <li class="item__price">
