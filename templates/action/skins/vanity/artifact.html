@@ -35,9 +35,6 @@
                     {{else}}
                     {{#if gmm.action.gmmLabels.uses}}
                     <div class="item__uses" data-action="open-config" data-config="uses">
-                        {{#if item.gmmLabels.uses}}
-                        <input class="input--uses" data-action="update-item" data-target="{{gmm.action.id}}" data-field="system.uses.value" data-type="number" />
-                        {{/if}}
                         <span class="">(<span class="value">{{#if gmm.action.gmmLabels.uses}}{{gmm.action.gmmLabels.uses.current}}, {{gmm.action.gmmLabels.uses.maximum}}/{{localize (concat 'gmm.common.use_period.' gmm.action.gmmLabels.uses.per)}}{{/if}}</span>{{#if (and gmm.action.gmmLabels.uses gmm.action.gmmLabels.deferral)}} , {{/if}}{{#if gmm.action.gmmLabels.deferral}}{{gmm.action.gmmLabels.deferral.type}} {{gmm.action.gmmLabels.deferral.timer}}{{/if}})</span>
                     </div>
                     {{/if}}

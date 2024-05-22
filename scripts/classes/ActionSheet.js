@@ -94,6 +94,7 @@ export default class ActionSheet extends dnd5e.applications.item.ItemSheet5e {
             "flags.dnd5e.type": isEnchantment ? "enchantment" : undefined
         }]);
     }
+
     async getData() {
         const data = await super.getData();
         const itemData = data.item.flags;
