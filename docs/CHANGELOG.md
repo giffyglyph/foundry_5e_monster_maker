@@ -59,7 +59,7 @@
 
 1.0 is here! In addition to a number of bugfixes and compatibility updates, 1.0 features a few big ticket items:
 
-* GMMv3 Compendium Updates! You can now (or soon) add Traits, Features, and Attacks directly from the v3 PDF!
+* GMMv3 Compendium Updates! You can now add Traits, Features, and Attacks directly from the v3 PDF!
 	* This means that the compendiums are now in the new format, rather than the old ".db" files that get converted and take time to load.
 	* These new compendiums have built in scalars, attacks, etc, that all work right out of the box and look great.
 	* The old items are still available in the !V2 folders within compendiums if you want to use them.
