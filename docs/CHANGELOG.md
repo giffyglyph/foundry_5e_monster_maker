@@ -7,7 +7,9 @@
 [![BlueSky](https://img.shields.io/badge/%40Skyl3lazer_on_BlueSky-grey?logo=bluesky&logoColor=%230285FF&labelColor=grey)](https://bsky.app/profile/skyl3lazer.bsky.social)
 [![Discord](https://img.shields.io/badge/contact-me-blue?logo=discord&logoColor=white)](https://discord.com/channels/@skyl3lazer)
 
-## v1.1.0.7 (dev)
+## v1.1.1.0 (dev)
+
+## v1.1.0.7 (latest)
 
 * Added MidiQOL and DFred's Convenient Effects as 'recommended' modules. They're not required for GMMC to function, but GMMC has content for them if you are using them.
 * Put the compendium folders in a "Giffyglyph's Monster Maker" top level folder for easier sorting. It's green!

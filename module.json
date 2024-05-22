@@ -20,8 +20,8 @@
 		}
 
 	],
-	"version": "1.1.0.7",
-	"manifestPlusVersion": "1.1.0.7",
+	"version": "1.1.1.0",
+	"manifestPlusVersion": "1.1.1.0",
 
 	"compatibility": {
 		"minimum": "10.291",
