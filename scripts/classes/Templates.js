@@ -10,6 +10,7 @@ const Templates = (function() {
 
 		return loadTemplates([
 			getRelativePath("monster/skins/vanity/partials/blueprint_item.html"),
+			getRelativePath("monster/skins/vanity/partials/blueprint_effect.html"),
 			getRelativePath("monster/skins/vanity/partials/artifact_loot.html"),
 			getRelativePath("monster/skins/vanity/partials/artifact_action.html"),
 			getRelativePath("monster/skins/vanity/partials/artifact_spell.html"),
@@ -101,6 +102,7 @@ const Templates = (function() {
 		Handlebars.registerHelper('getTemplate', function(path) {
 			return getRelativePath(path);
 		});
+
 
 		Handlebars.registerHelper('getTstCount', function (maxTst) {
 			var checkedChecks = document.querySelectorAll(".tstCheckbox:checked");

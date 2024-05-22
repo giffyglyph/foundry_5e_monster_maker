@@ -1,5 +1,5 @@
+import CompatibilityHelpers from "./CompatibilityHelpers.js";
 const Shortcoder = (function () {
-
     const SHORTCODES = [
         { code: "level", data: "level.value" },
         { code: "attackBonus", data: "attack_bonus.value" },
@@ -26,14 +26,13 @@ const Shortcoder = (function () {
         { code: "damageDie", data: "damage_per_action.die_size" },
         { code: "name", data: "name", type: "string" }
     ];
-
+    
     function replaceShortcodes(text, monsterData) {
         if (!monsterData)
             return text;
-
         return text.replace(/\[.*?\]/g, (token) => {
             SHORTCODES.forEach((x) => {
-                if (hasProperty(monsterData, x.data)) {
+                if (CompatibilityHelpers.hasProperty(monsterData, x.data)) {
                     try {
                         let regex = new RegExp(`\\b${x.code}\\b`, 'gi');
                         if (regex.test(token)) {

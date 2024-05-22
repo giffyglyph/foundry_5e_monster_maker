@@ -32,6 +32,14 @@ export const GMM_ACTION_BLUEPRINT = {
 			condition: null
 		},
 		cover: null,
+		deferral: {
+			type: null,
+			timer: null,
+			respite: null
+		},
+		effects: {
+			always_show: false
+		},
 		target: {
 			value: null,
 			units: null,
@@ -43,6 +51,7 @@ export const GMM_ACTION_BLUEPRINT = {
 			long: null,
 			units: null,
 		},
+		rarity: "common",
 		duration: {
 			value: "",
 			units: ""

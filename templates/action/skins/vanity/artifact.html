@@ -1,8 +1,8 @@
 <div class="gmm-artifact artifact--action artifact--action--vanity">
-    <div class="artifact__header action__header">
+    <div class="artifact__header action__header artifact__header__rarity__{{gmm.action.gmmLabels.bpRarity}}">
         <div class="action__icon" data-action="open-config" data-config="title"><img src="{{gmm.action.image}}"></div>
         <div class="action__title" data-action="open-config" data-config="title">{{gmm.action.name}}</div>
-        <div class="action__type" data-action="open-config" data-config="action-type">{{gmm.action.type}}</div>
+        <div class="action__type" data-action="open-config" data-config="action-type">{{gmm.action.gmmLabels.rarity}} {{gmm.action.type}}</div>
         <div class="action__requirements">
             <div class="level" data-action="open-config" data-config="requirements"><i class="fas fa-crown"></i> {{gmm.action.level_requirement}}</div>
             <div class="rank" data-action="open-config" data-config="requirements"><i class="fas fa-star"></i> {{gmm.action.rank_requirement}}</div>
@@ -17,21 +17,32 @@
                     {{#if gmm.action.gmmLabels.legendary_cost}}
                     <div class="item__cost" data-action="open-config" data-config="action-type">({{localize 'gmm.monster.artifact.legendary_actions.cost' cost=gmm.action.gmmLabels.legendary_cost}})</div>
                     {{/if}}
+                    {{#if (or gmm.action.gmmLabels.deferral gmm.action.gmmLabels.recharge gmm.action.gmmLabels.uses)}}
+                    {{#unless (or gmm.action.gmmLabels.recharge gmm.action.gmmLabels.uses)}}
+                    <div class="item__recharge" data-action="open-config" data-config="deferral">
+                        ({{gmm.action.gmmLabels.deferral.type}} {{gmm.action.gmmLabels.deferral.timer}})
+                    </div>
+                    {{else}}
                     {{#if gmm.action.gmmLabels.recharge}}
                     <div class="item__recharge {{#if gmm.action.recharge.charged}}charged{{/if}}" data-action="open-config" data-config="recharge">
                         {{#if gmm.action.gmmLabels.recharge.charged}}
-                        (charged)
+                        (charged{{#if (and gmm.action.gmmLabels.recharge.charged gmm.action.gmmLabels.deferral)}} , {{/if}}{{#if gmm.action.gmmLabels.deferral}}{{gmm.action.gmmLabels.deferral.type}} {{gmm.action.gmmLabels.deferral.timer}}{{/if}})
                         {{else}}
-                        <button class="button--text">(recharge {{gmm.action.gmmLabels.recharge.value}})</button>
+                        <button class="button--text">(recharge {{gmm.action.gmmLabels.recharge.value}}{{#if gmm.action.gmmLabels.deferral}} , {{gmm.action.gmmLabels.deferral.type}} {{gmm.action.gmmLabels.deferral.timer}}{{/if}})</button>
                         {{/if}}
+
                     </div>
                     {{else}}
                     {{#if gmm.action.gmmLabels.uses}}
                     <div class="item__uses" data-action="open-config" data-config="uses">
+                        {{#if item.gmmLabels.uses}}
                         <input class="input--uses" data-action="update-item" data-target="{{gmm.action.id}}" data-field="data.uses.value" data-type="number" />
-                        <div class="value">({{gmm.action.gmmLabels.uses.current}}, {{gmm.action.gmmLabels.uses.maximum}}/{{localize (concat 'gmm.common.use_period.' gmm.action.gmmLabels.uses.per)}})</div>
+                        {{/if}}
+                        <span class="">(<span class="value">{{#if gmm.action.gmmLabels.uses}}{{gmm.action.gmmLabels.uses.current}}, {{gmm.action.gmmLabels.uses.maximum}}/{{localize (concat 'gmm.common.use_period.' gmm.action.gmmLabels.uses.per)}}{{/if}}</span>{{#if (and gmm.action.gmmLabels.uses gmm.action.gmmLabels.deferral)}} , {{/if}}{{#if gmm.action.gmmLabels.deferral}}{{gmm.action.gmmLabels.deferral.type}} {{gmm.action.gmmLabels.deferral.timer}}{{/if}})</span>
                     </div>
                     {{/if}}
+                    {{/if}}
+                    {{/unless}}
                     {{/if}}
                 </div>
                 <div class="item__details">
@@ -71,20 +82,26 @@
                         <span>{{gmm.action.gmmLabels.damage_miss}}</span>
                     </span>
                     {{/if}}
+                    {{#if gmm.action.gmmLabels.deferral.respite}}
+                    <span class="item__damage" data-action="open-config" data-config="deferral">
+                        <span class="attack__title"><i>{{localize 'gmm.common.deferral.respite'}}:</i></span>
+                        <span>{{gmm.action.gmmLabels.deferral.respite}}</span>
+                    </span>
+                    {{/if}}
                     {{#if gmm.action.gmmLabels.description}}
                     <span class="item__description" data-action="open-config" data-config="description">{{{gmm.action.gmmLabels.description}}}</span>
                     {{/if}}
-                <div class="item__pills">
-                    {{#if gmm.action.gmmLabels.isConcentration}}
-                    <div class="item__pill-sm">Concentration</div>
-                    {{/if}}
-                    {{#if gmm.action.gmmLabels.duration}}
-                    <div class="item__pill-sm" data-action="open-config" data-config="duration">{{gmm.action.gmmLabels.duration}}</div>
-                    {{/if}}
-                    {{#if gmm.action.gmmLabels.condition}}
-                    <div class="item__pill-sm" data-action="open-config" data-config="action-type">{{gmm.action.gmmLabels.condition}}</div>
-                    {{/if}}
-                </div>
+                    <div class="item__pills">
+                        {{#if gmm.action.gmmLabels.isConcentration}}
+                        <div class="item__pill-sm">Concentration</div>
+                        {{/if}}
+                        {{#if gmm.action.gmmLabels.duration}}
+                        <div class="item__pill-sm" data-action="open-config" data-config="duration">{{gmm.action.gmmLabels.duration}}</div>
+                        {{/if}}
+                        {{#if gmm.action.gmmLabels.condition}}
+                        <div class="item__pill-sm" data-action="open-config" data-config="action-type">{{gmm.action.gmmLabels.condition}}</div>
+                        {{/if}}
+                    </div>
                 </div>
             </div>
         </div>

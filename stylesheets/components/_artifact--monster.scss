@@ -771,8 +771,17 @@
 					}
 				}
 
+				.item__icon__border__common img {
+					border: 3px solid #1c922c;
+				}
 
+				.item__icon__border__uncommon img {
+					border: 3px solid #b29403;
+				}
 
+				.item__icon__border__rare img {
+					border: 3px solid #941212;
+				}
 
 				.item__title {
 					display: block;
@@ -811,6 +820,20 @@
 						font-size: inherit;
 						line-height: inherit;
 					}
+				}
+
+				.item__title__rarity__common {
+					background: linear-gradient(to right,#1c922c 1%, 10%, var(--color-primary-tone-1), var(--color-primary-tint-1));
+				}
+
+				.item__title__rarity__uncommon {
+					background: linear-gradient(to right,#b29403 1%, 10%, var(--color-primary-tone-1), var(--color-primary-tint-1));
+					border-top-style: double;
+				}
+
+				.item__title__rarity__rare {
+					background: linear-gradient(to right,#941212 1%, 10%, var(--color-primary-tone-1), var(--color-primary-tint-1));
+					border-top-style: inset;
 				}
 
 				.item__pill-sm {

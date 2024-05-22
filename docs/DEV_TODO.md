@@ -34,6 +34,10 @@
 * Consolidate duplicate attack_bonus + proficiency modifiers
 * Deprecation: Update ability_modifiers to have ability + check
 
+## Automation
+
+* MidiQOL effects for deferral timers
+
 ## Known Bugs
 
 

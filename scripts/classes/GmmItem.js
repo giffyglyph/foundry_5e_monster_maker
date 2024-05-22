@@ -1,7 +1,7 @@
-
 import ActionBlueprint from './ActionBlueprint.js';
 import Shortcoder from './Shortcoder.js';
 import { GMM_MODULE_TITLE } from '../consts/GmmModuleTitle.js';
+import CompatibilityHelpers from "./CompatibilityHelpers.js";
 
 /**
  * A patcher which controls item data based on the selected sheet.
@@ -9,10 +9,10 @@ import { GMM_MODULE_TITLE } from '../consts/GmmModuleTitle.js';
 const GmmItem = (function () {
     function simplifyRollFormula(...args) {
         return dnd5e.dice.simplifyRollFormula(...args);
-    }
+    }/*
     function damageRoll(...args) {
         return dnd5e.dice.damageRoll(...args);
-    }
+    }*/
     /**
      * Patch the Foundry Item5e entity to control how data is prepared based on the active sheet.
      */
@@ -49,18 +49,18 @@ const GmmItem = (function () {
         }, 'MIXED');
         libWrapper.register('giffyglyph-monster-maker-continued', 'game.dnd5e.documents.Item5e.prototype.rollDamage', function (wrapped, ...args) {
             if (this.getSheetId() == `${GMM_MODULE_TITLE}.ActionSheet` && this.isOwnedByGmmMonster()) {
-                return _rollActionDamage({
+                return wrapped(_rollActionDamage({
                     item: this,
                     critical: args[0]?.critical ?? false,
                     event: args[0]?.event ?? null,
                     spellLevel: args[0]?.spellLevel ?? null,
                     versatile: args[0]?.versatile ?? false,
                     options: args[0]?.options ?? {}
-                });
+                }));
             } else {
                 return wrapped(...args);
             }
-        }, 'MIXED');
+        }, 'WRAPPER');
         libWrapper.register('giffyglyph-monster-maker-continued', 'CONFIG.Item.documentClass.prototype.use', function (wrapped, ...args) {
             if (this.getSheetId() == `${GMM_MODULE_TITLE}.ActionSheet` && this.isOwnedByGmmMonster()) {
                 const gmmMonster = this.getOwningGmmMonster();
@@ -95,7 +95,6 @@ const GmmItem = (function () {
                 return wrapped(...args);
             }
         }, 'MIXED');
-
         /*
 
         */
@@ -105,8 +104,8 @@ const GmmItem = (function () {
         //game.dnd5e.documents.Item5e.prototype.getAttackToHit = _getAttackToHit;
         game.dnd5e.documents.Item5e.prototype.get5eSaveDC = game.dnd5e.documents.Item5e.prototype.getSaveDC;
         //game.dnd5e.documents.Item5e.prototype.getSaveDC = _getSaveDC;
-        game.dnd5e.documents.Item5e.prototype.roll5eDamage = game.dnd5e.documents.Item5e.prototype.rollDamage;
         //game.dnd5e.documents.Item5e.prototype.rollDamage = _rollDamage;
+        game.dnd5e.documents.Item5e.prototype.roll5eDamage = game.dnd5e.documents.Item5e.prototype.rollDamage;
         //game.dnd5e.documents.Item5e.prototype.rollFormula = _rollFormula;
 
         game.dnd5e.documents.Item5e.prototype.prepareShortcodes = _prepareShortcodes;
@@ -196,6 +195,21 @@ const GmmItem = (function () {
             labels.damage_miss = `${gmmMonster ? Shortcoder.replaceShortcodes(this.system.formula, gmmMonster) : this.system.formula} damage`;
         }
 
+        labels.bpRarity = this.flags.gmm?.blueprint.data.rarity || "";
+
+        switch (this.flags.gmm?.blueprint.data.rarity) {
+            case "default":
+            case "common":
+                labels.rarity = game.i18n.format(`gmm.common.rarity.common`);
+                break;
+            case "uncommon":
+                labels.rarity = game.i18n.format(`gmm.common.rarity.uncommon`);
+                break;
+            case "rare":
+                labels.rarity = game.i18n.format(`gmm.common.rarity.rare`);
+                break;
+        }
+
         switch (itemData.target?.type) {
             case "":
             case "none":
@@ -274,12 +288,21 @@ const GmmItem = (function () {
                 per: itemData.uses.per
             };
         }
-
-        if (itemData.recharge && itemData.recharge.value != null) {
+        let gmmDeferral = this.flags.gmm?.blueprint.data.deferral;
+        if (gmmDeferral?.type) {
+            labels.deferral = {
+                type: game.i18n.format(`gmm.common.deferral_type.${gmmDeferral.type}`),
+                timer: gmmDeferral.timer,
+                respite: gmmDeferral.respite
+            };
+        }
+        if (itemData.recharge && (itemData.recharge.value != null)) {
             labels.recharge = {
                 value: itemData.recharge.value < 6 ? `${itemData.recharge.value}-6` : itemData.recharge.value,
                 charged: itemData.recharge.charged
             };
+        } else {
+            labels.recharge = null;
         }
 
         if (itemData.activation && itemData.activation.type != "") {
@@ -436,7 +459,7 @@ const GmmItem = (function () {
         }
 
         // Condense the resulting attack bonus formula into a simplified label
-        let toHitLabel = simplifyRollFormula(Roll.replaceFormulaData(parts.join('+').trim(), rollData));
+        let toHitLabel = gmmMonster ? simplifyRollFormula(CompatibilityHelpers.replaceFormulaData(parts.join('+').trim(), rollData)) : "0";
         item.labels.toHit = (toHitLabel.charAt(0) !== '-') ? `+ ${toHitLabel}` : toHitLabel;
 
         // Update labels and return the prepared roll data
@@ -459,7 +482,7 @@ const GmmItem = (function () {
                 dc = Shortcoder.replaceShortcodes(dc, gmmMonster);
             }
 
-            item.system.save.dc = simplifyRollFormula(dc);
+            item.system.save.dc = gmmMonster ? simplifyRollFormula(dc) : 0;
             item.system.save.ability = itemData.save.ability;
             item.system.save.scaling = "flat";
             item.labels.save = game.i18n.format("DND5E.SaveDC", {
@@ -521,7 +544,8 @@ const GmmItem = (function () {
         }
 
         // Call the roll helper utility
-        return damageRoll(mergeObject(rollConfig, options));
+         return CompatibilityHelpers.mergeObject(rollConfig, options);
+        
     }
     function _getSortingCategory() {
         if (this.getSheetId() == `${GMM_MODULE_TITLE}.ActionSheet`) {

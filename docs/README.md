@@ -35,8 +35,15 @@ Want to build new monsters for your [Foundry VTT](https://foundryvtt.com/) D&D 5
 ## Installation
 
 ### Dependencies
+These modules are required for GMMC to function.
 
-* [libwrapper](https://foundryvtt.com/packages/lib-wrapper/) - Allows GGMMC to interact more nicely with other modules, such as MidiQOL.
+* [libwrapper](https://foundryvtt.com/packages/lib-wrapper/) - Allows GMMC to interact nicely with other modules, including the optional modules.
+
+### Recommended Modules
+These modules are optional, but may improve the experience of using GMMC.
+
+* [Midi QOL](https://foundryvtt.com/packages/midi-qol) - Provides automation, which some compendium items have built in already if Midi is active.
+* [Dfred's Convenient Effects](https://foundryvtt.com/packages/dfreds-convenient-effects) - Included in the `/importable/` folder is a `dfreds-ce-import.json` file which you can import to include the Conditions compendium in DFred's CE! This makes it easier to apply the conditions rather than needing to transfer them from the compendium actor.
 
 ---
 
@@ -44,13 +51,13 @@ You can install this Foundry module by copying a manifest URL into your Foundry 
 
 * **v3 1.0.2.x (Main Release):** https://raw.githubusercontent.com/Skyl3lazer/giffyglyph-monster-maker-continued/master/module.json	
   * This is probably what you want
-* **v3 Dev 1.0.3.x (May be unstable):** https://raw.githubusercontent.com/Skyl3lazer/giffyglyph-monster-maker-continued/dev/module.json
+* **v3 Dev 1.1.0.x (May be unstable):** https://raw.githubusercontent.com/Skyl3lazer/giffyglyph-monster-maker-continued/dev/module.json
   * For the Brave
 * **Foundry v12 Alpha (ONLY FOR v12 FOUNDRY)** https://raw.githubusercontent.com/Skyl3lazer/giffyglyph-monster-maker-continued/v12/module.json 
   * Only download this if you are using the Foundry V12 beta!
 
 * **MM v2 (Legacy, only for recovering monsters from old games):** https://raw.githubusercontent.com/Skyl3lazer/giffyglyph-monster-maker-continued/v2/module.json
-  * This is the original GGMM v2 module, only updated for Foundry v10 / dnd5e 2.1+. It won't be getting bugfixes, it's just for data recovery.
+  * This is the original GMM v2 module, only updated for Foundry v10 / dnd5e 2.1+. It won't be getting bugfixes, it's just for data recovery.
 
 
 You can install multiple branches side-by-side, but you must activate only **one branch at a time**.
@@ -84,7 +91,7 @@ You can install multiple branches side-by-side, but you must activate only **one
 
 ## Roadmap
 
-Currently this release can handle GGMMv3 functions as a standalone module, with some basic integrations working through other modules (MidiQOL, DAE). See [DEV_TODO](https://github.com/Skyl3lazer/giffyglyph-monster-maker-continued/blob/master/docs/DEV_TODO.md) for what I'm looking at next.
+Currently this release can handle GMMv3 functions as a standalone module, with some basic integrations working through other modules (MidiQOL, DAE). See [DEV_TODO](https://github.com/Skyl3lazer/giffyglyph-monster-maker-continued/blob/master/docs/DEV_TODO.md) for what I'm looking at next.
 
 ## Thank Yous!
 
@@ -99,7 +106,7 @@ If you notice a bug or have a feature suggestion, visit the **[issue board](http
 [![Support Giffy on Patreon](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.vercel.app%2Fapi%3Fusername%3Dgiffyglyph%26type%3Dpatrons&style=flat-square)](https://patreon.com/giffyglyph)
 [![BlueSky](https://img.shields.io/badge/%40Skyl3lazer_on_BlueSky-grey?logo=bluesky&logoColor=%230285FF&labelColor=grey)](https://bsky.app/profile/skyl3lazer.bsky.social)
 
-You can also see an updated GGMMv3 webapp I've created [here](https://giffyglyphmonstermakerv3.azurewebsites.net/)
+You can also see an updated GMMv3 webapp I've created [here](https://giffyglyphmonstermakerv3.azurewebsites.net/)
 
 If you'd like to support the original creator of this module, please consider [becoming a patron](https://www.patreon.com/giffyglyph). You can also find more of Giffy's work at:
 
