@@ -32,12 +32,19 @@
                 <li class="item__rarity">{{item.system.rarity}}</li>
                 <li class="item__quantity">
                     x {{item.system.quantity}}
-                    <input class="input--quantity" data-action="update-item" data-target="{{item.id}}" data-field="system.quantity" data-type="number"/>
+                    <input class="input--quantity" data-action="update-item" data-target="{{item.id}}" data-field="system.quantity" data-type="number" />
                 </li>
+                {{#if item.system.weight.value}}
                 <li class="item__weight">
                     {{item.system.weight.value}}{{item.system.weight.units}}
-                    <input class="input--weight" data-action="update-item" data-target="{{item.id}}" data-field="system.weight.value" data-type="number"/>
+                    <input class="input--weight" data-action="update-item" data-target="{{item.id}}" data-field="system.weight.value" data-type="number" />
                 </li>
+                {{else}}
+                <li class="item__weight">
+                    {{item.system.weight}}
+                    <input class="input--weight" data-action="update-item" data-target="{{item.id}}" data-field="system.weight" data-type="number" />
+                </li>
+                {{/if}}
                 <li class="item__price">
                     {{item.system.price.value}}{{item.system.price.denomination}}
                     <input class="input--price" data-action="update-item" data-target="{{item.id}}" data-field="system.price.value" data-type="number" />

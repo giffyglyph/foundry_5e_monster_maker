@@ -47,6 +47,21 @@ const CompatibilityHelpers = (function () {
 		return w;
 		
 	}
+	function getEncumbranceMultiplier(system) {
+		if (dnd5e.version.localeCompare(3, undefined, { numeric: true, sensitivity: 'base' }) >= 0) {
+			if (system === "imperial") {
+				return CONFIG.DND5E.encumbrance.threshold.maximum.imperial;
+			} else if (system === "metric") {
+				return CONFIG.DND5E.encumbrance.threshold.maximum.metric;
+			}
+		} else {
+			if (system === "imperial") {
+				return CONFIG.DND5E.encumbrance.strMultiplier.imperial;
+			} else if (system === "metric") {
+				return CONFIG.DND5E.encumbrance.strMultiplier.metric;
+			}
+		}
+	}
 	return {
 		hasProperty: hasProperty,
 		setProperty: setProperty,
@@ -54,7 +69,8 @@ const CompatibilityHelpers = (function () {
 		clamped: clamped,
 		mergeObject: mergeObject,
 		replaceFormulaData: replaceFormulaData,
-		weight: weight
+		weight: weight,
+		getEncumbranceMultiplier: getEncumbranceMultiplier
 	};
 })();
 export default CompatibilityHelpers;

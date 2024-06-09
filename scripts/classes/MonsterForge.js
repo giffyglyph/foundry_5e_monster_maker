@@ -647,20 +647,7 @@ const MonsterForge = (function () {
         const capacity = new DerivedAttribute();
         capacity.add((monsterAbilityModifiers["str"].value * 2) + 10, game.i18n.format('gmm.common.derived_source.ability_score'));
 
-        //This keeps backwards compatability for previous versions
-        if (dnd5e.version.localeCompare(3, undefined, { numeric: true, sensitivity: 'base' }) >= 0) {
-            if (data.display.units === "imperial") {
-                capacity.multiply(CONFIG.DND5E.encumbrance.threshold.maximum.imperial, "config");
-            } else if (data.display.units === "metric") {
-                capacity.multiply(CONFIG.DND5E.encumbrance.threshold.maximum.metric, "config");
-            }
-        } else {
-            if (data.display.units === "imperial") {
-                capacity.multiply(CONFIG.DND5E.encumbrance.strMultiplier.imperial, "config");
-            } else if (data.display.units === "metric") {
-                capacity.multiply(CONFIG.DND5E.encumbrance.strMultiplier.metric, "config");
-            }
-        }
+        capacity.multiply(CompatibilityHelpers.getEncumbranceMultiplier(data.display.units), "display unit adjustment");
 
         var sizeCategory = GMM_5E_SIZES.findIndex((x) => x.name == data.description.size);
         sizeCategory = data.inventory.encumbrance.powerful_build ? (sizeCategory < 5 ? sizeCategory + 1 : sizeCategory) : sizeCategory;
