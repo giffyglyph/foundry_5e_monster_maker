@@ -12,6 +12,7 @@
 * dnd5e 3.2 support (tentative)
 	* Dice formula error checking fix
 	* Weight conversions
+* #56 Maximum dice now works for shortcoded damage
 
 ## v1.1.0.7 (latest)
 

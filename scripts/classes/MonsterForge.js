@@ -223,7 +223,8 @@ const MonsterForge = (function () {
         return $.extend(damage, {
             dice: dice ? dice : "—",
             type: damagePerAction.type,
-            die_size: damagePerAction.die_size ? `d${damagePerAction.die_size}` : null
+            die_size: damagePerAction.die_size ? `d${damagePerAction.die_size}` : null,
+            maximum_dice: damagePerAction.maximum_dice
         });
     }
 
