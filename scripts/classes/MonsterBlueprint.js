@@ -228,7 +228,7 @@ const MonsterBlueprint = (function () {
 								blueprintData.traits.items.push(_getItemDetails(item));
 								break;
 							case "loot":
-								blueprintData.inventory.items.push(_getItemDetails(item));
+								blueprintData.inventory.items.push(_getItemDetails(item, blueprintData.display));
 								break;
 							default:
 								blueprintData.actions.items.push(_getItemDetails(item));
@@ -390,12 +390,12 @@ const MonsterBlueprint = (function () {
 		}
 	}
 
-	function _getItemDetails(item) {
+	function _getItemDetails(item, display) {
 		let details = {
 			id: item.id,
 			name: item.name,
 			img: item.img,
-			weight: item.system.weight ? item.system.weight : 0,
+			weight: item.system.weight ? CompatibilityHelpers.weight(item.system.weight, display ? display.units : "") : 0,
 			quantity: item.system.quantity ? item.system.quantity : 0,
 			price: item.system.price ? item.system.price : 0,
 			requirements: {

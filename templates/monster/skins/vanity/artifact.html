@@ -751,7 +751,7 @@ localize 'gmm.monster.artifact.spellbook.spellcasting_ability.value'
                                             <div class="property__icon"><i class="fas fa-shopping-bag fa-fw"></i></div>
                                             <div class="property__body">
                                                 <div class="property__title" data-action="open-config" data-config="inventory">{{localize 'gmm.monster.artifact.inventory.capacity'}}</div>
-                                                <div class="property__value" title="{{{parseSources gmm.monster.inventory.capacity.sources}}}">{{gmm.monster.inventory.capacity.value}}</div>
+                                                <div class="property__value" title="{{{parseSources gmm.monster.inventory.capacity.sources}}}">{{gmm.monster.inventory.capacity.value}} {{#if (eq gmm.blueprint.display.units 'imperial')}}lb{{else}}kg{{/if}}</div>
                                             </div>
                                         </div>
                                         <div class="monster__property">
@@ -765,7 +765,7 @@ localize 'gmm.monster.artifact.spellbook.spellcasting_ability.value'
                                             <div class="property__icon"><i class="fas fa-weight fa-fw"></i></div>
                                             <div class="property__body">
                                                 <div class="property__title" data-action="open-config" data-config="inventory">{{localize 'gmm.monster.artifact.inventory.weight'}}</div>
-                                                <div class="property__value" title="{{{parseSources gmm.monster.inventory.weight.sources}}}">{{gmm.monster.inventory.weight.value}}</div>
+                                                <div class="property__value" title="{{{parseSources gmm.monster.inventory.weight.sources}}}">{{gmm.monster.inventory.weight.value}} {{#if (eq gmm.blueprint.display.units 'imperial')}}lb{{else}}kg{{/if}}</div>
                                             </div>
                                         </div>
                                         <div class="monster__property">

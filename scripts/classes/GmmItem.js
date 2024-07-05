@@ -157,7 +157,7 @@ const GmmItem = (function () {
 
         if (this.hasDamage) {
             const damages = this.system.damage.parts.map((x) => {
-                let damage = rollData ? simplifyRollFormula(gmmMonster ? Shortcoder.replaceShortcodes(x[0], gmmMonster) : x[0], rollData).trim() : x[0];
+                let damage = (rollData && gmmMonster) ? simplifyRollFormula( Shortcoder.replaceShortcodes(x[0], gmmMonster), rollData).trim() : x[0];
                 return `${damage}${x[1] ? ` ${game.i18n.format(`gmm.common.damage.${x[1]}`).toLowerCase()}` : ``} damage`;
             });
             if ((itemData.consume?.type === 'ammo') && !!this.actor?.items) {
@@ -168,7 +168,7 @@ const GmmItem = (function () {
                     const ammoIsTypeConsumable = (ammoItemData.type === "consumable") && (ammoItemData.consumableType === "ammo")
                     if (ammoCanBeConsumed && ammoIsTypeConsumable) {
                         damages.push(...ammoItemData.damage.parts.map(x => {
-                            let damage = simplifyRollFormula(gmmMonster ? Shortcoder.replaceShortcodes(x[0], gmmMonster) : x[0], rollData).trim();
+                            let damage = gmmMonster ? simplifyRollFormula(Shortcoder.replaceShortcodes(x[0], gmmMonster), rollData).trim() : x[0];
                             return `${damage}${x[1] ? ` ${game.i18n.format(`gmm.common.damage.${x[1]}`).toLowerCase()}` : ``} damage`;
                         }));
                     }

@@ -223,7 +223,8 @@ const MonsterForge = (function () {
         return $.extend(damage, {
             dice: dice ? dice : "—",
             type: damagePerAction.type,
-            die_size: damagePerAction.die_size ? `d${damagePerAction.die_size}` : null
+            die_size: damagePerAction.die_size ? `d${damagePerAction.die_size}` : null,
+            maximum_dice: damagePerAction.maximum_dice
         });
     }
 
@@ -625,7 +626,7 @@ const MonsterForge = (function () {
         ["bonus_actions.items", "actions.items", "reactions.items", "lair_actions.items", "legendary_actions.items", "traits.items", "inventory.items", "spellbook.spells.0", "spellbook.spells.1", "spellbook.spells.2", "spellbook.spells.3", "spellbook.spells.4", "spellbook.spells.5", "spellbook.spells.6", "spellbook.spells.7", "spellbook.spells.8", "spellbook.spells.9", "spellbook.spells.other"].forEach((x) => {
             if (CompatibilityHelpers.hasProperty(data, x)) {
                 CompatibilityHelpers.getProperty(data, x).forEach((y) => {
-                    weight.add(y.weight * y.quantity, y.name)
+                    weight.add(CompatibilityHelpers.weight(y.weight, displayUnit) * y.quantity, y.name)
                 });
             }
         });
@@ -647,20 +648,7 @@ const MonsterForge = (function () {
         const capacity = new DerivedAttribute();
         capacity.add((monsterAbilityModifiers["str"].value * 2) + 10, game.i18n.format('gmm.common.derived_source.ability_score'));
 
-        //This keeps backwards compatability for previous versions
-        if (dnd5e.version.localeCompare(3, undefined, { numeric: true, sensitivity: 'base' }) >= 0) {
-            if (data.display.units === "imperial") {
-                capacity.multiply(CONFIG.DND5E.encumbrance.threshold.maximum.imperial, "config");
-            } else if (data.display.units === "metric") {
-                capacity.multiply(CONFIG.DND5E.encumbrance.threshold.maximum.metric, "config");
-            }
-        } else {
-            if (data.display.units === "imperial") {
-                capacity.multiply(CONFIG.DND5E.encumbrance.strMultiplier.imperial, "config");
-            } else if (data.display.units === "metric") {
-                capacity.multiply(CONFIG.DND5E.encumbrance.strMultiplier.metric, "config");
-            }
-        }
+        capacity.multiply(CompatibilityHelpers.getEncumbranceMultiplier(data.display.units), "display unit adjustment");
 
         var sizeCategory = GMM_5E_SIZES.findIndex((x) => x.name == data.description.size);
         sizeCategory = data.inventory.encumbrance.powerful_build ? (sizeCategory < 5 ? sizeCategory + 1 : sizeCategory) : sizeCategory;

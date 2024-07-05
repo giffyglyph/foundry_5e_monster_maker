@@ -1,5 +1,5 @@
 const CompatibilityHelpers = (function () {
-	//v14 - Property management moved to foundry.utils
+	//fv14 - Property management moved to foundry.utils
 	function hasProperty(...args) {
 		if (game.version >= 12) {
 			return foundry.utils.hasProperty(...args);
@@ -39,13 +39,38 @@ const CompatibilityHelpers = (function () {
 		return Roll.replaceFormulaData(...args);
 		
 	}
+	function weight(w, display) {
+		if (isNaN(parseFloat(w)) && dnd5e.version.localeCompare(3.2, undefined, { numeric: true, sensitivity: 'base' }) >= 0) {
+			let d = display ? display == "imperial" ? "lb" : "kg" : w.units;
+			return dnd5e.utils.convertWeight(w.value, w.units, d);
+		}
+		return w;
+		
+	}
+	function getEncumbranceMultiplier(system) {
+		if (dnd5e.version.localeCompare(3, undefined, { numeric: true, sensitivity: 'base' }) >= 0) {
+			if (system === "imperial") {
+				return CONFIG.DND5E.encumbrance.threshold.maximum.imperial;
+			} else if (system === "metric") {
+				return CONFIG.DND5E.encumbrance.threshold.maximum.metric;
+			}
+		} else {
+			if (system === "imperial") {
+				return CONFIG.DND5E.encumbrance.strMultiplier.imperial;
+			} else if (system === "metric") {
+				return CONFIG.DND5E.encumbrance.strMultiplier.metric;
+			}
+		}
+	}
 	return {
 		hasProperty: hasProperty,
 		setProperty: setProperty,
 		getProperty: getProperty,
 		clamped: clamped,
 		mergeObject: mergeObject,
-		replaceFormulaData: replaceFormulaData
+		replaceFormulaData: replaceFormulaData,
+		weight: weight,
+		getEncumbranceMultiplier: getEncumbranceMultiplier
 	};
 })();
 export default CompatibilityHelpers;

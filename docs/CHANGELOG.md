@@ -7,7 +7,15 @@
 [![BlueSky](https://img.shields.io/badge/%40Skyl3lazer_on_BlueSky-grey?logo=bluesky&logoColor=%230285FF&labelColor=grey)](https://bsky.app/profile/skyl3lazer.bsky.social)
 [![Discord](https://img.shields.io/badge/contact-me-blue?logo=discord&logoColor=white)](https://discord.com/channels/@skyl3lazer)
 
-## v1.1.0.7 (latest)
+## v1.1.1.1 (latest)
+
+* Foundry v12 support (tentative)
+* dnd5e 3.2 support (tentative)
+	* Dice formula error checking fix
+	* Weight conversions
+* #56 Maximum dice now works for shortcoded damage
+
+## v1.1.0.7
 
 * Added MidiQOL and DFred's Convenient Effects as 'recommended' modules. They're not required for GMMC to function, but GMMC has content for them if you are using them.
 * Put the compendium folders in a "Giffyglyph's Monster Maker" top level folder for easier sorting. It's green!
@@ -57,7 +65,7 @@
 
 1.0 is here! In addition to a number of bugfixes and compatibility updates, 1.0 features a few big ticket items:
 
-* GMMv3 Compendium Updates! You can now (or soon) add Traits, Features, and Attacks directly from the v3 PDF!
+* GMMv3 Compendium Updates! You can now add Traits, Features, and Attacks directly from the v3 PDF!
 	* This means that the compendiums are now in the new format, rather than the old ".db" files that get converted and take time to load.
 	* These new compendiums have built in scalars, attacks, etc, that all work right out of the box and look great.
 	* The old items are still available in the !V2 folders within compendiums if you want to use them.

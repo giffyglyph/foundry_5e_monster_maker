@@ -47,7 +47,7 @@ const Shortcoder = (function () {
                 }
             });
             try {
-                token = token.replace(/\[(.*?)(, *?d(\d+))?\]/g, (token, t1, t2, t3) => _numberToRandom(token, t1, t3));
+                token = token.replace(/\[(.*?)(, *?d(\d+))?\]/g, (token, t1, t2, t3) => _numberToRandom(token, t1, t3, monsterData.damage_per_action.maximum_dice));
             } catch (e) {
                 console.error(e);
             }
@@ -66,12 +66,12 @@ const Shortcoder = (function () {
     }
 
 
-    function _numberToRandom(token, value, die) {
+    function _numberToRandom(token, value, die, maximumDice) {
         try {
             let valueMath = math.evaluate(value);
             if (die != undefined) {
                 let scale = (Number(die) + 1) / 2;
-                let dice = Math.floor(valueMath / scale);
+                let dice = (maximumDice) ? Math.min(Math.floor(valueMath / scale), maximumDice) : Math.floor(valueMath / scale);
                 let modifier = valueMath - Math.floor(dice * scale);
 
                 if (dice > 0) {
