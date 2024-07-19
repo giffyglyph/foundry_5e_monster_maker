@@ -9,6 +9,8 @@
 
 ## v1.1.2.0 (dev)
 
+* Confirmed dnd5e 3.3.0 compatibility
+
 ## v1.1.1.3 (latest)
 
 * #57 Bugfix for enter adding effects to abilities and monsters when editing fields

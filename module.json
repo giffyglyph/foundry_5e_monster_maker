@@ -88,7 +88,7 @@
 				"type": "system",
 				"compatibility": {
 					"minimum": "2.1.5",
-					"verified": "3.2.1"
+					"verified": "3.3.0"
 				}
 			}
 		],
