@@ -209,6 +209,10 @@ export default class ActionSheet extends dnd5e.applications.item.ItemSheet5e {
         if (formData.gmm.blueprint.uses.max === null)
             formData.gmm.blueprint.uses.max = "";
 
+        //This might exist in a weird place to use the new editor
+        if (formData.flags?.gmm?.blueprint?.data?.description?.text)
+            formData.gmm.blueprint.description.text = formData.flags.gmm.blueprint.data.description.text;
+
         if (CompatibilityHelpers.hasProperty(formData, "gmm.blueprint")) {
             CompatibilityHelpers.setProperty(formData, "flags.gmm.blueprint", {
                 vid: 1,
