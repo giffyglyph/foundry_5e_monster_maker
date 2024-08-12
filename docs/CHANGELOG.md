@@ -7,10 +7,12 @@
 [![BlueSky](https://img.shields.io/badge/%40Skyl3lazer_on_BlueSky-grey?logo=bluesky&logoColor=%230285FF&labelColor=grey)](https://bsky.app/profile/skyl3lazer.bsky.social)
 [![Discord](https://img.shields.io/badge/contact-me-blue?logo=discord&logoColor=white)](https://discord.com/channels/@skyl3lazer)
 
-## v1.1.2.1 (dev)
+## v1.1.2.2 (dev)
 
 * Confirmed dnd5e 3.3.0 compatibility
-* #59 Fixed descriptions on items to use the new editor and updated save/load code for same.
+* #59 Fixed descriptions on items to use the new editor and updated save/load code for same
+* #62 Fixed some bugs around damage rolling by updating to the newer rollConfigs format
+* Fixed bug with shortcoders 
 
 ## v1.1.1.3 (latest)
 
