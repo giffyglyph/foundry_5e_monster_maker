@@ -13,6 +13,7 @@
 * #59 Fixed descriptions on items to use the new editor and updated save/load code for same
 * #62 Fixed some bugs around damage rolling by updating to the newer rollConfigs format
 * Fixed bug with shortcoders 
+* Fix with max attribute breaking TST count
 
 ## v1.1.1.3 (latest)
 
