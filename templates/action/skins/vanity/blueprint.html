@@ -151,8 +151,8 @@
                         <div class="accordion-section__body">
                             <div class="form-group">
                                 <div class="form-group__body">
-                                    <div class="html-field">
-                                        {{editor gmm.blueprint.description.text target='gmm.blueprint.description.text' button=true owner=owner editable=editable}}
+                                    <div class="html-field gmm_prose-editor">
+                                        {{editor gmm.blueprint.description.text target='flags.gmm.blueprint.data.description.text' button=true engine="prosemirror" collaborate=false}}
                                     </div>
                                 </div>
                             </div>

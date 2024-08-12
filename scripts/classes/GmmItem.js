@@ -49,18 +49,18 @@ const GmmItem = (function () {
         }, 'MIXED');
         libWrapper.register('giffyglyph-monster-maker-continued', 'game.dnd5e.documents.Item5e.prototype.rollDamage', function (wrapped, ...args) {
             if (this.getSheetId() == `${GMM_MODULE_TITLE}.ActionSheet` && this.isOwnedByGmmMonster()) {
-                return wrapped(_rollActionDamage({
+                return _rollActionDamage({
                     item: this,
                     critical: args[0]?.critical ?? false,
                     event: args[0]?.event ?? null,
                     spellLevel: args[0]?.spellLevel ?? null,
                     versatile: args[0]?.versatile ?? false,
                     options: args[0]?.options ?? {}
-                }));
+                });
             } else {
                 return wrapped(...args);
             }
-        }, 'WRAPPER');
+        }, 'MIXED');
         libWrapper.register('giffyglyph-monster-maker-continued', 'CONFIG.Item.documentClass.prototype.use', function (wrapped, ...args) {
             if (this.getSheetId() == `${GMM_MODULE_TITLE}.ActionSheet` && this.isOwnedByGmmMonster()) {
                 const gmmMonster = this.getOwningGmmMonster();
@@ -157,7 +157,7 @@ const GmmItem = (function () {
 
         if (this.hasDamage) {
             const damages = this.system.damage.parts.map((x) => {
-                let damage = (rollData && gmmMonster) ? simplifyRollFormula( Shortcoder.replaceShortcodes(x[0], gmmMonster), rollData).trim() : x[0];
+                let damage = (rollData && gmmMonster) ? simplifyRollFormula(Shortcoder.replaceShortcodes(x[0], gmmMonster), rollData).trim() : x[0];
                 return `${damage}${x[1] ? ` ${game.i18n.format(`gmm.common.damage.${x[1]}`).toLowerCase()}` : ``} damage`;
             });
             if ((itemData.consume?.type === 'ammo') && !!this.actor?.items) {
@@ -496,7 +496,7 @@ const GmmItem = (function () {
         return item.system.save ? item.system.save.dc : 0;
     }
 
-    function _rollActionDamage({ item = null, critical = false, event = null, options = {} } = {}) {
+    async function _rollActionDamage({ item = null, critical = false, event = null, spellLevel = null, versatile = false, options = {} } = {}) {
         if (!item.hasDamage) {
             throw new Error("You may not make a Damage Roll with this Item.");
         }
@@ -509,6 +509,8 @@ const GmmItem = (function () {
         const parts = itemData.damage.parts.map((x) =>
             (gmmMonster) ? Shortcoder.replaceShortcodesAndAddDamageType(x[0], gmmMonster, x[1]) : x[0]
         );
+        const properties = itemData.properties ? Array.from(itemData.properties).filter(p => CONFIG.DND5E.itemProperties[p]?.isPhysical) : [];
+        const rollConfigs = itemData.damage.parts.map(([formula, type]) => ({ parts: [(gmmMonster) ? Shortcoder.replaceShortcodes(formula, gmmMonster) : formula], type, properties }));
         const rollData = item.getRollData();
 
         // Configure the damage roll
@@ -520,7 +522,8 @@ const GmmItem = (function () {
             data: rollData,
             event: event,
             fastForward: event ? event.shiftKey || event.altKey || event.ctrlKey || event.metaKey : false,
-            parts: parts,
+            //parts: parts,
+            rollConfigs: rollConfigs,
             title: title,
             flavor: gmmActionBlueprint.attack.damage.type ? `${title} (${gmmActionBlueprint.attack.damage.type})` : title,
             speaker: ChatMessage.getSpeaker({ actor: item.actor }),
@@ -531,6 +534,7 @@ const GmmItem = (function () {
             },
             messageData: messageData
         };
+        
 
         // Handle ammunition damage
         const ammoItem = item.actor.items.get(itemData.consume.target);
@@ -538,14 +542,43 @@ const GmmItem = (function () {
         if (ammoItemData && (ammoItemData.type.value === "ammo")) {
             rollData["ammo"] = ammoItemData.damage.parts.map(p => p[0]).join("+") + (ammoItemData.magicalBonus ? `+${ammoItemData.magicalBonus}` : "");
             if (rollData["ammo"] != "") {
+                rollConfigs[0].parts.push("@ammo");
                 parts.push("@ammo");
                 rollConfig.flavor += ` [${ammoItem.name}]`;
             }
         }
 
+        //Pre dnd3.x versions use the 'parts' field still
+        if (dnd5e.version.localeCompare(3, undefined, { numeric: true, sensitivity: 'base' }) < 0) {
+            rollConfig.parts = parts;
+        }
         // Call the roll helper utility
-         return CompatibilityHelpers.mergeObject(rollConfig, options);
-        
+        CompatibilityHelpers.mergeObject(rollConfig, options)
+        rollConfig.rollConfigs = rollConfigs.concat(options.rollConfigs ?? []);
+        /**
+        * A hook event that fires before a damage is rolled for an Item.
+        * @function dnd5e.preRollDamage
+        * @memberof hookEvents
+        * @param {Item5e} item                     Item for which the roll is being performed.
+        * @param {DamageRollConfiguration} config  Configuration data for the pending roll.
+        * @returns {boolean}                       Explicitly return false to prevent the roll from being performed.
+    
+        if (Hooks.call("dnd5e.preRollDamage", this, rollConfig) === false) return;
+        */
+        const rolls = await game.system.dice.damageRoll(rollConfig);
+
+        /** 
+        * A hook event that fires after a damage has been rolled for an Item.
+        * @function dnd5e.rollDamage
+        * @memberof hookEvents
+        * @param {Item5e} item                    Item for which the roll was performed.
+        * @param {DamageRoll|DamageRoll[]} rolls  The resulting rolls (or single roll if `returnMultiple` is `false`).
+    
+        */
+        if (rolls || (rollConfig.returnMultiple && rolls?.length)) Hooks.callAll("dnd5e.rollDamage", this, rolls);
+
+
+        return rolls;
     }
     function _getSortingCategory() {
         if (this.getSheetId() == `${GMM_MODULE_TITLE}.ActionSheet`) {

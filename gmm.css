@@ -2078,6 +2078,12 @@
   padding: 0;
 }
 
+.gmm-blueprint.blueprint--action.blueprint--action--vanity .gmm_prose-editor {
+  min-height: 15rem;
+}
+.gmm-blueprint.blueprint--action.blueprint--action--vanity .gmm_prose-editor .editor {
+  min-height: 15rem;
+}
 .gmm-blueprint.blueprint--action.blueprint--action--vanity .form-group--image img {
   background: black;
   border-radius: 0.75rem;

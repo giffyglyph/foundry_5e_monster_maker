@@ -259,6 +259,7 @@ const MonsterForge = (function () {
     function _parseSavingThrows(savingThrows, pb, abilityModifiers, tst) {
         const sts = {};
         let abilityRankings = Object.entries(abilityModifiers).sort((x, y) => y[1].value - x[1].value).map((x) => x[0]);
+        abilityRankings = abilityRankings.filter(a => a !== "max");
         GMM_5E_ABILITIES.forEach(function (attrName) {
             if (savingThrows[attrName]) {
                 sts[attrName] = new DerivedAttribute();
