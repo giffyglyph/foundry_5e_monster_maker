@@ -575,7 +575,7 @@ const GmmItem = (function () {
         * @param {DamageRoll|DamageRoll[]} rolls  The resulting rolls (or single roll if `returnMultiple` is `false`).
     
         */
-        if (rolls || (rollConfig.returnMultiple && rolls?.length)) Hooks.callAll("dnd5e.rollDamage", this, rolls);
+        if (rolls || (rollConfig.returnMultiple && rolls?.length)) Hooks.callAll("dnd5e.rollDamage", item, rolls);
 
 
         return rolls;

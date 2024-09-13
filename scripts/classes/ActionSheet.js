@@ -69,7 +69,7 @@ export default class ActionSheet extends dnd5e.applications.item.ItemSheet5e {
     _addDamage(event) {
         event.preventDefault();
         const damage = this.item.system.damage;
-        return this.item.update({ "data.damage.parts": damage.parts.concat([["", ""]]) });
+        return this.item.update({ "system.damage.parts": damage.parts.concat([["", ""]]) });
     }
 
     _removeDamage(event) {
@@ -78,7 +78,7 @@ export default class ActionSheet extends dnd5e.applications.item.ItemSheet5e {
         const li = a.closest(".form-group--damage");
         const damage = duplicate(this.item.system.damage);
         damage.parts.splice(Number(li.dataset.index), 1);
-        return this.item.update({ "data.damage.parts": damage.parts });
+        return this.item.update({ "system.damage.parts": damage.parts });
     }
 
     _createEffect(clickEvent) {

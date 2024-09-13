@@ -7,7 +7,12 @@
 [![BlueSky](https://img.shields.io/badge/%40Skyl3lazer_on_BlueSky-grey?logo=bluesky&logoColor=%230285FF&labelColor=grey)](https://bsky.app/profile/skyl3lazer.bsky.social)
 [![Discord](https://img.shields.io/badge/contact-me-blue?logo=discord&logoColor=white)](https://discord.com/channels/@skyl3lazer)
 
-## v1.1.2.2 (latest)
+## v1.1.2.3 (latest)
+
+* #69 Fixed a deprecation (an old one!) that was sneaking by and finally broke in dnd5e 3.3.1. It was preventing damage from being added or removed from scaling abilities.
+* Fixed bug in damage rolling in certain circumstances (from dev c29c7b2)
+
+## v1.1.2.2
 
 * Confirmed dnd5e 3.3.0 compatibility
 * #59 Fixed descriptions on items to use the new editor and updated save/load code for same
