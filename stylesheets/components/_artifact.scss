@@ -45,6 +45,18 @@
 		margin-bottom: 2px;
 	}
 
+	.artifact__header__rarity__common {
+		background: linear-gradient(to bottom left,#1c922c 1%, 2%, var(--color-primary-shade-2));
+	}
+
+	.artifact__header__rarity__uncommon {
+		background: linear-gradient(to bottom left,#b29403 1%, 2%, var(--color-primary-shade-2));
+	}
+
+	.artifact__header__rarity__rare {
+		background: linear-gradient(to bottom left,#941212 1%, 2%, var(--color-primary-shade-2));
+	}
+
 	.artifact__body {
 		padding: 2px 1px 2px 0;
 		margin: calc(0.25rem - 2px) -1px -2px 0;

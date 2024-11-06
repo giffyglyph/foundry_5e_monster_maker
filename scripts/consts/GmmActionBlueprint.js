@@ -32,6 +32,14 @@ export const GMM_ACTION_BLUEPRINT = {
 			condition: null
 		},
 		cover: null,
+		deferral: {
+			type: null,
+			timer: null,
+			respite: null
+		},
+		effects: {
+			always_show: false
+		},
 		target: {
 			value: null,
 			units: null,
@@ -43,14 +51,20 @@ export const GMM_ACTION_BLUEPRINT = {
 			long: null,
 			units: null,
 		},
+		rarity: "common",
 		duration: {
-			value: null,
-			units: null
+			value: "",
+			units: ""
 		},
 		uses: {
-			value: null,
-			maximum: null,
-			per: null
+			value: "",
+			maximum: "",
+			per: ""
+		},
+		properties: {
+			concentration: {
+				checked: false
+			}
 		},
 		resource_consumption: {
 			type: null,
@@ -69,7 +83,8 @@ export const GMM_ACTION_BLUEPRINT = {
 				formula: null,
 				type: null
 			},
-			message: null
+			message: null,
+			related_stat: "str"
 		}
 	}
 };

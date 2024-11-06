@@ -1,0 +1,26 @@
+<div class="effect" data-effect-id="{{effect.id}}" draggable="true">
+    <div class="item__icon"><img src="{{effect.icon}}" /></div>
+    <div class="item__title">{{effect.name}}</div>
+    <div class="item__actions item-controls effect-controls">
+        <button type="button" data-action="toggle"><i class="fas fa-fw {{#if effect.disabled}}fa-check{{else}}fa-times{{/if}}"></i></button>
+        <button type="button" data-action="edit"><i class="fas fa-fw fa-edit"></i></button>
+        <button type="button" data-action="delete"><i class="fas fa-fw fa-trash"></i></button>
+    </div>
+</div>
+
+<!--
+
+<a class="effect-control" data-action="toggle"
+   data-tooltip="{{#if effect.disabled}}DND5E.EffectEnable{{else}}DND5E.EffectDisable{{/if}}">
+    <i class="fas {{#if effect.disabled}}fa-check{{else}}fa-times{{/if}}"></i>
+</a>
+<a class="effect-control" data-action="edit" data-tooltip="DND5E.EffectEdit">
+    <i class="fas fa-edit"></i>
+</a>
+<a class="effect-control" data-action="delete" data-tooltip="DND5E.EffectDelete">
+    <i class="fas fa-trash"></i>
+</a>
+        <button type="button" data-action="toggle-effect"><i class="fas fa-fw fa-sliders-simple"></i></button>
+        <button type="button" data-action="toggle"><i class="fas fa-fw fa-edit"></i></button>
+        <button type="button" data-action="delete-effect"><i class="fas fa-fw fa-trash"></i></button>
+-->

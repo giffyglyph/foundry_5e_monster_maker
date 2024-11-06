@@ -96,7 +96,7 @@
 						cursor: pointer;
 					}
 
-					
+
 					input {
 						margin: 0;
 						top: 0;
@@ -152,6 +152,16 @@
 		.items {
 
 			.item {
+				display: flex;
+				padding: 0.25rem 0.5rem;
+				align-items: center;
+
+				&:not(:last-child) {
+					border-bottom: 1px dotted var(--color-primary-tint-3);
+				}
+			}
+
+			.effect {
 				display: flex;
 				padding: 0.25rem 0.5rem;
 				align-items: center;

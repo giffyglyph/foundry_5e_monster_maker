@@ -16,6 +16,7 @@ const ActionForge = (function() {
 				activation_cost: _parseActivationCost(blueprint.data.resource_consumption),
 				target: _parseTarget(blueprint.data.target),
 				range: _parseRange(blueprint.data.range),
+				rarity: _parseRarity(blueprint.data.rarity),
 				duration: _parseDuration(blueprint.data.duration),
 				uses: _parseUses(blueprint.data.uses),
 				attack: _parseAttack(blueprint.data.attack),
@@ -33,6 +34,10 @@ const ActionForge = (function() {
 		return game.i18n.format(`gmm.action.artifact.action_type.${!type || type == "none" ? "trait" : type}`);
 	}
 
+	function _parseRarity(rarity) {
+		if (!rarity) rarity = "common";
+		return game.i18n.format(`gmm.common.rarity.${rarity}`);
+	}
 	function _parseLevelRequirement(min, max) {
 		if (min === null && max === null) {
 			return game.i18n.format(`gmm.common.level.any`);
@@ -184,10 +189,6 @@ const ActionForge = (function() {
 			case "save":
 				return game.i18n.format(`gmm.action.artifact.attack.dc.${attack.defense}`, {
 					dc: `[dcPrimaryBonus]${attack.bonus ? ` + ${attack.bonus}` : ``}`
-				});
-			case "other":
-				return game.i18n.format(`gmm.action.artifact.attack.dc.${attack.defense}`, {
-					dc: `[dcSecondaryBonus]${attack.bonus ? ` + ${attack.bonus}` : ``}`
 				});
 			default:
 				return "";
